@@ -11,5 +11,4 @@ package op;
  */
 public class gg {
    // Hello();
-    /**hello world, asian sensation here
 }
