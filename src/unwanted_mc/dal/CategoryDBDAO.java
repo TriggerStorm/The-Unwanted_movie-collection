@@ -17,7 +17,21 @@ public class CategoryDBDAO {
     
     private Category category; //TEST ONLY
     
+    
+    
     public Category getCategory(int id) {
         return category;
     }
+    
+    
+     
+    public void addCategoryToDB(String name) {
+    }
+    
+    
+    
+    public void removeCategoryFromDB(String name){
+    }
+    
+    
 }

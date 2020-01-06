@@ -19,22 +19,17 @@ import unwanted_mc.be.Movie;
 
 public interface IBLL {
     
-    void addMovieToDB(String name, double rating, String filelink, Calendar lastview); // throws IOException {
-    void removeMovieFromDB(int id); // throws IOException {
-    Movie getMovie(int id); // throws IOException {
-    void addMovieToCategory(int id, String category);
-    void removeMovieFromCategory(int id, String category);
+    
+    void addMovieToDB(String name, double rating, String filelink, Calendar lastview);
+    void removeMovieFromDB(int id);
+    Movie getMovie(int id);
+    
+    void addMovieToCategory(int movieID, int categoryID);
+    void removeMovieFromCategory(int movieID, int categoryID);
     
     void addCategoryToDB(String name);
-    void removeCategoryFromDB(String name);
+    void removeCategoryFromDB(int id);
     Category getCategory(int id);
-    
-    
-    
-    //    List<Movie> addMovieToCollection(Movie movieToBeAdded);
-    //    Movie stringToMovie(String t);
-    //    String movieToString(Movie movie);
-    //    List<Movie> getAllMovies(); // throws FileNotFoundException, IOException {
-
+   
 
 }

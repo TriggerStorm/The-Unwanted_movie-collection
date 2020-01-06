@@ -45,12 +45,12 @@ public class DalManager implements IDAL {
     
     
     @Override
-    public void addMovieToCategory(int id, String category) {
+    public void addMovieToCategory(int movieID, int categoryID) {
     }
     
     
     @Override
-    public void removeMovieFromCategory(int id, String category) {
+    public void removeMovieFromCategory(int movieID, int categoryID) {
     }
     
     
@@ -60,7 +60,7 @@ public class DalManager implements IDAL {
     
     
     @Override
-    public void removeCategoryFromDB(String name){
+    public void removeCategoryFromDB(int id){
     }
     
     

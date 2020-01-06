@@ -9,8 +9,7 @@ import java.util.Calendar;
 import unwanted_mc.be.Movie;
 
 
-/**
- * 
+/*
  * @author Niclas, Martin, Michael and Alan
  */
 
