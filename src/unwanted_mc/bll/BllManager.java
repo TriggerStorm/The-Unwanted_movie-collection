@@ -9,6 +9,6 @@ package unwanted_mc.bll;
  *
  * @author admin
  */
-public class mcbll {
+public class BllManager {
     
 }

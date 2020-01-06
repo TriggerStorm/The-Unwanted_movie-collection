@@ -5,28 +5,32 @@
  */
 package unwanted_mc.be;
 
-/**
- *
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+
+/*
  * @author Niclas, Martin, Micheal and Alan
  */
+
+
 public class Movie {
     private int id;
-    private String title;
-    private String category;
+    private String name;
     private double rating;
-    private int duration;  // in seconds
-    private String path;
+    private String filelink;
+    private Calendar lastview;
+
 
     
     
-    
-    public Movie(int id, String title , String category, int rating, int duration, String path) {
+    public Movie(int id, String name, double rating, String filelink, Calendar lastview) {
         this.id = id;
-        this.title = title;
-        this.category = category;
+        this.name = name;
         this.rating = rating;
-        this.duration = duration;        
-        this.path = path;
+        this.filelink = filelink;        
+        this.lastview = lastview;
 
     }
 
@@ -38,14 +42,8 @@ public class Movie {
 
     
     
-    public String getTitle() {
-        return title;
-    }
-
-    
-   
-   public String getCategory() {
-        return category;
+    public String getName() {
+        return name;
     }
 
     
@@ -56,16 +54,16 @@ public class Movie {
    
    
    
- public int getDuration() {
-        return duration;
+    public String getFileLink() {
+        return filelink;
     }
    
     
-   
-    public String getPath() {
-        return path;
+    
+    public Calendar getLastView() {
+        return lastview;
     }
-   
+    
     
     
     public void setId() { // may not need this. If not set id variable to final
@@ -74,36 +72,31 @@ public class Movie {
 
     
     
-   public void setTitle(String title) {
-        this.title = title;
+   public void setName(String name) {
+        this.name = name;
     }
 
    
-    
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    
    
     public void setRating(double rating) {
         this.rating = rating;
     }
 
      
-     public void setDuration(int duration) {  // probably unnecessay method
-        this.duration = duration;
+    
+    public void setFileLink(String filelink) {  // probably unnecessay method
+        this.filelink = filelink;
+    }
+    
+     public void setLastView(Calendar lastview) {  // probably unnecessay method
+        this.lastview = lastview;
     }
    
      
      
-    public void setPath(String path) {  // probably unnecessay method
-        this.path = path;
-    }
-    
     @Override
-    public String toString() {
-        return title + "," + "," + category + "," + rating + "," + duration + ',' + path;
+    public String toString() {  // May be needed
+        return name + "," + rating + "," + filelink + ',' + lastview;
     }
   
     
