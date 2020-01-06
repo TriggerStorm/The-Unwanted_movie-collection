@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package unwanted_mc.bll;
+package unwanted_mc.dal;
 
-import java.io.IOException;
 import java.util.Calendar;
-import java.util.List;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
 
@@ -17,8 +15,9 @@ import unwanted_mc.be.Movie;
  */
 
 
-public interface IBLL {
+public interface IDAL {
     
+     
     void addMovieToDB(String name, double rating, String filelink, Calendar lastview); // throws IOException {
     void removeMovieFromDB(int id); // throws IOException {
     Movie getMovie(int id); // throws IOException {
@@ -37,4 +36,6 @@ public interface IBLL {
     //    List<Movie> getAllMovies(); // throws FileNotFoundException, IOException {
 
 
+
+    
 }

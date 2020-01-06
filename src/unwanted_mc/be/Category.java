@@ -3,12 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package unwanted_mc.dal;
+package unwanted_mc.be;
 
-/**
- *
- * @author admin
+
+/*
+ * @author Niclas, Martin, Michael and Alan
  */
-public class mcdal {
+
+
+public class Category {
+    int id;
+    String name;
     
+    
+    public Category(int id, String name) {
+    
+    }
+
+
 }

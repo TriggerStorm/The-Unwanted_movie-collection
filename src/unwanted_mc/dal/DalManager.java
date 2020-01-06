@@ -3,36 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package unwanted_mc.bll;
+package unwanted_mc.dal;
 
 import java.util.Calendar;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
-import unwanted_mc.dal.DalManager;
-import unwanted_mc.dal.IDAL;
+import unwanted_mc.bll.BllManager;
 
 
 /*
- * @author Niclas, Martin, Micheal and Alan
+ * @author Niclas, Martin, Michael and Alan
  */
 
 
-public class BllManager implements IBLL{
+public class DalManager implements IDAL {
     
-    private IDAL dalManager;
-       
-    
-    
-    public BllManager() {
-  
-    //   MovieDBDAO movieDBDao = new MovieDBDAO();
-    //   CategoryDBDAO categoryDBDao = new CategoryDBDAO();
+    private MovieDBDAO movieDBDao; 
+    private CategoryDBDAO categoryDBDao;
 
-        dalManager = new DalManager();
+    
+    public DalManager() {
+         movieDBDao = new MovieDBDAO();
+         categoryDBDao = new CategoryDBDAO();
     }
     
- 
- 
+    
     @Override
     public void addMovieToDB(String name, double rating, String filelink, Calendar lastview) {
     }
@@ -45,7 +40,7 @@ public class BllManager implements IBLL{
     
     @Override
     public Movie getMovie(int id) {
-        return dalManager.getMovie(id);
+        return movieDBDao.getMovie(id);
     }
     
     
@@ -71,9 +66,9 @@ public class BllManager implements IBLL{
     
     @Override
     public Category getCategory(int id) {
-        return dalManager.getCategory(id);
+        return categoryDBDao.getCategory(id);
+        
     }
     
     
 }
-    

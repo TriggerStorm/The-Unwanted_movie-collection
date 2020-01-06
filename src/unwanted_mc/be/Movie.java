@@ -11,7 +11,7 @@ import java.util.List;
 
 
 /*
- * @author Niclas, Martin, Micheal and Alan
+ * @author Niclas, Martin, Michael and Alan
  */
 
 
