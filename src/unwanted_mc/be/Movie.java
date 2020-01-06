@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package op;
+package unwanted_mc.be;
 
 /**
  *
  * @author Bruger
  */
-public class gg {
+public class Movie {
    // Hello();
     //Alan branch
     // Hello back
