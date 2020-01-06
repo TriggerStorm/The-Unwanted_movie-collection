@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package the.unwanted_movie.collection;
+package unwanted_mc_exe;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

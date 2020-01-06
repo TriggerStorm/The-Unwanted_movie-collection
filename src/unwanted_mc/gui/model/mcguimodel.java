@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package unwanted_mc.gui;
+package unwanted_mc.gui.model;
 
 /**
  *
  * @author admin
  */
-public class mc {
+public class mcguimodel {
     
 }
