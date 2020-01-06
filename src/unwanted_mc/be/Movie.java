@@ -12,9 +12,8 @@ package unwanted_mc.be;
 public class Movie {
     private int id;
     private String title;
-    private String director;
     private String category;
-    private int rating;
+    private double rating;
     private int duration;  // in seconds
     private String path;
 
@@ -44,12 +43,6 @@ public class Movie {
     }
 
     
-    
-   public String get() {
-        return director;
-    }
-
-    
    
    public String getCategory() {
         return category;
@@ -57,16 +50,24 @@ public class Movie {
 
     
     
-   public int getDuration() {
+   public double getRating() {
+        return rating;
+    }
+   
+   
+   
+ public int getDuration() {
         return duration;
-   }
+    }
    
     
    
     public String getPath() {
         return path;
-   }
+    }
    
+    
+    
     public void setId() { // may not need this. If not set id variable to final
         this.id = id;
     }
@@ -78,26 +79,25 @@ public class Movie {
     }
 
    
+    
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    
    
-     public void setArtist(String artist) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 
      
-    
-    public void setCatagory(String category) {
-        this.category = category;
-    }
-
-   
-   
      public void setDuration(int duration) {  // probably unnecessay method
         this.duration = duration;
     }
    
      
      
-    public void setPATH(String path) {  // probably unnecessay method
+    public void setPath(String path) {  // probably unnecessay method
         this.path = path;
     }
     
