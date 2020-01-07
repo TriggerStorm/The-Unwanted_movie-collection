@@ -54,6 +54,11 @@ public class BllManager implements IBLL{
     
     
     @Override
+    public void editMovie(String name, double rating, String filelink, String lastview) {
+    }
+    
+    
+    @Override
     public void addMovieToCategory(int movieID, int categoryID) {
     }
     

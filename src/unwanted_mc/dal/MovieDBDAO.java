@@ -13,7 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -78,7 +77,7 @@ public class MovieDBDAO {
 
       
       
-      public List<Movie> fetchAllMovies() throws SQLException {
+    public List<Movie> fetchAllMovies() throws SQLException {
         List<Movie> allMovies = new ArrayList<>();
 
         try ( Connection con = dbc.getConnection()) {
@@ -101,5 +100,30 @@ public class MovieDBDAO {
         return allMovies;
     }
       
-      
+    public void editMovie(String name, double rating, String filelink, String lastview) {
+        try (//Get a connection to the database.
+            Connection con = dbc.getConnection()) {
+            //Create a prepared statement.
+            String sql = "UPDATE movie SET name = ?, rating = ?, filelink = ?, lastview = ? WHERE id = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            //Set parameter values.
+            pstmt.setString(1, name);
+            pstmt.setDouble(2, rating);
+            pstmt.setString(3, filelink);
+            pstmt.setString(4, lastview);
+            //Execute SQL query.
+            pstmt.executeUpdate();
+            movie.setName(name);
+            movie.setRating(rating);
+            movie.setFileLink(filelink);
+            movie.setLastView(lastview);
+  //          return movie;
+        } catch (SQLServerException ex) {
+            Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ //       return null;
+    }
+
 }
