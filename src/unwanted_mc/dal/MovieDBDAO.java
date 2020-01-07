@@ -6,6 +6,7 @@
 package unwanted_mc.dal;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import static java.lang.Integer.parseInt;
 //import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -131,9 +132,15 @@ public class MovieDBDAO {
     
     
     public List<Movie> findMoviesToRemove() throws SQLException {  // Creates a list of movies that have a rating below 6, and haven't been played in two years.
+        List<Movie> allMovies = new ArrayList<>();
         List<Movie> moviesToDelete = new ArrayList<>();
-        moviesToDelete = fetchAllMovies();
-       // for(Movie)
+        int expiry =  parseInt(movie.getLastView());
+        allMovies = fetchAllMovies();
+        for(Movie movie : allMovies) {
+            if ((movie.getRating() < 6) && (expiry >= 730)) {
+            moviesToDelete.add(movie);
+            }
+        }
         return moviesToDelete;
     }
     
