@@ -133,8 +133,8 @@ public class MovieDBDAO {
     public List<Movie> findMoviesToRemove() throws SQLException {  // Creates a list of movies that have a rating below 6, and haven't been played in two years.
         List<Movie> moviesToDelete = new ArrayList<>();
         moviesToDelete = fetchAllMovies();
-        for(Movie)
-        
+       // for(Movie)
+        return moviesToDelete;
     }
     
 }
