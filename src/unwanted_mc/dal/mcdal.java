@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package op;
+package unwanted_mc.dal;
 
 /**
  *
- * @author Bruger
+ * @author admin
  */
-public class gg {
-   // Hello();
+public class mcdal {
+    
 }
