@@ -100,6 +100,8 @@ public class MovieDBDAO {
         return allMovies;
     }
       
+    
+    
     public void editMovie(String name, double rating, String filelink, String lastview) {
         try (//Get a connection to the database.
             Connection con = dbc.getConnection()) {
@@ -126,4 +128,13 @@ public class MovieDBDAO {
  //       return null;
     }
 
+    
+    
+    public List<Movie> findMoviesToRemove() throws SQLException {  // Creates a list of movies that have a rating below 6, and haven't been played in two years.
+        List<Movie> moviesToDelete = new ArrayList<>();
+        moviesToDelete = fetchAllMovies();
+        for(Movie)
+        
+    }
+    
 }
