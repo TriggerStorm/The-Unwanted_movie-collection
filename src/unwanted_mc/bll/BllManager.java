@@ -25,8 +25,6 @@ public class BllManager implements IBLL{
     
     public BllManager() {
   
-    //   MovieDBDAO movieDBDao = new MovieDBDAO();
-    //   CategoryDBDAO categoryDBDao = new CategoryDBDAO();
 
         dalManager = new DalManager();
     }

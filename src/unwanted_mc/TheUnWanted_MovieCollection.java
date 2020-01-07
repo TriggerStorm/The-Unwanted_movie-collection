@@ -3,23 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package unwanted_mc_exe;
+package unwanted_mc;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+
 import javafx.stage.Stage;
 
-/**
- *
- * @author Bruger
+
+/*
+ * @author Niclas, Martin, Michael and Alan
  */
-public class TheUnwanted_movieCollection extends Application {
+
+
+public class TheUnWanted_MovieCollection extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("gui/view/UnWantedMC.fxml"));
         
         Scene scene = new Scene(root);
         

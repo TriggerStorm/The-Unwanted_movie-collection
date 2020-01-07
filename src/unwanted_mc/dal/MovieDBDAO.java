@@ -15,9 +15,9 @@ import unwanted_mc.be.Movie;
 
 
 public class MovieDBDAO {
-    private Movie testmovie = new Movie(1,"name", 8,"path", Calendar.getInstance() ); //TEST ONLY
+    private Movie movie = new Movie(1,"name", 8,"path", Calendar.getInstance() ); //TEST ONLY
     
     public Movie getMovie(int id) {
-        return testmovie;
+        return movie;
     }
 }
