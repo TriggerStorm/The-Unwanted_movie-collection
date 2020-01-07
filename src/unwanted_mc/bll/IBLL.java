@@ -22,7 +22,8 @@ public interface IBLL {
     void addMovieToDB(String name, double rating, String filelink, String lastview);
     void removeMovieFromDB(int id);
     Movie getMovie(int id);
-    
+    List<Movie> fetchAllMovies();
+
     void addMovieToCategory(int movieID, int categoryID);
     void removeMovieFromCategory(int movieID, int categoryID);
     

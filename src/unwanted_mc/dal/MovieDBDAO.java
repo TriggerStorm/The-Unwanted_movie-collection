@@ -6,11 +6,15 @@
 package unwanted_mc.dal;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+//import java.beans.Statement;
 import java.sql.Connection;
+import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import unwanted_mc.be.Movie;
@@ -23,13 +27,14 @@ import unwanted_mc.be.Movie;
 
 public class MovieDBDAO {
     
-        DBConnection dbc = new DBConnection();
-
+    DBConnection dbc = new DBConnection();
     private Movie movie = new Movie(1,"name", 8,"path", "070120" ); //TEST ONLY
+    
     
     public Movie getMovie(int id) {
         return movie;
     }
+    
     
      public void addMovieToDB(Movie movie) {
         String stat = "INSERT INTO Song VALUES (?,?,?,?)";
@@ -71,5 +76,30 @@ public class MovieDBDAO {
         }
     }
 
+      
+      
+      public List<Movie> fetchAllMovies() throws SQLException {
+        List<Movie> allMovies = new ArrayList<>();
+
+        try ( Connection con = dbc.getConnection()) {
+            String sql = "SELECT * FROM song";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                double rating = rs.getDouble("rating");
+                String filelink = rs.getString("filelink");
+                String lastview = rs.getString("lastview");
+                allMovies.add(new Movie(id, name, rating, filelink, lastview));
+            }
+        } catch (SQLServerException ex) {
+            Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return allMovies;
+    }
+      
       
 }
