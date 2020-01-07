@@ -6,7 +6,6 @@
 package unwanted_mc.bll;
 
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.List;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
@@ -20,7 +19,7 @@ import unwanted_mc.be.Movie;
 public interface IBLL {
     
     
-    void addMovieToDB(String name, double rating, String filelink, Calendar lastview);
+    void addMovieToDB(String name, double rating, String filelink, String lastview);
     void removeMovieFromDB(int id);
     Movie getMovie(int id);
     

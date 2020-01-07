@@ -5,7 +5,6 @@
  */
 package unwanted_mc.dal;
 
-import java.util.Calendar;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
 import unwanted_mc.bll.BllManager;
@@ -29,7 +28,7 @@ public class DalManager implements IDAL {
     
     
     @Override
-    public void addMovieToDB(String name, double rating, String filelink, Calendar lastview) {
+    public void addMovieToDB(String name, double rating, String filelink, String lastview) {
     }
     
     

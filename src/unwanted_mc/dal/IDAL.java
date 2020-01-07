@@ -5,7 +5,6 @@
  */
 package unwanted_mc.dal;
 
-import java.util.Calendar;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
 
@@ -18,7 +17,7 @@ import unwanted_mc.be.Movie;
 public interface IDAL {
     
      
-    void addMovieToDB(String name, double rating, String filelink, Calendar lastview);
+    void addMovieToDB(String name, double rating, String filelink, int lastview);
     void removeMovieFromDB(int id);
     Movie getMovie(int id);
     
