@@ -34,11 +34,13 @@ public class DalManager implements IDAL {
     
     @Override
     public void addMovieToDB(String name, double rating, String filelink, String lastview) {
+        movieDBDao.addMovieToDB(name, rating, filelink, lastview);
     }
-    
+        
     
     @Override
-    public void removeMovieFromDB(int id) {
+    public void removeMovieFromDB(Movie movieToRemove) {
+        movieDBDao.removeMovieFromDB(movieToRemove);
     }
     
     
@@ -61,6 +63,7 @@ public class DalManager implements IDAL {
     
     @Override
     public void editMovie(String name, double rating, String filelink, String lastview) {
+        movieDBDao.editMovie(name, rating, filelink, lastview);
     }
 
     
@@ -77,6 +80,7 @@ public class DalManager implements IDAL {
     
     
     public void updateLastView(int id, String dateNow) {
+        movieDBDao.updateLastView(id, dateNow);
     }
 
     
@@ -92,11 +96,13 @@ public class DalManager implements IDAL {
     
     @Override
     public void addMovieToCategory(int movieID, int categoryID) {
+        movieDBDao.addMovieToCategory(movieID, categoryID);
     }
     
     
     @Override
     public void removeMovieFromCategory(int movieID, int categoryID) {
+        movieDBDao.removeMovieFromCategory(movieID, categoryID);
     }
     
     
