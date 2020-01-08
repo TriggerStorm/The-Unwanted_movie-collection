@@ -39,7 +39,7 @@ public class MovieDBDAO {
     }
     
     
-     public void addMovieToDB(Movie movie) {
+     public void addMovieToDB(String name, double rating, String filelink, String lastview) {
         String stat = "INSERT INTO movie VALUES (?,?,?,?)";
         try (Connection xd = dbc.getConnection()) {
             PreparedStatement stmt = xd.prepareStatement(stat, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -187,6 +187,14 @@ public class MovieDBDAO {
             overTwoYears = true;
         }
         return overTwoYears;
+    }
+
+    void addMovieToCategory(int movieID, int categoryID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void removeMovieFromCategory(int movieID, int categoryID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
