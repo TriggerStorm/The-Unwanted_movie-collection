@@ -63,6 +63,7 @@ public class DalManager implements IDAL {
     }
 
     
+    @Override
     public List<Movie> findMoviesToRemove() {
         try {
             return movieDBDao.findMoviesToRemove();
@@ -70,6 +71,11 @@ public class DalManager implements IDAL {
             Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    
+    
+    public void updateLastView(int id, String dateNow) {
     }
 
     @Override

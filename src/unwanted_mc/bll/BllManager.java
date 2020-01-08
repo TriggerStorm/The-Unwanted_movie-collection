@@ -20,16 +20,20 @@ import unwanted_mc.dal.IDAL;
  */
 
 
-public class BllManager implements IBLL{
+public class BllManager implements IBLL {
     
     private IDAL dalManager;
-       
+    private SearchFilter searcher;
+    private DateConverter timeconverter;
+    
     
     
     public BllManager() {
   
 
         dalManager = new DalManager();
+        searcher = new SearchFilter();
+        timeconverter = new DateConverter();
     }
     
  

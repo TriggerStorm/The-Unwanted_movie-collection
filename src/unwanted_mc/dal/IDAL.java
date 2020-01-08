@@ -23,7 +23,9 @@ public interface IDAL {
     Movie getMovie(int id);
     List<Movie> fetchAllMovies();
     void editMovie(String name, double rating, String filelink, String lastview);
-
+    List<Movie> findMoviesToRemove();
+    void updateLastView(int id, String dateNow);
+        
     void addMovieToCategory(int movieID, int categoryID);
     void removeMovieFromCategory(int movieID, int categoryID);
     

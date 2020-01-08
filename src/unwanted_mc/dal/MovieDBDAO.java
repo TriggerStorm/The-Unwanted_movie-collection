@@ -7,12 +7,12 @@ package unwanted_mc.dal;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import static java.lang.Integer.parseInt;
-//import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -37,7 +37,7 @@ public class MovieDBDAO {
     
     
      public void addMovieToDB(Movie movie) {
-        String stat = "INSERT INTO Song VALUES (?,?,?,?)";
+        String stat = "INSERT INTO movie VALUES (?,?,?,?)";
         try (Connection xd = dbc.getConnection()) {
             PreparedStatement stmt = xd.prepareStatement(stat, PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setString(1, movie.getName());
@@ -66,7 +66,7 @@ public class MovieDBDAO {
      
      
       public void removeMovieFromDB(Movie movie) {
-        String stat = "DELETE FROM song WHERE ID=?";
+        String stat = "DELETE FROM movie WHERE ID=?";
         try (Connection con = dbc.getConnection()) {
             PreparedStatement stmt = con.prepareStatement(stat);
             stmt.setInt(1, movie.getId());
@@ -82,7 +82,7 @@ public class MovieDBDAO {
         List<Movie> allMovies = new ArrayList<>();
 
         try ( Connection con = dbc.getConnection()) {
-            String sql = "SELECT * FROM song";
+            String sql = "SELECT * FROM movie";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -143,5 +143,30 @@ public class MovieDBDAO {
         }
         return moviesToDelete;
     }
+    
+    
+    public void updateLastView(int id, String dateNow) {
+        try (//Get a connection to the database.
+            Connection con = dbc.getConnection()) {
+            //Create a prepared statement.
+
+            String sql = "UPDATE movie SET lastview = timeNow WHERE id = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            //Set parameter values.
+         
+            pstmt.setString(4, dateNow);
+            //Execute SQL query.
+            pstmt.executeUpdate();
+           
+            movie.setLastView(dateNow);
+  //          return movie;
+        } catch (SQLServerException ex) {
+            Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ //       return null;
+    }
+    
     
 }
