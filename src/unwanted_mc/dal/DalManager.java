@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
 import unwanted_mc.bll.BllManager;
+import unwanted_mc.bll.DateConverter;
 
 
 /*
@@ -78,6 +79,17 @@ public class DalManager implements IDAL {
     public void updateLastView(int id, String dateNow) {
     }
 
+    
+    public boolean testForLastView(int id) {
+        try {
+            return movieDBDao.testForLastView(id);
+        } catch (SQLException ex) {
+            Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    
     @Override
     public void addMovieToCategory(int movieID, int categoryID) {
     }
@@ -101,7 +113,6 @@ public class DalManager implements IDAL {
     @Override
     public Category getCategory(int id) {
         return categoryDBDao.getCategory(id);
-        
     }
     
     
