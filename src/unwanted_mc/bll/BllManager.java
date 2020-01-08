@@ -5,7 +5,10 @@
  */
 package unwanted_mc.bll;
 
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
 import unwanted_mc.dal.DalManager;
@@ -17,16 +20,20 @@ import unwanted_mc.dal.IDAL;
  */
 
 
-public class BllManager implements IBLL{
+public class BllManager implements IBLL {
     
     private IDAL dalManager;
-       
+    private SearchFilter searcher;
+    private DateConverter timeconverter;
+    
     
     
     public BllManager() {
   
 
         dalManager = new DalManager();
+        searcher = new SearchFilter();
+        timeconverter = new DateConverter();
     }
     
  
@@ -55,6 +62,12 @@ public class BllManager implements IBLL{
     
     @Override
     public void editMovie(String name, double rating, String filelink, String lastview) {
+    }
+    
+    
+     @Override
+    public List<Movie> findMoviesToRemove() {
+        return dalManager.findMoviesToRemove();
     }
     
     

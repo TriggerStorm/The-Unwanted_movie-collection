@@ -7,17 +7,20 @@ package unwanted_mc.dal;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import static java.lang.Integer.parseInt;
-//import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import unwanted_mc.be.Movie;
+import unwanted_mc.bll.DateConverter;
 
 
 /*
@@ -29,7 +32,7 @@ public class MovieDBDAO {
     
     DBConnection dbc = new DBConnection();
     private Movie movie = new Movie(1,"name", 8,"path", "070120" ); //TEST ONLY
-    
+    private DateConverter dateconverter = new DateConverter();  // Use manager later
     
     public Movie getMovie(int id) {
         return movie;
@@ -37,7 +40,7 @@ public class MovieDBDAO {
     
     
      public void addMovieToDB(Movie movie) {
-        String stat = "INSERT INTO Song VALUES (?,?,?,?)";
+        String stat = "INSERT INTO movie VALUES (?,?,?,?)";
         try (Connection xd = dbc.getConnection()) {
             PreparedStatement stmt = xd.prepareStatement(stat, PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setString(1, movie.getName());
@@ -66,7 +69,7 @@ public class MovieDBDAO {
      
      
       public void removeMovieFromDB(Movie movie) {
-        String stat = "DELETE FROM song WHERE ID=?";
+        String stat = "DELETE FROM movie WHERE ID=?";
         try (Connection con = dbc.getConnection()) {
             PreparedStatement stmt = con.prepareStatement(stat);
             stmt.setInt(1, movie.getId());
@@ -82,7 +85,7 @@ public class MovieDBDAO {
         List<Movie> allMovies = new ArrayList<>();
 
         try ( Connection con = dbc.getConnection()) {
-            String sql = "SELECT * FROM song";
+            String sql = "SELECT * FROM movie";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -134,14 +137,57 @@ public class MovieDBDAO {
     public List<Movie> findMoviesToRemove() throws SQLException {  // Creates a list of movies that have a rating below 6, and haven't been played in two years.
         List<Movie> allMovies = new ArrayList<>();
         List<Movie> moviesToDelete = new ArrayList<>();
-        int expiry =  parseInt(movie.getLastView());
+    //    int expiry =  parseInt(movie.getLastView());
         allMovies = fetchAllMovies();
         for(Movie movie : allMovies) {
-            if ((movie.getRating() < 6) && (expiry >= 730)) {
+            String lastViewedDate = movie.getLastView();
+            int movieId = movie.getId();
+            boolean overTwoYears = testForLastView(movieId);
+            if ((movie.getRating() < 6) && (overTwoYears)) {
             moviesToDelete.add(movie);
             }
         }
         return moviesToDelete;
     }
+    
+    
+    public void updateLastView(int id, String dateNow) {
+        try (//Get a connection to the database.
+            Connection con = dbc.getConnection()) {
+            //Create a prepared statement.
+
+            String sql = "UPDATE movie SET lastview = dateNow WHERE id = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            //Set parameter values.
+         
+            pstmt.setString(4, dateNow);
+            //Execute SQL query.
+            pstmt.executeUpdate();
+           
+            movie.setLastView(dateNow);
+        } catch (SQLServerException ex) {
+            Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    public boolean testForLastView(int id) throws SQLException {
+        boolean overTwoYears = false;
+        Movie movieToTest = getMovie(id);
+        LocalDate dateNow = LocalDate.now();
+        String lastViewed = movieToTest.getLastView();
+        dateconverter.stringToDateNow(lastViewed);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+        LocalDate lastViewedDate = LocalDate.parse(lastViewed, formatter);
+        Period period = Period.between(dateNow, lastViewedDate);
+        int diff = period.getDays();
+        if (diff > 730) {
+            overTwoYears = true;
+        }
+        return overTwoYears;
+    }
+    
     
 }

@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
 import unwanted_mc.bll.BllManager;
+import unwanted_mc.bll.DateConverter;
 
 
 /*
@@ -33,11 +34,13 @@ public class DalManager implements IDAL {
     
     @Override
     public void addMovieToDB(String name, double rating, String filelink, String lastview) {
+        movieDBDao.addMovieToDB(name, rating, filelink, lastview);
     }
-    
+        
     
     @Override
-    public void removeMovieFromDB(int id) {
+    public void removeMovieFromDB(Movie movieToRemove) {
+        movieDBDao.removeMovieFromDB(movieToRemove);
     }
     
     
@@ -60,16 +63,46 @@ public class DalManager implements IDAL {
     
     @Override
     public void editMovie(String name, double rating, String filelink, String lastview) {
+        movieDBDao.editMovie(name, rating, filelink, lastview);
+    }
+
+    
+    @Override
+    public List<Movie> findMoviesToRemove() {
+        try {
+            return movieDBDao.findMoviesToRemove();
+        } catch (SQLException ex) {
+            Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    
+    
+    public void updateLastView(int id, String dateNow) {
+        movieDBDao.updateLastView(id, dateNow);
+    }
+
+    
+    public boolean testForLastView(int id) {
+        try {
+            return movieDBDao.testForLastView(id);
+        } catch (SQLException ex) {
+            Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     
     @Override
     public void addMovieToCategory(int movieID, int categoryID) {
+        movieDBDao.addMovieToCategory(movieID, categoryID);
     }
     
     
     @Override
     public void removeMovieFromCategory(int movieID, int categoryID) {
+        movieDBDao.removeMovieFromCategory(movieID, categoryID);
     }
     
     
@@ -86,7 +119,6 @@ public class DalManager implements IDAL {
     @Override
     public Category getCategory(int id) {
         return categoryDBDao.getCategory(id);
-        
     }
     
     

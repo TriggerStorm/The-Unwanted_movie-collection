@@ -25,14 +25,14 @@ public class SearchFilter {
      * @return A list of movies that matches the search query.
      */
     
-    public List<Movie> searchByName(List<Movie> searchBase, String query) {
+    public List<Movie> searchByName(List<Movie> allMovies, String query) {
         //case insensitive and partial search
         List<Movie> filtered = new ArrayList();
 
         if (query.isEmpty()) {
-            return searchBase;
+            return allMovies;
         }
-        for (Movie movie : searchBase) {
+        for (Movie movie : allMovies) {
             if (movie.getName().toLowerCase().contains(query.trim().toLowerCase())) {
                 filtered.add(movie);
             } 
@@ -42,16 +42,16 @@ public class SearchFilter {
 
     
     
-     public List<Movie> searchByRatingAbove(List<Movie> searchBase, String query) {
+     public List<Movie> searchByRatingAbove(List<Movie> allMovies, String query) {
         //case insensitive and partial search
         List<Movie> filtered = new ArrayList();
         
         if (query.isEmpty()) {
-            return searchBase;
+            return allMovies;
         }
         double value = Double.parseDouble(query);
 
-        for (Movie movie : searchBase) {
+        for (Movie movie : allMovies) {
             if (movie.getRating() >= value ) {
                 filtered.add(movie);
             } 
@@ -61,16 +61,16 @@ public class SearchFilter {
 
      
      
-      public List<Movie> searchByRatingBelow(List<Movie> searchBase, String query) {
+      public List<Movie> searchByRatingBelow(List<Movie> allMovies, String query) {
         //case insensitive and partial search
         List<Movie> filtered = new ArrayList();
         
         if (query.isEmpty()) {
-            return searchBase;
+            return allMovies;
         }
         double value = Double.parseDouble(query);
 
-        for (Movie movie : searchBase) {
+        for (Movie movie : allMovies) {
             if (movie.getRating() <= value ) {
                 filtered.add(movie);
             } 
