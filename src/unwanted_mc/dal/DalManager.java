@@ -63,6 +63,15 @@ public class DalManager implements IDAL {
     }
 
     
+    public List<Movie> findMoviesToRemove() {
+        try {
+            return movieDBDao.findMoviesToRemove();
+        } catch (SQLException ex) {
+            Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     @Override
     public void addMovieToCategory(int movieID, int categoryID) {
     }
