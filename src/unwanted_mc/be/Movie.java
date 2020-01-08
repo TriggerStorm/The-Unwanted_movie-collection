@@ -20,12 +20,12 @@ public class Movie {
     private String name;
     private double rating;
     private String filelink;
-    private Calendar lastview;
+    private String lastview;
 
 
     
     
-    public Movie(int id, String name, double rating, String filelink, Calendar lastview) {
+    public Movie(int id, String name, double rating, String filelink, String lastview) {
         this.id = id;
         this.name = name;
         this.rating = rating;
@@ -60,13 +60,13 @@ public class Movie {
    
     
     
-    public Calendar getLastView() {
+    public String getLastView() {
         return lastview;
     }
     
     
     
-    public void setId() { // may not need this. If not set id variable to final
+    public void setId(int id) { // may not need this. If not set id variable to final
         this.id = id;
     }
 
@@ -88,7 +88,9 @@ public class Movie {
         this.filelink = filelink;
     }
     
-     public void setLastView(Calendar lastview) {  // probably unnecessay method
+    
+    
+     public void setLastView(String lastview) {  // probably unnecessay method
         this.lastview = lastview;
     }
    

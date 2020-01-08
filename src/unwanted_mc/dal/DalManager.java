@@ -5,7 +5,10 @@
  */
 package unwanted_mc.dal;
 
-import java.util.Calendar;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
 import unwanted_mc.bll.BllManager;
@@ -29,7 +32,7 @@ public class DalManager implements IDAL {
     
     
     @Override
-    public void addMovieToDB(String name, double rating, String filelink, Calendar lastview) {
+    public void addMovieToDB(String name, double rating, String filelink, String lastview) {
     }
     
     
@@ -43,6 +46,22 @@ public class DalManager implements IDAL {
         return movieDBDao.getMovie(id);
     }
     
+    
+    @Override
+    public List<Movie> fetchAllMovies() {
+        try {
+            return movieDBDao.fetchAllMovies();
+        } catch (SQLException ex) {
+            Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    
+    @Override
+    public void editMovie(String name, double rating, String filelink, String lastview) {
+    }
+
     
     @Override
     public void addMovieToCategory(int movieID, int categoryID) {
