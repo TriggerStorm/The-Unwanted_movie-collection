@@ -12,6 +12,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -22,7 +25,19 @@ public class UnWantedMCController implements Initializable {
     @FXML
     private Label label;
     @FXML
-    private Button button;
+    private Button bn_edit;
+    @FXML
+    private TableView<?> tbv_allMovie;
+    @FXML
+    private TableColumn<?, ?> col_name;
+    @FXML
+    private TableColumn<?, ?> col_genre;
+    @FXML
+    private TableColumn<?, ?> col_rating;
+    @FXML
+    private TableColumn<?, ?> col_lastViewed;
+    @FXML
+    private TextField txt_search;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {

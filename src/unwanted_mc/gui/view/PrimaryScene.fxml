@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="744.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="unwanted_mc.gui.controller.UnWantedMCController">
+    <children>
+        <Button fx:id="bn_edit" layoutX="40.0" layoutY="23.0" onAction="#handleButtonAction" text="Edit" />
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <TableView fx:id="tbv_allMovie" layoutX="27.0" layoutY="64.0" prefHeight="390.0" prefWidth="698.0" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="64.0">
+        <columns>
+          <TableColumn fx:id="col_name" prefWidth="197.60003662109375" text="Name" />
+          <TableColumn fx:id="col_genre" prefWidth="107.199951171875" text="Genre" />
+            <TableColumn fx:id="col_rating" prefWidth="179.199951171875" text="Rating" />
+            <TableColumn fx:id="col_lastViewed" prefWidth="214.4000244140625" text="Last Viewed" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txt_search" layoutX="576.0" layoutY="23.0" />
+    </children>
+</AnchorPane>
