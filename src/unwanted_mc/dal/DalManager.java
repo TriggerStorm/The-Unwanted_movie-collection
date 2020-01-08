@@ -108,11 +108,13 @@ public class DalManager implements IDAL {
     
     @Override
     public void addCategoryToDB(String name) {
+        categoryDBDao.addCategoryToDB(name);
     }
     
     
     @Override
     public void removeCategoryFromDB(int id){
+        categoryDBDao.removeCategoryFromDB(id);
     }
     
     

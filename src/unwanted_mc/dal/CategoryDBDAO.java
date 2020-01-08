@@ -30,7 +30,7 @@ public class CategoryDBDAO {
     
     
     
-    public void removeCategoryFromDB(String name){
+    public void removeCategoryFromDB(int id){
     }
     
     
