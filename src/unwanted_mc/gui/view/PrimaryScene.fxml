@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="744.0" styleClass="greyBG" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unwanted_mc.gui.controller.PrimarySceneController">
+    <children>
+        <Button fx:id="bn_editMovie" layoutX="372.0" layoutY="23.0" onAction="#handleButtonAction" style="-fx-background-color: WHITE;" text="Edit Selectet Movie" />
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <TableView fx:id="tbv_allMovie" layoutX="27.0" layoutY="64.0" prefHeight="366.0" prefWidth="698.0" stylesheets="@../../../../../RandomCode/MyTunesC/src/mytunes/gui/css/style.css" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="64.0">
+        <columns>
+          <TableColumn fx:id="col_name" prefWidth="197.60003662109375" text="Name" />
+          <TableColumn fx:id="col_genre" prefWidth="107.199951171875" text="Genre" />
+            <TableColumn fx:id="col_rating" prefWidth="179.199951171875" text="Rating" />
+            <TableColumn fx:id="col_lastViewed" prefWidth="214.4000244140625" text="Last Viewed" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txt_search" layoutX="576.0" layoutY="23.0" />
+      <Button fx:id="bn_removeMovie" layoutX="247.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: WHITE;" text="Remove Movie" />
+      <Button fx:id="bn_addMovie" layoutX="27.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: WHITE;" text="Add Movie" />
+      <Button fx:id="bn_play" layoutX="365.0" layoutY="430.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="23.0" />
+      <ImageView fitHeight="29.0" fitWidth="61.0" layoutX="362.0" layoutY="428.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-circled-play-50.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>
