@@ -20,12 +20,10 @@ import javafx.scene.control.TextField;
  *
  * @author Bruger
  */
-public class UnWantedMCController implements Initializable {
+public class PrimarySceneController implements Initializable {
     
     @FXML
     private Label label;
-    @FXML
-    private Button bn_edit;
     @FXML
     private TableView<?> tbv_allMovie;
     @FXML
@@ -38,6 +36,12 @@ public class UnWantedMCController implements Initializable {
     private TableColumn<?, ?> col_lastViewed;
     @FXML
     private TextField txt_search;
+    @FXML
+    private Button bn_editMovie;
+    @FXML
+    private Button bn_removeMovie;
+    @FXML
+    private Button bn_addMovie;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {

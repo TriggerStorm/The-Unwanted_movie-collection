@@ -26,7 +26,7 @@ public class TheUnWanted_MovieCollection extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("gui/view/UnWantedMC.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("gui/view/PrimaryScene.fxml"));
         
         Scene scene = new Scene(root);
         
