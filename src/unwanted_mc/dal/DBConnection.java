@@ -10,8 +10,6 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.io.FileInputStream;
 import java.io.IOException;
-//import java.lang.System.Logger;
-//import java.lang.System.Logger.Level;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Properties;
