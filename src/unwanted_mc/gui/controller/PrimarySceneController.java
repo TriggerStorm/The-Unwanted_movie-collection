@@ -42,6 +42,8 @@ public class PrimarySceneController implements Initializable {
     private Button bn_removeMovie;
     @FXML
     private Button bn_addMovie;
+    @FXML
+    private Button bn_play;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
