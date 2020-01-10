@@ -5,20 +5,61 @@
  */
 package unwanted_mc.gui.model;
 
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import unwanted_mc.be.Category;
+import unwanted_mc.bll.BllManager;
 /**
  *
  * @author Martin Park Broderse
  */
 public class categoryModel {
-    private ObservableList<Category> allCategories;
+    
+    private BllManager bllManager;
+    private ObservableList<Category> categoryList;
 
-    public ObservableList<Category> getallCategories() {
-        allCategories = FXCollections.observableArrayList();
-        allCategories.addAll(allCategories);
-        return allCategories;
+    
+    public categoryModel() {
+        bllManager = new BllManager();
+        getAllCategories();
     }
+        
+    
+    public void addCategoryToDB(String name) {
+        
+    }
+
+    
+    public ObservableList<Category> getAllCategories() {
+        List<Category> allCategories = bllManager.fetchAllCatagories();
+       
+        categoryList = FXCollections.observableArrayList(allCategories);
+        return categoryList;
+    }
+    
+    
+    public void createCategory(String name) {
+        Category category = bllManager.addCategoryToDB(name);
+        categoryList.add(category);
+    }
+        
+        
+    public void editCategory(String name) {
+        Category category = bllManager.editCategory(name);
+        categoryList.add(category); 
+    }
+        
+    public void deleteCategory(int id) {
+        Category category = bllManager.removeCategoryFromDB(id);
+        categoryList.remove(category); 
+    }       
+        
+    
+    public void filterCategory(int id) {  // NOT FINISHED
+        Category category = bllManager.removeCategoryFromDB(id);
+        categoryList.remove(category); 
+    }
+    
     
 }

@@ -39,7 +39,7 @@ public class CategoryDBDAO {
     
     
      
-    public void addCategoryToDB(String name) {
+    public Category addCategoryToDB(String name) {
    try ( Connection con = dbc.getConnection()) {
             String sql = "INSERT INTO Category (name) values (?)";
             PreparedStatement p = con.prepareStatement(sql);
@@ -50,10 +50,11 @@ public class CategoryDBDAO {
         Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
     } catch (SQLException ex) {
         Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-    }
+        }
+        return null;
     }
     
-     public void removeCategoryFromDB(int id){
+     public Category removeCategoryFromDB(int id){
         try ( Connection con = dbc.getConnection()) {
             String sql = "DELETE FROM Category WHERE id=?";
             PreparedStatement p = con.prepareStatement(sql);
@@ -62,11 +63,11 @@ public class CategoryDBDAO {
 
         } catch (SQLServerException ex) {
         Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (SQLException ex) {
+        } catch (SQLException ex) {
         Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
-
-     }
     
      
       public List<Category> fetchAllCatagories() throws SQLException {
@@ -90,7 +91,7 @@ public class CategoryDBDAO {
     }
       
       
-    public void editCategory(String name){
+    public Category editCategory(String name){
     try ( Connection con = dbc.getConnection()) {
             String sql = "UPDATE Category set name=?";
             PreparedStatement p = con.prepareStatement(sql);
@@ -99,8 +100,9 @@ public class CategoryDBDAO {
 
         } catch (SQLServerException ex) {
         Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (SQLException ex) {
+        } catch (SQLException ex) {
         Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-    }
+        }
+    return null;
     }
 }

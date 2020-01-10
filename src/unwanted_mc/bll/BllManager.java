@@ -39,14 +39,14 @@ public class BllManager implements IBLL {
  
   
     @Override
-    public void addMovieToDB(String name, double rating, String filelink, String lastview) {
-        dalManager.addMovieToDB(name, rating, filelink, lastview);
+    public Movie addMovieToDB(String name, double rating, String filelink, String lastview) {
+        return dalManager.addMovieToDB(name, rating, filelink, lastview);
     }
         
     
     @Override
-    public void removeMovieFromDB(Movie movieToRemove) {
-        dalManager.removeMovieFromDB(movieToRemove);
+    public void removeMovieFromDB(int id) {
+        dalManager.removeMovieFromDB(id);
     }
     
     
@@ -63,8 +63,8 @@ public class BllManager implements IBLL {
 
     
     @Override
-    public void editMovie(String name, double rating, String filelink, String lastview) {
-        dalManager.editMovie(name, rating, filelink, lastview);
+    public Movie editMovie(String name, double rating, String filelink, String lastview) {
+        return dalManager.editMovie(name, rating, filelink, lastview);
     }
 
     
@@ -98,14 +98,14 @@ public class BllManager implements IBLL {
     
     
     @Override
-    public void addCategoryToDB(String name) {
-        dalManager.addCategoryToDB(name);
+    public Category addCategoryToDB(String name) {
+        return dalManager.addCategoryToDB(name);
     }
     
     
     @Override
-    public void removeCategoryFromDB(int id) {
-        dalManager.removeCategoryFromDB(id);
+    public Category removeCategoryFromDB(int id) {
+        return dalManager.removeCategoryFromDB(id);
     }
     
     
@@ -116,8 +116,8 @@ public class BllManager implements IBLL {
 
     
     @Override
-    public void editCategory(String name) {
-        dalManager.editCategory(name);
+    public Category editCategory(String name) {
+        return dalManager.editCategory(name);
     }
 
     @Override

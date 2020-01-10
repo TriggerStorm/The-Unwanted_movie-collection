@@ -33,14 +33,14 @@ public class DalManager implements IDAL {
     
     
     @Override
-    public void addMovieToDB(String name, double rating, String filelink, String lastview) {
-        movieDBDao.addMovieToDB(name, rating, filelink, lastview);
+    public Movie addMovieToDB(String name, double rating, String filelink, String lastview) {
+        return movieDBDao.addMovieToDB(name, rating, filelink, lastview);
     }
         
     
     @Override
-    public void removeMovieFromDB(Movie movieToRemove) {
-        movieDBDao.removeMovieFromDB(movieToRemove);
+    public void removeMovieFromDB(int id) {
+        movieDBDao.removeMovieFromDB(id);
     }
     
     
@@ -62,8 +62,8 @@ public class DalManager implements IDAL {
 
     
     @Override
-    public void editMovie(String name, double rating, String filelink, String lastview) {
-        movieDBDao.editMovie(name, rating, filelink, lastview);
+    public Movie editMovie(String name, double rating, String filelink, String lastview) {
+        return  movieDBDao.editMovie(name, rating, filelink, lastview);
     }
 
     
@@ -107,14 +107,14 @@ public class DalManager implements IDAL {
     
     
     @Override
-    public void addCategoryToDB(String name) {
-        categoryDBDao.addCategoryToDB(name);
+    public Category addCategoryToDB(String name) {
+        return categoryDBDao.addCategoryToDB(name);
     }
     
     
     @Override
-    public void removeCategoryFromDB(int id) {
-        categoryDBDao.removeCategoryFromDB(id);
+    public Category removeCategoryFromDB(int id) {
+        return categoryDBDao.removeCategoryFromDB(id);
     }
     
     
@@ -130,8 +130,8 @@ public class DalManager implements IDAL {
 
     
     @Override
-    public void editCategory(String name) {
-        categoryDBDao.editCategory(name);
+    public Category editCategory(String name) {
+        return categoryDBDao.editCategory(name);
     }
 
     @Override

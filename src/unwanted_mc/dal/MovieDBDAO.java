@@ -40,7 +40,7 @@ public class MovieDBDAO {
     }
     
     
-     public void addMovieToDB(String name, double rating, String filelink, String lastview) {
+     public Movie addMovieToDB(String name, double rating, String filelink, String lastview) {
         String stat = "INSERT INTO movie VALUES (?,?,?,?)";
         try (Connection xd = dbc.getConnection()) {
             PreparedStatement stmt = xd.prepareStatement(stat, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -66,10 +66,11 @@ public class MovieDBDAO {
         } catch (SQLException ex) {
             Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
      
      
-      public void removeMovieFromDB(Movie movie) {
+      public void removeMovieFromDB(int id) {
         String stat = "DELETE FROM movie WHERE ID=?";
         try (Connection con = dbc.getConnection()) {
             PreparedStatement stmt = con.prepareStatement(stat);
@@ -107,7 +108,7 @@ public class MovieDBDAO {
       
     
     
-    public void editMovie(String name, double rating, String filelink, String lastview) {
+    public Movie editMovie(String name, double rating, String filelink, String lastview) {
         try (//Get a connection to the database.
             Connection con = dbc.getConnection()) {
             //Create a prepared statement.
@@ -124,13 +125,13 @@ public class MovieDBDAO {
             movie.setRating(rating);
             movie.setFileLink(filelink);
             movie.setLastView(lastview);
-  //          return movie;
+            return movie;
         } catch (SQLServerException ex) {
             Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
- //       return null;
+        return null;
     }
 
     
