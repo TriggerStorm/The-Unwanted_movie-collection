@@ -12,7 +12,7 @@ import unwanted_mc.be.Category;
  *
  * @author Martin Park Broderse
  */
-public class genreModel {
+public class categoryModel {
     private ObservableList<Category> allCategories;
 
     public ObservableList<Category> getallCategories() {

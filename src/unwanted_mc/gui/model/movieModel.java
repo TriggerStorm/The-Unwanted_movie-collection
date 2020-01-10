@@ -9,6 +9,6 @@ package unwanted_mc.gui.model;
  *
  * @author admin
  */
-public class mcguimodel {
+public class movieModel {
     
 }
