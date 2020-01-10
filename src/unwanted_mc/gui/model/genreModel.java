@@ -5,11 +5,20 @@
  */
 package unwanted_mc.gui.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import unwanted_mc.be.Category;
 /**
  *
  * @author Martin Park Broderse
  */
 public class genreModel {
-    
+    private ObservableList<Category> allCategories;
+
+    public ObservableList<Category> getallCategories() {
+        allCategories = FXCollections.observableArrayList();
+        allCategories.addAll(allCategories);
+        return allCategories;
+    }
     
 }

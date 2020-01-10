@@ -113,11 +113,21 @@ public class DalManager implements IDAL {
     
     
     @Override
-    public void removeCategoryFromDB(int id){
+    public void removeCategoryFromDB(int id) {
         categoryDBDao.removeCategoryFromDB(id);
     }
     
     
+        @Override
+    public List<Category> fetchAllCatagories() {
+        try {
+            return categoryDBDao.fetchAllCatagories();
+        } catch (SQLException ex) {
+            Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     @Override
     public Category getCategory(int id) {
         return categoryDBDao.getCategory(id);
