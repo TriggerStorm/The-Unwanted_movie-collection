@@ -8,10 +8,15 @@ package unwanted_mc.dal;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import unwanted_mc.be.Category;
+import unwanted_mc.be.Movie;
 
 
 
@@ -25,7 +30,7 @@ public class CategoryDBDAO {
     
     private Category category; //TEST ONLY
      
-    DBConnection connectDAO = new DBConnection();
+    DBConnection dbc = new DBConnection();
    
     
     public Category getCategory(int id) {
@@ -35,7 +40,7 @@ public class CategoryDBDAO {
     
      
     public void addCategoryToDB(String name) {
-   try ( Connection con = connectDAO.getConnection()) {
+   try ( Connection con = dbc.getConnection()) {
             String sql = "INSERT INTO Category (name) values (?)";
             PreparedStatement p = con.prepareStatement(sql);
             p.setString(1, name);
@@ -49,7 +54,7 @@ public class CategoryDBDAO {
     }
     
      public void removeCategoryFromDB(int id){
-        try ( Connection con = connectDAO.getConnection()) {
+        try ( Connection con = dbc.getConnection()) {
             String sql = "DELETE FROM Category WHERE id=?";
             PreparedStatement p = con.prepareStatement(sql);
             p.setInt(1, category.getId());
@@ -63,8 +68,30 @@ public class CategoryDBDAO {
 
      }
     
+     
+      public List<Category> fetchAllCatagories() throws SQLException {
+        List<Category> allCategories = new ArrayList<>();
+
+        try ( Connection con = dbc.getConnection()) {
+            String sql = "SELECT * FROM category";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                allCategories.add(new Category(id, name));
+            }
+        } catch (SQLServerException ex) {
+            Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return allCategories;
+    }
+      
+      
     public void editCategoryFromDB(String name){
-    try ( Connection con = connectDAO.getConnection()) {
+    try ( Connection con = dbc.getConnection()) {
             String sql = "UPDATE Category set name=?";
             PreparedStatement p = con.prepareStatement(sql);
             p.setString(1, category.getName());
