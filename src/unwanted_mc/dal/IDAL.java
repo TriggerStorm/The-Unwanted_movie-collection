@@ -32,6 +32,8 @@ public interface IDAL {
     
     void addCategoryToDB(String name);
     void removeCategoryFromDB(int id);
+    List<Category> fetchAllCatagories();
+    void editCategory(String name);
     Category getCategory(int id);
    
     

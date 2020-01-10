@@ -128,6 +128,12 @@ public class DalManager implements IDAL {
         return null;
     }
 
+    
+    @Override
+    public void editCategory(String name) {
+        categoryDBDao.editCategory(name);
+    }
+
     @Override
     public Category getCategory(int id) {
         return categoryDBDao.getCategory(id);

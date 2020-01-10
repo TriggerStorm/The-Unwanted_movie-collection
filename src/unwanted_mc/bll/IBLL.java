@@ -19,18 +19,22 @@ import unwanted_mc.be.Movie;
 public interface IBLL {
     
     
-    void addMovieToDB(String name, double rating, String filelink, String lastview);
-    void removeMovieFromDB(int id);
+   void addMovieToDB(String name, double rating, String filelink, String lastview);
+    void removeMovieFromDB(Movie movieToRemove);
     Movie getMovie(int id);
     List<Movie> fetchAllMovies();
     void editMovie(String name, double rating, String filelink, String lastview);
     List<Movie> findMoviesToRemove();
-
+    void updateLastView(int id, String dateNow);
+    boolean testForLastView(int id);
+ 
     void addMovieToCategory(int movieID, int categoryID);
     void removeMovieFromCategory(int movieID, int categoryID);
     
     void addCategoryToDB(String name);
     void removeCategoryFromDB(int id);
+    List<Category> fetchAllCatagories();
+    void editCategory(String name);
     Category getCategory(int id);
    
 

@@ -37,14 +37,16 @@ public class BllManager implements IBLL {
     }
     
  
- 
+  
     @Override
     public void addMovieToDB(String name, double rating, String filelink, String lastview) {
+        dalManager.addMovieToDB(name, rating, filelink, lastview);
     }
-    
+        
     
     @Override
-    public void removeMovieFromDB(int id) {
+    public void removeMovieFromDB(Movie movieToRemove) {
+        dalManager.removeMovieFromDB(movieToRemove);
     }
     
     
@@ -58,39 +60,66 @@ public class BllManager implements IBLL {
     public List<Movie> fetchAllMovies() {
         return dalManager.fetchAllMovies();
     }
-    
+
     
     @Override
     public void editMovie(String name, double rating, String filelink, String lastview) {
+        dalManager.editMovie(name, rating, filelink, lastview);
     }
+
     
-    
-     @Override
+    @Override
     public List<Movie> findMoviesToRemove() {
         return dalManager.findMoviesToRemove();
     }
+
     
+    
+    public void updateLastView(int id, String dateNow) {
+        dalManager.updateLastView(id, dateNow);
+    }
+
+    
+    public boolean testForLastView(int id) {
+        return dalManager.testForLastView(id);
+    }
+
     
     @Override
     public void addMovieToCategory(int movieID, int categoryID) {
+        dalManager.addMovieToCategory(movieID, categoryID);
     }
     
     
     @Override
     public void removeMovieFromCategory(int movieID, int categoryID) {
+        dalManager.removeMovieFromCategory(movieID, categoryID);
     }
     
     
     @Override
     public void addCategoryToDB(String name) {
+        dalManager.addCategoryToDB(name);
     }
     
     
     @Override
-    public void removeCategoryFromDB(int id){
+    public void removeCategoryFromDB(int id) {
+        dalManager.removeCategoryFromDB(id);
     }
     
     
+        @Override
+    public List<Category> fetchAllCatagories() {
+        return dalManager.fetchAllCatagories();
+    }
+
+    
+    @Override
+    public void editCategory(String name) {
+        dalManager.editCategory(name);
+    }
+
     @Override
     public Category getCategory(int id) {
         return dalManager.getCategory(id);

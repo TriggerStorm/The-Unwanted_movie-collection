@@ -90,7 +90,7 @@ public class CategoryDBDAO {
     }
       
       
-    public void editCategoryFromDB(String name){
+    public void editCategory(String name){
     try ( Connection con = dbc.getConnection()) {
             String sql = "UPDATE Category set name=?";
             PreparedStatement p = con.prepareStatement(sql);
