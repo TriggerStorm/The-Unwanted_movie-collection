@@ -47,8 +47,8 @@ public class movieModel {
     }
         
     public void deleteMovie(int id) {
-        Movie movie = bllManager.removeMovieFromDB(id);
-        movieList.remove(movie); 
+        bllManager.removeMovieFromDB(id);
+        movieList.remove(id); 
     }       
         
    /* 
