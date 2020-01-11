@@ -30,7 +30,8 @@ public interface IDAL {
  
     CatMovie addCatMovieToDB(int movieID, int categoryID);
     CatMovie removeCatMovieFromDB(int id);
-    
+    List<CatMovie> fetchAllCatMovies();
+
     Category addCategoryToDB(String name);
     Category removeCategoryFromDB(int id);
     List<Category> fetchAllCatagories();

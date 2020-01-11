@@ -86,6 +86,7 @@ public class BllManager implements IBLL {
     }
 
     
+    
    
     
     
@@ -99,6 +100,14 @@ public class BllManager implements IBLL {
     public CatMovie removeCatMovieFromDB(int id) {
         return dalManager.removeCatMovieFromDB(id);
     }
+    
+    
+    
+    @Override
+    public List<CatMovie> fetchAllCatMovies() {
+        return dalManager.fetchAllCatMovies();
+    }
+    
     
     
     

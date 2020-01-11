@@ -100,6 +100,7 @@ public class DalManager implements IDAL {
     
     
     
+    
     @Override
     public CatMovie addCatMovieToDB(int movieID, int categoryID) {
         return catmovieDBDao.addCatMovieToDB(movieID, categoryID);
@@ -111,9 +112,22 @@ public class DalManager implements IDAL {
         return catmovieDBDao.removeCatMovieFromDB(id);
     }
     
+           
+    @Override
+    public List<CatMovie> fetchAllCatMovies() {
+        try {
+            return catmovieDBDao.fetchAllCatMovies();
+        } catch (SQLException ex) {
+            Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     
     
     
+    
+
     
     @Override
     public Category addCategoryToDB(String name) {
