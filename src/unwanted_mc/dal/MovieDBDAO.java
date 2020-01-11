@@ -25,14 +25,13 @@ import unwanted_mc.bll.DateConverter;
 
 /*
  * @author Niclas, Martin, Michael and Alan
-this is a test
  */
 
 
 public class MovieDBDAO {
     
     DBConnection dbc = new DBConnection();
-    private Movie movie = new Movie(1,"name", 8,"path", "070120" ); //TEST ONLY
+    private Movie movie = new Movie(1,"MovieTest1", 8,"src/Movie1.MP4", "11 January 2020" ); //TEST ONLY
     private DateConverter dateconverter = new DateConverter();  // Use manager later
     
     public Movie getMovie(int id) {
@@ -180,7 +179,7 @@ public class MovieDBDAO {
         Movie movieToTest = getMovie(id);
         LocalDate dateNow = LocalDate.now();
         String lastViewed = movieToTest.getLastView();
-        dateconverter.stringToDateNow(lastViewed);
+        dateconverter.stringToLocalDate(lastViewed);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
         LocalDate lastViewedDate = LocalDate.parse(lastViewed, formatter);
         Period period = Period.between(dateNow, lastViewedDate);
