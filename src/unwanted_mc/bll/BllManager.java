@@ -39,7 +39,7 @@ public class BllManager implements IBLL {
  
   
     @Override
-    public Movie addMovieToDB(String name, double rating, String filelink, String lastview) {
+    public Movie addMovieToDB(String name, int rating, String filelink, String lastview) {
         return dalManager.addMovieToDB(name, rating, filelink, lastview);
     }
         
@@ -63,7 +63,7 @@ public class BllManager implements IBLL {
 
     
     @Override
-    public Movie editMovie(String name, double rating, String filelink, String lastview) {
+    public Movie editMovie(String name, int rating, String filelink, String lastview) {
         return dalManager.editMovie(name, rating, filelink, lastview);
     }
 

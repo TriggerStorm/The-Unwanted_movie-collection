@@ -18,14 +18,14 @@ import java.util.List;
 public class Movie {
     private int id;
     private String name;
-    private double rating;
+    private int rating;
     private String filelink;
     private String lastview;
-
+    private String stringRating;
 
     
     
-    public Movie(int id, String name, double rating, String filelink, String lastview) {
+    public Movie(int id, String name, int rating, String filelink, String lastview) {
         this.id = id;
         this.name = name;
         this.rating = rating;
@@ -48,7 +48,7 @@ public class Movie {
 
     
     
-   public double getRating() {
+   public int getRating() {
         return rating;
     }
    
@@ -78,7 +78,7 @@ public class Movie {
 
    
    
-    public void setRating(double rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 
@@ -101,5 +101,11 @@ public class Movie {
         return name + "," + rating + "," + filelink + ',' + lastview;
     }
   
+    public void setStringRating(String stringRating){
+        this.stringRating = stringRating;
+    }
     
+    public String getStringRating(){
+    return this.stringRating;
+    }
 }

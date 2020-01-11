@@ -35,13 +35,13 @@ public class movieModel {
     }
     
     
-    public void createMovie(String name, double rating, String filelink, String lastview) {
+    public void createMovie(String name, int rating, String filelink, String lastview) {
         Movie movie = bllManager.addMovieToDB(name, rating, filelink, lastview);
         movieList.add(movie);
     }
         
         
-    public void editMovie(String name, double rating, String filelink, String lastview) {
+    public void editMovie(String name, int rating, String filelink, String lastview) {
         Movie movie = bllManager.editMovie(name, rating, filelink, lastview);
         movieList.add(movie); 
     }

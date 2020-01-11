@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import unwanted_mc.be.Movie;
 
 /**
  * FXML Controller class
@@ -23,9 +25,7 @@ import javafx.scene.image.ImageView;
 public class AddSceneController implements Initializable {
 
     @FXML
-    private TextField txtField_title;
-    @FXML
-    private ChoiceBox<?> choiceBox_genre;
+    private ChoiceBox<String> choiceBox_genre;
     @FXML
     private TextField txtField_filePath;
     @FXML
@@ -49,6 +49,12 @@ public class AddSceneController implements Initializable {
     @FXML
     private ImageView bn_edit;
 
+    private boolean edit;
+    private Movie movieToEdit;
+    private PrimarySceneController pSCon;
+    
+    @FXML
+    private TextField txtField_name;
     /**
      * Initializes the controller class.
      */
@@ -56,14 +62,30 @@ public class AddSceneController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    
+    /**
+     * Sets the controller for the PrimaryScene.
+     *
+     * @param pSCon PrimaryController.
+     */
+    public void setContr(PrimarySceneController pCon) {
+        this.pSCon = pSCon;
+    }
 
     @FXML
     private void handle_openFileChooser(ActionEvent event) {
     }
 
+    /**
+     * Closes the stage.
+     */
     @FXML
     private void handle_cancelScene(ActionEvent event) {
+        Stage stage = (Stage) btn_cancel.getScene().getWindow();
+        stage.close();
     }
+
 
     @FXML
     private void handle_saveSong(ActionEvent event) {
@@ -81,4 +103,14 @@ public class AddSceneController implements Initializable {
     private void handle_createGenre(ActionEvent event) {
     }
     
+    public void editMode(Movie selectedMovie) {
+        edit = true;
+        movieToEdit = selectedMovie;
+
+        //sets the existing info of the selected movie.
+        txtField_name.setText(movieToEdit.getName());
+        txtField_rating.setText(movieToEdit.getStringRating()); //need to do get rating to string. NOT DONE!!!
+        txtField_filePath.setText(movieToEdit.getFileLink());
+        //choiceBox_genre.setValue(movieToEdit.getCat()); need to get fixt NOT DONE!!!
+    }
 }

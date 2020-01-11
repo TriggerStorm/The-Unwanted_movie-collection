@@ -11,12 +11,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="347.0" prefWidth="550.0" styleClass="greyBG" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unwanted_mc.gui.controller.AddSceneController">
    <children>
-      <Label layoutX="98.0" layoutY="83.0" text="Title:" textFill="WHITE">
+      <Label layoutX="98.0" layoutY="83.0" text="Name:" textFill="WHITE">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtField_title" layoutX="158.0" layoutY="83.0" prefHeight="25.0" prefWidth="260.0" />
+      <TextField fx:id="txtField_name" layoutX="158.0" layoutY="83.0" prefHeight="25.0" prefWidth="260.0" />
       <Label layoutX="92.0" layoutY="122.0" prefHeight="20.0" prefWidth="50.0" text="Rating:" textFill="WHITE">
          <font>
             <Font name="Arial" size="15.0" />

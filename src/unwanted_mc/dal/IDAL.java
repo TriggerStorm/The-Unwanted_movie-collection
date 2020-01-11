@@ -18,11 +18,11 @@ import unwanted_mc.be.Movie;
 public interface IDAL {
     
      
-    Movie addMovieToDB(String name, double rating, String filelink, String lastview);
+    Movie addMovieToDB(String name, int rating, String filelink, String lastview);
     void removeMovieFromDB(int id);
     Movie getMovie(int id);
     List<Movie> fetchAllMovies();
-    Movie editMovie(String name, double rating, String filelink, String lastview);
+    Movie editMovie(String name, int rating, String filelink, String lastview);
     List<Movie> findMoviesToRemove();
     void updateLastView(int id, String dateNow);
     boolean testForLastView(int id);

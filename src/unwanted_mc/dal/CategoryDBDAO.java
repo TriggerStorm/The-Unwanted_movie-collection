@@ -95,7 +95,7 @@ public class CategoryDBDAO {
     try ( Connection con = dbc.getConnection()) {
             String sql = "UPDATE Category set name=?";
             PreparedStatement p = con.prepareStatement(sql);
-            p.setString(1, category.getName());
+            p.setString(1, category.getCat());
             p.executeUpdate();
 
         } catch (SQLServerException ex) {
