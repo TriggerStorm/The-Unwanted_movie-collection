@@ -121,12 +121,12 @@ public class PrimarySceneController implements Initializable {
         AddSceneController controller = (AddSceneController) fxmlLoader.getController();
         controller.setContr(this);
         controller.editMode(selectedMovie); //set mode to edit movie.
-        Stage songStage = new Stage();
-        Scene songScene = new Scene(root);
+        Stage addStage = new Stage();
+        Scene addScene = new Scene(root);
 
        
-        songStage.setScene(songScene);
-        songStage.show();
+        addStage.setScene(addScene);
+        addStage.show();
     }
     
     private void handle_deleteMovie(ActionEvent event) throws IOException { // deletion of songs
@@ -138,11 +138,11 @@ public class PrimarySceneController implements Initializable {
         controller.setContr(this);
         controller.setDeleteMovieLabel(selectedMovie);
 
-        Stage songStage = new Stage();
-        Scene songScene = new Scene(root);
+        Stage addStage = new Stage();
+        Scene addScene = new Scene(root);
 
-        //songStage.initStyle(StageStyle.UNDECORATED);
-        songStage.setScene(songScene);
-        songStage.show();
+       
+        addStage.setScene(addScene);
+        addStage.show();
     }
 }
