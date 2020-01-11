@@ -30,6 +30,7 @@ public class VideoPlayerController {
     private MediaPlayer mediaPlayer;    
     private boolean playing = false;
     
+    
     public void initialize() {  //URL url, ResourceBundle rb) {
         URL url = VideoPlayerController.class.getResource("test.mp4");        
         Media media = new Media(url.toExternalForm());
@@ -45,7 +46,6 @@ public class VideoPlayerController {
                 }
             }
         );
-    
         mediaPlayer.setOnError(
             new Runnable() {
                 public void run() {
