@@ -132,7 +132,7 @@ public class PrimarySceneController implements Initializable {
     private void handle_deleteMovie(ActionEvent event) throws IOException { // deletion of songs
         Movie selectedMovie = tbv_allMovie.getSelectionModel().getSelectedItem();
         Parent root;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/DeleteSongScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/unwanted_mc/gui/view/DeleteScene.fxml"));
         root = (Parent) fxmlLoader.load();
         DeleteSceneController controller = (DeleteSceneController) fxmlLoader.getController();
         controller.setContr(this);
