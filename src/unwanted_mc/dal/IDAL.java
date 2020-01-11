@@ -6,6 +6,7 @@
 package unwanted_mc.dal;
 
 import java.util.List;
+import unwanted_mc.be.CatMovie;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
 
@@ -27,8 +28,8 @@ public interface IDAL {
     void updateLastView(int id, String dateNow);
     boolean testForLastView(int id);
  
-    void addMovieToCategory(int movieID, int categoryID);
-    void removeMovieFromCategory(int movieID, int categoryID);
+    CatMovie addCatMovieToDB(int movieID, int categoryID);
+    CatMovie removeCatMovieFromDB(int id);
     
     Category addCategoryToDB(String name);
     Category removeCategoryFromDB(int id);

@@ -31,8 +31,10 @@ import unwanted_mc.bll.DateConverter;
 public class MovieDBDAO {
     
     DBConnection dbc = new DBConnection();
-    private Movie movie = new Movie(1,"MovieTest1", 8,"src/Movie1.MP4", "11 January 2020" ); //TEST ONLY
+    private Movie movie; // = new Movie(1,"MovieTest1", 8,"src/Movie1.MP4", "11 January 2020" ); //TEST ONLY
     private DateConverter dateconverter = new DateConverter();  // Use manager later
+    
+    
     
     public Movie getMovie(int id) {
         return movie;
@@ -40,9 +42,9 @@ public class MovieDBDAO {
     
     
      public Movie addMovieToDB(String name, double rating, String filelink, String lastview) {
-        String stat = "INSERT INTO movie VALUES (?,?,?,?)";
-        try (Connection xd = dbc.getConnection()) {
-            PreparedStatement stmt = xd.prepareStatement(stat, PreparedStatement.RETURN_GENERATED_KEYS);
+        String sql = "INSERT INTO movie VALUES (?,?,?,?)";
+        try (Connection con = dbc.getConnection()) {
+            PreparedStatement stmt = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setString(1, movie.getName());
             stmt.setDouble(2, movie.getRating());
             stmt.setString(3, movie.getFileLink());
@@ -190,13 +192,5 @@ public class MovieDBDAO {
         return overTwoYears;
     }
 
-    void addMovieToCategory(int movieID, int categoryID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void removeMovieFromCategory(int movieID, int categoryID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
 }

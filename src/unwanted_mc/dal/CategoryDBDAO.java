@@ -28,7 +28,7 @@ import unwanted_mc.be.Movie;
 
 public class CategoryDBDAO {
     
-    private Category category; //TEST ONLY
+    private Category category;
      
     DBConnection dbc = new DBConnection();
    

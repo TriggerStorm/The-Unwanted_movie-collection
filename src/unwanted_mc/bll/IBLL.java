@@ -7,6 +7,7 @@ package unwanted_mc.bll;
 
 import java.io.IOException;
 import java.util.List;
+import unwanted_mc.be.CatMovie;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
 
@@ -19,7 +20,7 @@ import unwanted_mc.be.Movie;
 public interface IBLL {
     
     
-   Movie addMovieToDB(String name, double rating, String filelink, String lastview);
+    Movie addMovieToDB(String name, double rating, String filelink, String lastview);
     void removeMovieFromDB(int id);
     Movie getMovie(int id);
     List<Movie> fetchAllMovies();
@@ -28,8 +29,8 @@ public interface IBLL {
     void updateLastView(int id, String dateNow);
     boolean testForLastView(int id);
  
-    void addMovieToCategory(int movieID, int categoryID);
-    void removeMovieFromCategory(int movieID, int categoryID);
+    CatMovie addCatMovieToDB(int movieID, int categoryID);
+    CatMovie removeCatMovieFromDB(int id);
     
     Category addCategoryToDB(String name);
     Category removeCategoryFromDB(int id);

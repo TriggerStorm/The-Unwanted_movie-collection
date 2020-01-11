@@ -17,9 +17,9 @@ public class CatMovie {
     
     
     public CatMovie(int id, int categoryId, int movieId) {
-    this.id = id;
-    this.categoryId = categoryId;
-    this.movieId = movieId;
+        this.id = id;
+        this.categoryId = categoryId;
+        this.movieId = movieId;
     }
 
     
@@ -48,7 +48,7 @@ public class CatMovie {
     }
     
     
-     public void setMovieId(int categoryID) {
+     public void setMovieId(int movieId) {
         this.movieId = movieId;
     }
      
