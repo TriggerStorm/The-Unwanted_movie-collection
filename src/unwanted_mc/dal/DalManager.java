@@ -49,8 +49,13 @@ public class DalManager implements IDAL {
     
     
     @Override
-    public Movie getMovie(int id) {
-        return movieDBDao.getMovie(id);
+    public Movie getMovie(List<Movie> allMovies, int id) {
+        try {
+            return movieDBDao.getMovie(allMovies, id);
+        } catch (SQLException ex) {
+            Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     

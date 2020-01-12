@@ -36,8 +36,15 @@ public class MovieDBDAO {
     
     
     
-    public Movie getMovie(int id) {
-        return movie;
+    public Movie getMovie(List<Movie> allMovies, int id) throws SQLException {
+         for (int i = 0; i < allMovies.size(); i++) {
+            Movie movie = allMovies.get(i);
+            int movieId = movie.getId();
+            if (movieId == id)  {
+            return movie;
+            }
+        }
+        return null;
     }
     
     
@@ -75,7 +82,7 @@ public class MovieDBDAO {
         String stat = "DELETE FROM movie WHERE ID=?";
         try (Connection con = dbc.getConnection()) {
             PreparedStatement stmt = con.prepareStatement(stat);
-            stmt.setInt(1, movie.getId());
+            stmt.setInt(1, movie.getId());                      // IS THIS 0 ??
             stmt.execute();
         } catch (SQLException ex) {
             System.out.println("Exception " + ex);
@@ -178,7 +185,8 @@ public class MovieDBDAO {
     
     public boolean testForLastView(int id) throws SQLException {
         boolean overTwoYears = false;
-        Movie movieToTest = getMovie(id);
+        List<Movie> allMovies = fetchAllMovies();
+        Movie movieToTest = getMovie(allMovies, id);
         LocalDate dateNow = LocalDate.now();
         String lastViewed = movieToTest.getLastView();
         dateconverter.stringToLocalDate(lastViewed);

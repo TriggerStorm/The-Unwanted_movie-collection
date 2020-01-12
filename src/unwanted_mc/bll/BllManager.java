@@ -49,8 +49,8 @@ public class BllManager implements IBLL {
     
     
     @Override
-    public Movie getMovie(int id) {
-        return dalManager.getMovie(id);
+    public Movie getMovie(List<Movie> allMovies, int id) {
+        return dalManager.getMovie(allMovies, id);
     }
     
     

@@ -21,7 +21,7 @@ public interface IDAL {
      
     Movie addMovieToDB(String name, double rating, String filelink, String lastview);
     void removeMovieFromDB(int id);
-    Movie getMovie(int id);
+    Movie getMovie(List<Movie> allMovies, int id);
     List<Movie> fetchAllMovies();
     Movie editMovie(String name, double rating, String filelink, String lastview);
     List<Movie> findMoviesToRemove();
