@@ -81,7 +81,7 @@ public class PrimarySceneController implements Initializable {
         col_lastViewed.setCellValueFactory(new PropertyValueFactory<>("lastViewed"));
         
         tbv_allMovie.setItems(movieModel.getAllMovies());
-        //tbv_allMovie.setItems(categoryModel.getAllCategories());
+        //tbv_allMovie.setItems(categoryModel.getAllCategories()); NOT DONE !!! NEED WORK
 
     }
     
@@ -129,6 +129,7 @@ public class PrimarySceneController implements Initializable {
         addStage.show();
     }
     
+    @FXML
     private void handle_deleteMovie(ActionEvent event) throws IOException { // deletion of songs
         Movie selectedMovie = tbv_allMovie.getSelectionModel().getSelectedItem();
         Parent root;
@@ -144,5 +145,11 @@ public class PrimarySceneController implements Initializable {
        
         addStage.setScene(addScene);
         addStage.show();
+        refreshAllMovie();
+    }
+    
+    public void refreshAllMovie() {
+        tbv_allMovie.getItems().clear();
+        tbv_allMovie.setItems(movieModel.getAllMovies());
     }
 }

@@ -104,8 +104,8 @@ public class BllManager implements IBLL {
     
     
     @Override
-    public Category removeCategoryFromDB(int id) {
-        return dalManager.removeCategoryFromDB(id);
+    public Category removeCategoryFromDB(String name) {
+        return dalManager.removeCategoryFromDB(name);
     }
     
     

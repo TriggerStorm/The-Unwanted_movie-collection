@@ -19,20 +19,22 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="372.0" layoutY="175.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="14.0" textFill="WHITE" />
-      <Button layoutX="432.0" layoutY="174.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" textFill="WHITE">
+      <Button fx:id="bn_delete" layoutX="372.0" layoutY="175.0" mnemonicParsing="false" onMouseClicked="#handle_deleteMovie" prefHeight="26.0" prefWidth="14.0" textFill="WHITE">
          <graphic>
-            <ImageView fx:id="bn_cancel" fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-delete-bin-50.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="bn_cancel" layoutX="432.0" layoutY="174.0" mnemonicParsing="false" onMouseClicked="#handle_closeScene" prefHeight="26.0" prefWidth="34.0" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons8-cancel-30.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fx:id="bn_delete" fitHeight="27.0" fitWidth="28.0" layoutX="398.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/icons8-delete-bin-50.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

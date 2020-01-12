@@ -31,7 +31,7 @@ public interface IDAL {
     void removeMovieFromCategory(int movieID, int categoryID);
     
     Category addCategoryToDB(String name);
-    Category removeCategoryFromDB(int id);
+    Category removeCategoryFromDB(String name);
     List<Category> fetchAllCatagories();
     Category editCategory(String name);
     Category getCategory(int id);

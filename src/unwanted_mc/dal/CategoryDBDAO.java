@@ -54,7 +54,7 @@ public class CategoryDBDAO {
         return null;
     }
     
-     public Category removeCategoryFromDB(int id){
+     public Category removeCategoryFromDB(String name){
         try ( Connection con = dbc.getConnection()) {
             String sql = "DELETE FROM Category WHERE id=?";
             PreparedStatement p = con.prepareStatement(sql);

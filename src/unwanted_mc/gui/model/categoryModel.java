@@ -50,14 +50,14 @@ public class categoryModel {
         categoryList.add(category); 
     }
         
-    public void deleteCategory(int id) {
-        Category category = bllManager.removeCategoryFromDB(id);
+    public void deleteCategory(String name) {
+        Category category = bllManager.removeCategoryFromDB(name);
         categoryList.remove(category); 
     }       
         
     
-    public void filterCategory(int id) {  // NOT FINISHED
-        Category category = bllManager.removeCategoryFromDB(id);
+    public void filterCategory(String name) {  // NOT FINISHED
+        Category category = bllManager.removeCategoryFromDB(name);
         categoryList.remove(category); 
     }
     

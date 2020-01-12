@@ -10,8 +10,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import unwanted_mc.be.Movie;
 import unwanted_mc.gui.model.movieModel;
@@ -24,9 +26,9 @@ import unwanted_mc.gui.model.movieModel;
 public class DeleteSceneController implements Initializable {
 
     @FXML
-    private ImageView bn_cancel;
+    private Button bn_cancel;
     @FXML
-    private ImageView bn_delete;
+    private Button bn_delete;
     @FXML
     private Label lbl_title;
 
@@ -45,22 +47,28 @@ public class DeleteSceneController implements Initializable {
         this.pSCon = pSCon;
     }
     
+    private void updateAllMovie() {
+    pSCon.refreshAllMovie();
+    }
     public void setDeleteMovieLabel(Movie movie) {
         selectedMovie = movie;
         lbl_title.setText(selectedMovie.getName());
     }
-    
-    private void handle_closeScene(ActionEvent event) {
+   
+    @FXML
+    private void handle_closeScene(MouseEvent event) {
         Stage stage = (Stage) bn_cancel.getScene().getWindow();
         stage.close();
     }
-    
-    private void handle_deleteMovie(ActionEvent event) {
-        //Deletes the selected song from the database.
+
+    @FXML
+    private void handle_deleteMovie(MouseEvent event) {
+         //Deletes the selected song from the database.
        // movieModel.deleteMovie(selectedMovie); // need to set move to String in model NOT DONE!
-       // updateAllMovie();//Need to make an update all
+        updateAllMovie();// updates the tbv with movies.
         Stage stage;
         stage = (Stage) bn_delete.getScene().getWindow();
         stage.close();
     }
+
 }
