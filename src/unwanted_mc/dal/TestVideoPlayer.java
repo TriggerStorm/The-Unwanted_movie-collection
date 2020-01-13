@@ -3,30 +3,58 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package unwanted_mc.gui.controller;
+package unwanted_mc.dal;
 
+import java.io.File;
 import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import unwanted_mc.be.Movie;
-//import org.controlsfx.dialog.ExceptionDialog;
-//import javafx.scene.control.Dialog<ButtonType>;
 
 /**
- * @author Niclas, Martin, Michael and Alan
+ *
+ * @author admin
  */
+public class TestVideoPlayer {
+    
 
 
-public class VideoPlayerController {
-    @FXML private MediaView mediaView;    
+public void start(Stage primaryStage) {
+
+//The location of your file
+/*Media media = new Media(new Movie(1, "Pony", 9, "src/Movie1.mp4", "12-December-2012"));
+
+MediaPlayer mediaPlayer = new MediaPlayer(media);
+mediaPlayer.setAutoPlay(true);
+MediaView mediaView = new MediaView(mediaPlayer);
+
+BorderPane borderPane = new BorderPane();
+borderPane.setCenter(mediaView);
+borderPane.setBottom(addToolBar());
+
+borderPane.setStyle("-fx-background-color: Black");
+
+Scene scene = new Scene(borderPane, 600, 600);
+scene.setFill(Color.BLACK);
+
+primaryStage.setTitle("Media Player!");
+primaryStage.setScene(scene);
+primaryStage.show();
+}
+
+
+ @FXML private MediaView mediaView;    
     @FXML private Button playPauseButton;
     private MediaPlayer mediaPlayer;    
     private boolean playing = false;
@@ -53,7 +81,7 @@ public class VideoPlayerController {
 /*                    ExceptionDialogs dialog =
                         new ExceptionDialog(mediaPlayer.getError());
                     dialog.showAndWait();
- */               }
+                }
             }
         );
         
@@ -84,5 +112,7 @@ public class VideoPlayerController {
             mediaPlayer.pause();
 
         }
+*/
     }
+
 }
