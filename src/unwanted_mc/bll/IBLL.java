@@ -6,6 +6,7 @@
 package unwanted_mc.bll;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import unwanted_mc.be.CatMovie;
 import unwanted_mc.be.Category;
@@ -38,6 +39,18 @@ public interface IBLL {
     List<Category> fetchAllCatagories();
     Category editCategory(String name);
     Category getCategory(int id);
-   
+ 
+// From DateConverter    
+    String dateNowToString();
+    LocalDate stringToLocalDate(String dateString);
+
+ // From RatingConverter   
+    String RatingIntToString(int ratingInt);
+    int RatingStringToInt(String ratingString);
+    
+// From SearchFilter
+    List<Movie> searchByName(List<Movie> allMovies, String query);
+    List<Movie> searchByRatingAbove(List<Movie> allMovies, String query);
+    List<Movie> searchByRatingBelow(List<Movie> allMovies, String query);
 
 }

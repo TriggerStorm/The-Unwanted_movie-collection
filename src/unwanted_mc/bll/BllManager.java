@@ -5,6 +5,7 @@
  */
 package unwanted_mc.bll;
 
+import java.time.LocalDate;
 import java.util.List;
 import unwanted_mc.be.CatMovie;
 import unwanted_mc.be.Category;
@@ -21,20 +22,24 @@ import unwanted_mc.dal.IDAL;
 public class BllManager implements IBLL {
     
     private IDAL dalManager;
-    private SearchFilter searcher;
     private DateConverter timeconverter;
-    
-    
+    private RatingConverter ratingconverter;
+    private SearchFilter searcher;
+
     
     public BllManager() {
   
-
         dalManager = new DalManager();
-        searcher = new SearchFilter();
         timeconverter = new DateConverter();
+        ratingconverter = new RatingConverter();
+        searcher = new SearchFilter();
+
     }
     
  
+    
+    
+    
   
     @Override
     public Movie addMovieToDB(String name, int rating, String filelink, String lastview) {
@@ -71,7 +76,6 @@ public class BllManager implements IBLL {
         return dalManager.findMoviesToRemove();
     }
 
-    
     
     public void updateLastView(int id, String dateNow) {
         dalManager.updateLastView(id, dateNow);
@@ -138,6 +142,60 @@ public class BllManager implements IBLL {
         return dalManager.getCategory(id);
     }
     
+    
+    
+    
+    
+// From DateConverter        
+    @Override
+    public String dateNowToString() {
+        return dateNowToString();
+    }
+    
+    
+    @Override
+    public LocalDate stringToLocalDate(String dateString) {
+        return stringToLocalDate(dateString);
+    }
+    
+    
+     
+    
+    
+// From RatingConverter   
+      @Override
+    public String RatingIntToString(int ratingInt) {
+        return RatingIntToString(ratingInt);
+    }
+
+    
+    @Override
+    public int RatingStringToInt(String ratingString) {
+        return RatingStringToInt(ratingString);
+    }
+
+    
+    
+    
+   
+// From SearchFilter
+    @Override
+    public List<Movie> searchByName(List<Movie> allMovies, String query) {
+        return searchByName(allMovies, query);
+    }
+
+    
+    @Override
+    public List<Movie> searchByRatingAbove(List<Movie> allMovies, String query) {
+        return searchByRatingAbove(allMovies, query);
+    }
+
+        
+    @Override
+    public List<Movie> searchByRatingBelow(List<Movie> allMovies, String query) {
+        return searchByRatingBelow(allMovies, query);
+    }
+
     
 }
     
