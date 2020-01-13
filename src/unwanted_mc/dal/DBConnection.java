@@ -39,6 +39,7 @@ public class DBConnection {
         } catch (IOException e) {
             System.out.println("Cannot find the property file");
         }
+       
     }
 
     /*
