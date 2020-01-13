@@ -24,4 +24,16 @@ public class RatingConverter {
         return ratingInt;
     }
     
+    
+    
+    public double percentToDecimal(int percentRating) {
+        double decimalRating = percentRating / 10;
+        return decimalRating;
+    }
+    
+    
+     public int decimalToPercent(double decimalRating) {
+        int percentRating = (int) (decimalRating * 10);
+        return percentRating;
+    }
 }

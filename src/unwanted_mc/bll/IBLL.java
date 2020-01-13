@@ -45,9 +45,11 @@ public interface IBLL {
     LocalDate stringToLocalDate(String dateString);
 
  // From RatingConverter   
-    String RatingIntToString(int ratingInt);
-    int RatingStringToInt(String ratingString);
-    
+    String ratingIntToString(int ratingInt);
+    int ratingStringToInt(String ratingString);
+    double percentToDecimal(int percentRating);
+    int decimalToPercent(double decimalRating);
+
 // From SearchFilter
     List<Movie> searchByName(List<Movie> allMovies, String query);
     List<Movie> searchByRatingAbove(List<Movie> allMovies, String query);

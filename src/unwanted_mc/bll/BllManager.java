@@ -164,20 +164,30 @@ public class BllManager implements IBLL {
     
 // From RatingConverter   
       @Override
-    public String RatingIntToString(int ratingInt) {
-        return RatingIntToString(ratingInt);
+    public String ratingIntToString(int ratingInt) {
+        return ratingIntToString(ratingInt);
     }
 
     
     @Override
-    public int RatingStringToInt(String ratingString) {
-        return RatingStringToInt(ratingString);
+    public int ratingStringToInt(String ratingString) {
+        return ratingStringToInt(ratingString);
     }
 
     
-    
-    
+    public double percentToDecimal(int percentRating) {
+        return percentToDecimal(percentRating);
+    }
    
+    
+    public int decimalToPercent(double decimalRating) {
+        return decimalToPercent(decimalRating);
+    }
+    
+    
+    
+    
+    
 // From SearchFilter
     @Override
     public List<Movie> searchByName(List<Movie> allMovies, String query) {

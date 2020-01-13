@@ -128,13 +128,13 @@ public class AddSceneController implements Initializable {
     private void handle_saveMovie(ActionEvent event) throws InterruptedException, IOException {
         if (!edit) {
            movieModel.createMovie(txtField_name.getText().trim(),
-           movieModel.RatingStringToInt(txtField_rating.getText().trim()),
+           movieModel.ratingStringToInt(txtField_rating.getText().trim()),
            choiceBox_genre.getSelectionModel().getSelectedItem(),
            txtField_filePath.getText());
         } else {
            movieModel.editMovie(
                     txtField_name.getText().trim(),
-                    movieModel.RatingStringToInt(txtField_rating.getText().trim()),
+                    movieModel.ratingStringToInt(txtField_rating.getText().trim()),
                     choiceBox_genre.getSelectionModel().getSelectedItem(),
                     txtField_filePath.getText());
         }

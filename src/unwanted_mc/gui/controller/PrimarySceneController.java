@@ -5,7 +5,9 @@
  */
 package unwanted_mc.gui.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -21,6 +23,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
@@ -154,6 +162,81 @@ public class PrimarySceneController implements Initializable {
     }
 
     @FXML
-    private void handle_playVideo(ActionEvent event) {
+        private void handle_openFileChooser(ActionEvent event) throws MalformedURLException {
+//  COMPLIES.  UNTESTED!!!
+            /*     
+        Stage videoStage = new Stage();
+    
+            
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("mp4 Files", "*.mp4"),
+                new FileChooser.ExtensionFilter("mpeg4 Files", "*.mpeg4")
+        );
+
+        File movieFile = fileChooser.showOpenDialog(null);
+        if ( true ) {  //movieFile != null
+            String moviePATH = "src/Movie1.mp4";  //movieFile.getAbsolutePath();
+ //           txtField_filePath.setText(moviePATH);
+            Media media = new Media(new File(moviePATH).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setAutoPlay(true);
+            MediaView mediaView = new MediaView(mediaPlayer);
+
+            BorderPane borderPane = new BorderPane();
+            borderPane.setCenter(mediaView);
+//            borderPane.setBottom(addToolBar());
+
+            borderPane.setStyle("-fx-background-color: Black");
+
+            Scene scene = new Scene(borderPane, 600, 600);
+            scene.setFill(Color.BLACK);
+
+            videoStage.setTitle("Media Player!");
+            videoStage.setScene(scene);
+            videoStage.show();
+        }
+        
+        
+        
+        
+ //     UNFINISHED.  DOES'T WORK!!! SCRAP CODE
+        
+   /*     
+            mediaPlayer.setOnReady(new Runnable() {
+                
+                
+                //
+            
+            lv_SongsOnPlaylist.getSelectionModel().clearAndSelect(currentSongPlaying);
+            lbl_Library.setText(lv_SongsOnPlaylist.getItems().get(currentSongPlaying).getTitle() + " is now playing");
+            mediaPlayer.play();
+            mediaPlayer.setVolume(slider.getValue());
+            isPaused = false;
+            isScheduelSong = false;
+
+            mediaPlayer.setOnEndOfMedia(() -> {
+
+                if (lv_SongsOnPlaylist.getSelectionModel().getSelectedIndex() != -1) {
+                    if (lv_SongsOnPlaylist.getItems().size() == currentSongPlaying + 1 || currentSongPlaying == -1) {
+                        currentSongPlaying = 0;
+                    } else {
+                        currentSongPlaying++;
+                    }
+                    try {
+                        play();
+                    } catch (IOException ex) {
+                        java.util.logging.Logger.getLogger(PrimaryController.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                    }
+                } else {
+                    handle_Stop();
+                }
+            });
+        }
+    }
+1
+    
+    */
+    
     }
 }
