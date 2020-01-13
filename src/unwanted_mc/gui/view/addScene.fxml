@@ -81,7 +81,7 @@
          </graphic>
       </Button>
       <TextField fx:id="txt_createGenre" layoutX="159.0" layoutY="197.0" prefHeight="26.0" prefWidth="126.0" visible="false" />
-      <Button fx:id="btn_createGenre" layoutX="159.0" layoutY="201.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handle_createGenre" prefHeight="26.0" prefWidth="158.0" textFill="WHITE" visible="false">
+      <Button fx:id="btn_createGenre" layoutX="295.0" layoutY="201.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handle_createGenre" prefHeight="26.0" prefWidth="22.0" textFill="WHITE" visible="false">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
