@@ -10,10 +10,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import unwanted_mc.be.Category;
 import unwanted_mc.bll.BllManager;
+
+
 /**
- *
- * @author Martin Park Broderse
+ * @author Niclas, Martin, Michael and Alan
  */
+
+
 public class categoryModel {
     
     private BllManager bllManager;

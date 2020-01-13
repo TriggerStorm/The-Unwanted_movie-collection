@@ -20,12 +20,12 @@ public class DateConverter {
     public String dateNowToString() {
         LocalDate now = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
-        String dateNow = now.format(formatter);
-        return dateNow;
+        String dateNowString = now.format(formatter);
+        return dateNowString;
     } 
    
     
-    public LocalDate stringToDateNow(String dateString) {
+    public LocalDate stringToLocalDate(String dateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
         LocalDate dateNow = LocalDate.parse(dateString, formatter);
         return dateNow;

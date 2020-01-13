@@ -11,10 +11,12 @@ import javafx.collections.ObservableList;
 import unwanted_mc.be.Movie;
 import unwanted_mc.bll.BllManager;
 
+
 /**
- *
- * @author admin
+ * @author Niclas, Martin, Michael and Alan
  */
+
+
 public class movieModel {
     
     private BllManager bllManager;

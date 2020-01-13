@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import unwanted_mc.be.CatMovie;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
 import unwanted_mc.bll.BllManager;
@@ -24,12 +25,15 @@ public class DalManager implements IDAL {
     
     private MovieDBDAO movieDBDao; 
     private CategoryDBDAO categoryDBDao;
+    private CatMovieDBDAO catmovieDBDao;
 
     
     public DalManager() {
          movieDBDao = new MovieDBDAO();
          categoryDBDao = new CategoryDBDAO();
+         catmovieDBDao = new CatMovieDBDAO();
     }
+    
     
     
     @Override
@@ -45,8 +49,13 @@ public class DalManager implements IDAL {
     
     
     @Override
-    public Movie getMovie(int id) {
-        return movieDBDao.getMovie(id);
+    public Movie getMovie(List<Movie> allMovies, int id) {
+        try {
+            return movieDBDao.getMovie(allMovies, id);
+        } catch (SQLException ex) {
+            Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     
@@ -78,7 +87,6 @@ public class DalManager implements IDAL {
     }
 
     
-    
     public void updateLastView(int id, String dateNow) {
         movieDBDao.updateLastView(id, dateNow);
     }
@@ -94,17 +102,37 @@ public class DalManager implements IDAL {
     }
 
     
+    
+    
+    
+    
     @Override
-    public void addMovieToCategory(int movieID, int categoryID) {
-        movieDBDao.addMovieToCategory(movieID, categoryID);
+    public CatMovie addCatMovieToDB(int movieID, int categoryID) {
+        return catmovieDBDao.addCatMovieToDB(movieID, categoryID);
     }
     
     
     @Override
-    public void removeMovieFromCategory(int movieID, int categoryID) {
-        movieDBDao.removeMovieFromCategory(movieID, categoryID);
+    public CatMovie removeCatMovieFromDB(int id) {
+        return catmovieDBDao.removeCatMovieFromDB(id);
     }
     
+           
+    @Override
+    public List<CatMovie> fetchAllCatMovies() {
+        try {
+            return catmovieDBDao.fetchAllCatMovies();
+        } catch (SQLException ex) {
+            Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    
+    
+    
+    
+
     
     @Override
     public Category addCategoryToDB(String name) {
@@ -134,6 +162,7 @@ public class DalManager implements IDAL {
         return categoryDBDao.editCategory(name);
     }
 
+    
     @Override
     public Category getCategory(int id) {
         return categoryDBDao.getCategory(id);

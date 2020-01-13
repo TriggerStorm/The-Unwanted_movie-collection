@@ -162,7 +162,7 @@ public class AddSceneController implements Initializable {
     editCat = true;
     CategoryToEdit = selectedCat;
     
-    choiceBox_genre.setValue(CategoryToEdit.getCat());
+    choiceBox_genre.setValue(CategoryToEdit.getName());
     }
     @FXML
     private void btn_editGenre(ActionEvent event) {

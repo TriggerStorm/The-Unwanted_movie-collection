@@ -17,7 +17,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import unwanted_mc.gui.controller.VideoPlayerController;
 
+import unwanted_mc.gui.controller.VideoPlayerController;
 
 /*
  * @author Niclas, Martin, Michael and Alan
@@ -43,6 +45,9 @@ public class TheUnWanted_MovieCollection extends Application {
         LocalDate now = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
         String dateNow = now.format(formatter);
+        
+  //      private VideoPlayerController vpc = new VideoPlayerController();
+  //      unwanted_mc.gui.controller.VideoPlayerController.initialize();
         System.out.println("localdate - " + LocalDate.now());
         System.out.println("string version - " + dateNow);
 

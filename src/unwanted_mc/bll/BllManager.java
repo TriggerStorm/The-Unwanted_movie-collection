@@ -5,10 +5,8 @@
  */
 package unwanted_mc.bll;
 
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import unwanted_mc.be.CatMovie;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
 import unwanted_mc.dal.DalManager;
@@ -51,8 +49,8 @@ public class BllManager implements IBLL {
     
     
     @Override
-    public Movie getMovie(int id) {
-        return dalManager.getMovie(id);
+    public Movie getMovie(List<Movie> allMovies, int id) {
+        return dalManager.getMovie(allMovies, id);
     }
     
     
@@ -85,16 +83,31 @@ public class BllManager implements IBLL {
     }
 
     
+    
+   
+    
+    
     @Override
-    public void addMovieToCategory(int movieID, int categoryID) {
-        dalManager.addMovieToCategory(movieID, categoryID);
+    public CatMovie addCatMovieToDB(int movieID, int categoryID) {
+        return dalManager.addCatMovieToDB(movieID, categoryID);
     }
     
     
     @Override
-    public void removeMovieFromCategory(int movieID, int categoryID) {
-        dalManager.removeMovieFromCategory(movieID, categoryID);
+    public CatMovie removeCatMovieFromDB(int id) {
+        return dalManager.removeCatMovieFromDB(id);
     }
+    
+    
+    
+    @Override
+    public List<CatMovie> fetchAllCatMovies() {
+        return dalManager.fetchAllCatMovies();
+    }
+    
+    
+    
+    
     
     
     @Override
