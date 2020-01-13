@@ -5,7 +5,9 @@
  */
 package unwanted_mc.gui.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,6 +17,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
@@ -24,8 +29,10 @@ import unwanted_mc.gui.model.movieModel;
 /**
  * FXML Controller class
  *
- * @author Bruger
+ * @author Niclas, Martin, Michael and Alan
  */
+
+
 public class AddSceneController implements Initializable {
 
     @FXML
@@ -87,10 +94,24 @@ public class AddSceneController implements Initializable {
     }
 
     @FXML
-    private void handle_openFileChooser(ActionEvent event) {
-        
-    }
+    private void handle_openFileChooser(ActionEvent event) throws MalformedURLException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("mp4 Files", "*.mp4"),
+                new FileChooser.ExtensionFilter("mpeg4 Files", "*.mpeg4")
+        );
 
+        File movieFile = fileChooser.showOpenDialog(null);
+        if (movieFile != null) {
+            String moviePATH = movieFile.getAbsolutePath();
+            txtField_filePath.setText(moviePATH);
+            Media media = new Media(movieFile.toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+   //         mediaPlayer.setOnReady(new Runnable() {
+
+        }
+    }
+    
     /**
      * Closes the stage.
      */
