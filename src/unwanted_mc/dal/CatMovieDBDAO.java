@@ -17,7 +17,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import unwanted_mc.be.CatMovie;
 import unwanted_mc.be.Movie;
+import unwanted_mc.be.Category;
 import unwanted_mc.dal.MovieDBDAO;
+import unwanted_mc.dal.CategoryDBDAO;
 
 
 /**
@@ -30,7 +32,8 @@ public class CatMovieDBDAO {
     DBConnection dbc = new DBConnection();
     private CatMovie catmovie;
     private MovieDBDAO movieDBDao;
-    
+        private CategoryDBDAO categoryDBDao;
+
     public CatMovie getCatMovie(int id) {
         return catmovie;
     }
@@ -112,5 +115,26 @@ public class CatMovieDBDAO {
         return allMoviesInACategory;
     }
         
-        
+    
+    public String getAllCategoriesOfAMovie(Movie movie) throws SQLException {
+        String catString = "";
+        List<CatMovie> allCatMovies = fetchAllCatMovies();
+        List<Movie> allMovies = movieDBDao.fetchAllMovies();
+        int movieId = movie.getId();
+        for(CatMovie catmovie : allCatMovies) {
+            if(catmovie.getMovieId() == movieId) {
+                int catId = catmovie.getCategoryId();
+                Category cat = categoryDBDao.getCategory(catId);
+                String catStr = cat.getName();
+                 if (catString == "") {
+                    catString = catStr;
+                 } else {
+                     catString += ", " + catStr;
+                 }
+            }  
+        }
+        return catString;
+    }
+    
+    
 }

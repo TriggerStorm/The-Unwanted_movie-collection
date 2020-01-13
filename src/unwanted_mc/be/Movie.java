@@ -22,7 +22,7 @@ public class Movie {
     private String filelink;
     private String lastview;
     private String stringRating;
-
+    private String catString;
     
     
     public Movie(int id, String name, int rating, String filelink, String lastview) {

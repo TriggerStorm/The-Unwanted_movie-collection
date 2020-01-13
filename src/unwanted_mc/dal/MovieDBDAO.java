@@ -105,6 +105,7 @@ public class MovieDBDAO {
                 String filelink = rs.getString("filelink");
                 String lastview = rs.getString("lastview");
                 allMovies.add(new Movie(id, name, rating, filelink, lastview));
+                
             }
         } catch (SQLServerException ex) {
             Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
