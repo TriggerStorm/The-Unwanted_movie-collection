@@ -5,10 +5,12 @@
  */
 package unwanted_mc.bll;
 
+
 /**
- *
- * @author admin
+ * @author Niclas, Martin, Michael and Alan
  */
+
+
 public class RatingConverter {
     
     public String RatingIntToString(int ratingInt) {
