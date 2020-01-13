@@ -13,12 +13,12 @@ package unwanted_mc.be;
 
 public class Category {
     int id;
-    String name;
+    String cat;
     
     
-    public Category(int id, String name) {
+    public Category(int id, String cat) {
     this.id = id;
-    this.name = name;
+    this.cat = cat;
     }
 
     
@@ -27,8 +27,8 @@ public class Category {
     }
 
     
-    public String getName() {
-        return name;
+    public String getCat() {
+        return cat;
     }
 
     
@@ -37,8 +37,8 @@ public class Category {
     }
 
     
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String cat) {
+        this.cat = cat;
     }
 
 }

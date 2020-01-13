@@ -11,12 +11,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="347.0" prefWidth="550.0" styleClass="greyBG" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unwanted_mc.gui.controller.AddSceneController">
    <children>
-      <Label layoutX="98.0" layoutY="83.0" text="Title:" textFill="WHITE">
+      <Label layoutX="98.0" layoutY="83.0" text="Name:" textFill="WHITE">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtField_title" layoutX="158.0" layoutY="83.0" prefHeight="25.0" prefWidth="260.0" />
+      <TextField fx:id="txtField_name" layoutX="158.0" layoutY="83.0" prefHeight="25.0" prefWidth="260.0" />
       <Label layoutX="92.0" layoutY="122.0" prefHeight="20.0" prefWidth="50.0" text="Rating:" textFill="WHITE">
          <font>
             <Font name="Arial" size="15.0" />
@@ -53,7 +53,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btn_confirm" layoutX="397.0" layoutY="288.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handle_saveSong" prefHeight="20.0" prefWidth="20.0" textFill="WHITE" AnchorPane.rightAnchor="130.0">
+      <Button fx:id="btn_confirm" layoutX="397.0" layoutY="288.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handle_saveMovie" prefHeight="20.0" prefWidth="20.0" textFill="WHITE" AnchorPane.rightAnchor="130.0">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -90,8 +90,8 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btn_editGenre" layoutX="330.0" layoutY="164.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="21.0" />
-      <ImageView fx:id="bn_edit" fitHeight="21.0" fitWidth="23.0" layoutX="330.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="bn_edit" layoutX="330.0" layoutY="164.0" mnemonicParsing="false" onAction="#btn_editGenre" prefHeight="21.0" prefWidth="21.0" />
+      <ImageView fitHeight="21.0" fitWidth="23.0" layoutX="330.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-edit-50.png" />
          </image>

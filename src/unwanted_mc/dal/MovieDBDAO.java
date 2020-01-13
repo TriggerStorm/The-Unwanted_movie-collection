@@ -95,13 +95,13 @@ public class MovieDBDAO {
         List<Movie> allMovies = new ArrayList<>();
 
         try ( Connection con = dbc.getConnection()) {
-            String sql = "SELECT * FROM movie";
+            String sql = "SELECT * FROM movies";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
-                double rating = rs.getDouble("rating");
+                int rating = rs.getInt("rating");
                 String filelink = rs.getString("filelink");
                 String lastview = rs.getString("lastview");
                 allMovies.add(new Movie(id, name, rating, filelink, lastview));
@@ -116,7 +116,7 @@ public class MovieDBDAO {
       
     
     
-    public Movie editMovie(String name, double rating, String filelink, String lastview) {
+    public Movie editMovie(String name, int rating, String filelink, String lastview) {
         try (//Get a connection to the database.
             Connection con = dbc.getConnection()) {
             //Create a prepared statement.
@@ -124,7 +124,7 @@ public class MovieDBDAO {
             PreparedStatement pstmt = con.prepareStatement(sql);
             //Set parameter values.
             pstmt.setString(1, name);
-            pstmt.setDouble(2, rating);
+            pstmt.setInt(2, rating);
             pstmt.setString(3, filelink);
             pstmt.setString(4, lastview);
             //Execute SQL query.
