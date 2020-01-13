@@ -52,6 +52,10 @@ public class movieModel {
         bllManager.removeMovieFromDB(id);
         movieList.remove(id); 
     }       
+    
+    //public void RatingIntToString(String ratingString){
+    //    bllManager.RatingIntToString(ratingString);
+   // }
         
    /* 
     public void filterCategory(int id) {  // NOT FINISHED
