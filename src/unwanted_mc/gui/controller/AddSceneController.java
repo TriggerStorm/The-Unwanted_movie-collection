@@ -127,16 +127,16 @@ public class AddSceneController implements Initializable {
     @FXML
     private void handle_saveMovie(ActionEvent event) throws InterruptedException, IOException {
         if (!edit) {
-           // movieModel.createMovie(txtField_name.getText().trim(),
-                  //  movieModel.ratingToString(txtField_rating.getText().trim()),// need to make a converter for the rating to string.
-                 //   choiceBox_genre.getSelectionModel().getSelectedItem(),
-                  //  txtField_filePath.getText());
+           movieModel.createMovie(txtField_name.getText().trim(),
+           movieModel.RatingStringToInt(txtField_rating.getText().trim()),
+           choiceBox_genre.getSelectionModel().getSelectedItem(),
+           txtField_filePath.getText());
         } else {
-           // movieModel.editMovie(movieToEdit,
-            //        txtField_name.getText().trim(),
-            //        movieModel.ratingToString(txtField_rating.getText().trim()),// need to make a converter for the rating to string.
-              //      choiceBox_genre.getSelectionModel().getSelectedItem(),
-                //    txtField_filePath.getText());
+           movieModel.editMovie(
+                    txtField_name.getText().trim(),
+                    movieModel.RatingStringToInt(txtField_rating.getText().trim()),
+                    choiceBox_genre.getSelectionModel().getSelectedItem(),
+                    txtField_filePath.getText());
         }
 
         updateAllMovie();

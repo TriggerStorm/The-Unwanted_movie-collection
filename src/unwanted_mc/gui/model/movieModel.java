@@ -21,7 +21,7 @@ public class movieModel {
     
     private BllManager bllManager;
     private ObservableList<Movie> movieList;
-
+    
     
     public movieModel() {
         bllManager = new BllManager();
@@ -53,10 +53,14 @@ public class movieModel {
         movieList.remove(id); 
     }       
     
-    //public void RatingIntToString(String ratingString){
-    //    bllManager.RatingIntToString(ratingString);
-   // }
-        
+    public String RatingIntToString(int ratingInt){
+        return bllManager.RatingIntToString(ratingInt);
+    }
+    
+    public int RatingStringToInt(String ratingString){
+       return bllManager.RatingStringToInt(ratingString);
+    }
+    
    /* 
     public void filterCategory(int id) {  // NOT FINISHED
         Movie movie = bllManager.removeMovieFromDB(id);

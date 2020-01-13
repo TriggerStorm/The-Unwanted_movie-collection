@@ -64,7 +64,6 @@ public class PrimarySceneController implements Initializable {
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         label.setText("Hello World!");
-        
     }
     
     @Override
@@ -152,5 +151,9 @@ public class PrimarySceneController implements Initializable {
     public void refreshAllMovie() {
         tbv_allMovie.getItems().clear();
         tbv_allMovie.setItems(movieModel.getAllMovies());
+    }
+
+    @FXML
+    private void handle_playVideo(ActionEvent event) {
     }
 }

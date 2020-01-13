@@ -24,7 +24,7 @@
       <TextField fx:id="txt_search" layoutX="576.0" layoutY="23.0" />
       <Button fx:id="bn_removeMovie" layoutX="247.0" layoutY="23.0" mnemonicParsing="false" onAction="#handle_deleteMovie" style="-fx-background-color: WHITE;" text="Remove Movie" />
       <Button fx:id="bn_addMovie" layoutX="27.0" layoutY="23.0" mnemonicParsing="false" onAction="#handle_createMoive" style="-fx-background-color: WHITE;" text="Add Movie" />
-      <Button fx:id="bn_play" layoutX="365.0" layoutY="430.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="23.0" />
+      <Button fx:id="bn_play" layoutX="365.0" layoutY="430.0" mnemonicParsing="false" onAction="#handle_playVideo" prefHeight="26.0" prefWidth="23.0" />
       <ImageView fitHeight="29.0" fitWidth="61.0" layoutX="362.0" layoutY="428.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-circled-play-50.png" />
