@@ -104,7 +104,8 @@ public class MovieDBDAO {
                 int rating = rs.getInt("rating");
                 String filelink = rs.getString("filelink");
                 String lastview = rs.getString("lastview");
-                allMovies.add(new Movie(id, name, rating, filelink, lastview));
+                String catString =  ();
+                allMovies.add(new Movie(id, name, rating, filelink, lastview, catString));
                 
             }
         } catch (SQLServerException ex) {

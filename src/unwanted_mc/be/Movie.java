@@ -25,12 +25,13 @@ public class Movie {
     private String catString;
     
     
-    public Movie(int id, String name, int rating, String filelink, String lastview) {
+    public Movie(int id, String name, int rating, String filelink, String lastview, String catString) {
         this.id = id;
         this.name = name;
         this.rating = rating;
         this.filelink = filelink;        
         this.lastview = lastview;
+        this.catString = catString;
 
     }
 
