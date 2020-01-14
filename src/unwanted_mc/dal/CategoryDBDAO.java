@@ -35,14 +35,18 @@ public class CategoryDBDAO {
     
     
     public Category getCategory(List<Category> allCategories, int id) throws SQLException {
-        for (int i = 0; i < allCategories.size(); i++) {
+      int allCategoriesSize = allCategories.size();
+      Category testCat = new Category(9999, "no cat found");
+      if (allCategoriesSize > 0){
+            for (int i = 0; i < allCategories.size(); i++) {
             Category category = allCategories.get(i);
             int categoryId = category.getId();
             if (categoryId == id)  {
             return category;
             }
         }
-        return null;
+      }
+      return testCat;    
     }
     
     
