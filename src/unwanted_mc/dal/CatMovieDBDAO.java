@@ -119,12 +119,13 @@ public class CatMovieDBDAO {
     public String getAllCategoriesOfAMovie(int movieId) throws SQLException {
         String catString = "";
         List<CatMovie> allCatMovies = fetchAllCatMovies();
+        List<Category> allCategories = categoryDBDao.fetchAllCatagories();
         List<Movie> allMovies = movieDBDao.fetchAllMovies();
 //        int movieId = movie.getId();
         for(CatMovie catmovie : allCatMovies) {
             if(catmovie.getMovieId() == movieId) {
                 int catId = catmovie.getCategoryId();
-                Category cat = categoryDBDao.getCategory(catId);
+                Category cat = categoryDBDao.getCategory(allCategories, catId);
                 String catStr = cat.getName();
                  if (catString == "") {
                     catString = catStr;

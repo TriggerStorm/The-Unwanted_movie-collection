@@ -33,7 +33,7 @@ public class MovieDBDAO {
     DBConnection dbc = new DBConnection();
     private Movie movie; // = new Movie(1,"MovieTest1", 8,"src/Movie1.MP4", "11 January 2020" ); //TEST ONLY
     private DateConverter dateconverter = new DateConverter();  // Use manager later
-    
+    private CatMovieDBDAO catMovieDBDao = new CatMovieDBDAO();
     
     
     public Movie getMovie(List<Movie> allMovies, int id) throws SQLException {
@@ -104,7 +104,7 @@ public class MovieDBDAO {
                 int rating = rs.getInt("rating");
                 String filelink = rs.getString("filelink");
                 String lastview = rs.getString("lastview");
-                String catString =  ();
+                String catString = catMovieDBDao.getAllCategoriesOfAMovie(id);
                 allMovies.add(new Movie(id, name, rating, filelink, lastview, catString));
                 
             }

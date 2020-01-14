@@ -164,9 +164,14 @@ public class DalManager implements IDAL {
 
     
     @Override
-    public Category getCategory(int id) {
-        return categoryDBDao.getCategory(id);
-    }
+    public Category getCategory(List<Category> allCategories, int id) {
+        try {
+            return categoryDBDao.getCategory(allCategories,id);
+        } catch (SQLException ex) {
+            Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    } 
     
     
 }

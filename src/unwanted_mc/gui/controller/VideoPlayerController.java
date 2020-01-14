@@ -30,7 +30,7 @@ public class VideoPlayerController {
     @FXML private Button playPauseButton;
     private MediaPlayer mediaPlayer;    
     private boolean playing = false;
-    private Movie movie = new Movie(1, "Pony", 9, "src/Movie1.mp4", "12-December-2012");
+   // private Movie movie = new Movie(1, "Pony", 9, "src/Movie1.mp4", "12-December-2012");
     
     public void initialize() {  //URL url, ResourceBundle rb) {
         URL url = VideoPlayerController.class.getResource("src/Movie1.mp4");        

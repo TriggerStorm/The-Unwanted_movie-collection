@@ -38,7 +38,7 @@ public interface IBLL {
     Category removeCategoryFromDB(String name);
     List<Category> fetchAllCatagories();
     Category editCategory(String name);
-    Category getCategory(int id);
+    Category getCategory(List<Category> allCategories, int id);
  
 // From DateConverter    
     String dateNowToString();

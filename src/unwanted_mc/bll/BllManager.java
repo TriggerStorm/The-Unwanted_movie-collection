@@ -138,8 +138,8 @@ public class BllManager implements IBLL {
     }
 
     @Override
-    public Category getCategory(int id) {
-        return dalManager.getCategory(id);
+    public Category getCategory(List<Category> allCategories, int id) {
+        return dalManager.getCategory(allCategories,id);
     }
     
     

@@ -33,9 +33,18 @@ public class CategoryDBDAO {
     DBConnection dbc = new DBConnection();
    
     
-    public Category getCategory(int id) {
-        return category;
+    
+    public Category getCategory(List<Category> allCategories, int id) throws SQLException {
+        for (int i = 0; i < allCategories.size(); i++) {
+            Category category = allCategories.get(i);
+            int categoryId = category.getId();
+            if (categoryId == id)  {
+            return category;
+            }
+        }
+        return null;
     }
+    
     
     
      
