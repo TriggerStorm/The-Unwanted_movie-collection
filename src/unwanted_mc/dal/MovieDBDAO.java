@@ -148,7 +148,6 @@ public class MovieDBDAO {
     public List<Movie> findMoviesToRemove() throws SQLException {  // Creates a list of movies that have a rating below 6, and haven't been played in two years.
         List<Movie> allMovies = new ArrayList<>();
         List<Movie> moviesToDelete = new ArrayList<>();
-    //    int expiry =  parseInt(movie.getLastView());
         allMovies = fetchAllMovies();
         for(Movie movie : allMovies) {
             String lastViewedDate = movie.getLastView();

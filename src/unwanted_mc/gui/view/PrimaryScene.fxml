@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="744.0" styleClass="greyBG" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unwanted_mc.gui.controller.PrimarySceneController">
+<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="744.0" styleClass="greyBG" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unwanted_mc.gui.controller.PrimarySceneController">
     <children>
         <Button fx:id="bn_editMovie" layoutX="372.0" layoutY="23.0" onAction="#handle_EditSong" style="-fx-background-color: WHITE;" text="Edit Selectet Movie" />
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
