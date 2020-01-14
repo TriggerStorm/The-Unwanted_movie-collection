@@ -16,19 +16,21 @@
       <TableView fx:id="tbv_allMovie" layoutX="27.0" layoutY="64.0" onMouseClicked="#handle_getMovie" prefHeight="366.0" prefWidth="698.0" stylesheets="@../../../../../RandomCode/MyTunesC/src/mytunes/gui/css/style.css" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="64.0">
         <columns>
           <TableColumn fx:id="col_name" prefWidth="197.60003662109375" text="Name" />
-          <TableColumn fx:id="col_genre" prefWidth="107.199951171875" text="Genre" />
+          <TableColumn fx:id="col_category" prefWidth="107.199951171875" text="Category" />
             <TableColumn fx:id="col_rating" prefWidth="179.199951171875" text="Rating" />
-            <TableColumn fx:id="col_lastViewed" prefWidth="214.4000244140625" text="Last Viewed" />
+            <TableColumn fx:id="col_lastview" prefWidth="214.4000244140625" text="Last Viewed" />
         </columns>
       </TableView>
       <TextField fx:id="txt_search" layoutX="576.0" layoutY="23.0" />
       <Button fx:id="bn_removeMovie" layoutX="247.0" layoutY="23.0" mnemonicParsing="false" onAction="#handle_deleteMovie" style="-fx-background-color: WHITE;" text="Remove Movie" />
       <Button fx:id="bn_addMovie" layoutX="27.0" layoutY="23.0" mnemonicParsing="false" onAction="#handle_createMoive" style="-fx-background-color: WHITE;" text="Add Movie" />
-      <Button fx:id="bn_play" layoutX="365.0" layoutY="430.0" mnemonicParsing="false" onAction="#handle_playVideo" prefHeight="26.0" prefWidth="23.0" />
-      <ImageView fitHeight="29.0" fitWidth="61.0" layoutX="362.0" layoutY="428.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/icons8-circled-play-50.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="bn_play" layoutX="365.0" layoutY="430.0" mnemonicParsing="false" onAction="#handle_playVideo" prefHeight="26.0" prefWidth="23.0">
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-circled-play-50.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
     </children>
 </AnchorPane>

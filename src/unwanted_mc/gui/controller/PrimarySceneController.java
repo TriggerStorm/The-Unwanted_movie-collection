@@ -30,7 +30,6 @@ import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
 import unwanted_mc.gui.model.categoryModel;
 import unwanted_mc.gui.model.movieModel;
@@ -48,13 +47,13 @@ public class PrimarySceneController implements Initializable {
     @FXML
     private TableView<Movie> tbv_allMovie;
     @FXML
-    private TableColumn<Movie, String> col_name;
+    private TableColumn<Movie, String> col_name; 
     @FXML
-    private TableColumn<Category, String> col_genre;
+    private TableColumn<Movie, String> col_rating; 
     @FXML
-    private TableColumn<Movie, String> col_rating;
+    private TableColumn<Movie, String> col_category;
     @FXML
-    private TableColumn<Movie, String> col_lastViewed;
+    private TableColumn<Movie, String> col_lastview;
     @FXML
     private TextField txt_search;
     @FXML
@@ -68,13 +67,11 @@ public class PrimarySceneController implements Initializable {
     
     private Movie movie;
     private movieModel movieModel;
-    private categoryModel categoryModel;
     
     
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+    
+    
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -82,16 +79,16 @@ public class PrimarySceneController implements Initializable {
     }    
     private void settingTableView() {
         movieModel = new movieModel();
-        categoryModel = new categoryModel();
+        
 
         //  allMovie table view
         col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        col_genre.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        col_category.setCellValueFactory(new PropertyValueFactory<>("catString"));
         col_rating.setCellValueFactory(new PropertyValueFactory<>("rating"));
-        col_lastViewed.setCellValueFactory(new PropertyValueFactory<>("lastViewed"));
+        col_lastview.setCellValueFactory(new PropertyValueFactory<>("lastview"));
         
         tbv_allMovie.setItems(movieModel.getAllMovies());
-        //tbv_allMovie.setItems(categoryModel.getAllCategories()); NOT DONE !!! NEED WORK
+        
 
     }
     
@@ -106,7 +103,7 @@ public class PrimarySceneController implements Initializable {
         Stage addStage = new Stage();
         Scene addScene = new Scene(root1);
 
-        //songStage.initStyle(StageStyle.UNDECORATED);
+        
         addStage.setScene(addScene);
         addStage.show();
     }
