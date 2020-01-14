@@ -35,10 +35,12 @@ import unwanted_mc.be.Movie;
 import unwanted_mc.gui.model.categoryModel;
 import unwanted_mc.gui.model.movieModel;
 
+
 /**
- *
- * @author Bruger
+ * @author Niclas, Martin, Michael and Alan
  */
+
+
 public class PrimarySceneController implements Initializable {
     
     @FXML

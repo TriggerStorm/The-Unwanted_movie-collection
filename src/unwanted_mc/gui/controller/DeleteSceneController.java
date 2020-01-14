@@ -18,11 +18,15 @@ import javafx.stage.Stage;
 import unwanted_mc.be.Movie;
 import unwanted_mc.gui.model.movieModel;
 
+
 /**
  * FXML Controller class
  *
- * @author Bruger
+ * @author Niclas, Martin, Michael and Alan
  */
+
+
+
 public class DeleteSceneController implements Initializable {
 
     @FXML

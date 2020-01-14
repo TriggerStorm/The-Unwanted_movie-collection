@@ -26,6 +26,7 @@ import unwanted_mc.be.Movie;
 import unwanted_mc.gui.model.categoryModel;
 import unwanted_mc.gui.model.movieModel;
 
+
 /**
  * FXML Controller class
  *
