@@ -53,12 +53,12 @@ public class movieModel {
         movieList.remove(id); 
     }       
     
-    public String RatingIntToString(int ratingInt){
-        return bllManager.RatingIntToString(ratingInt);
+    public String ratingIntToString(int ratingInt){
+        return bllManager.ratingIntToString(ratingInt);
     }
     
-    public int RatingStringToInt(String ratingString){
-       return bllManager.RatingStringToInt(ratingString);
+    public int ratingStringToInt(String ratingString){
+       return bllManager.ratingStringToInt(ratingString);
     }
     
    /* 

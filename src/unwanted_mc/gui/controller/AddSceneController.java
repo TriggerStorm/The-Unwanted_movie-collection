@@ -26,6 +26,7 @@ import unwanted_mc.be.Movie;
 import unwanted_mc.gui.model.categoryModel;
 import unwanted_mc.gui.model.movieModel;
 
+
 /**
  * FXML Controller class
  *
@@ -127,14 +128,16 @@ public class AddSceneController implements Initializable {
     @FXML
     private void handle_saveMovie(ActionEvent event) throws InterruptedException, IOException {
         if (!edit) {
-                    movieModel.createMovie(txtField_name.getText().trim(),
-                    movieModel.RatingStringToInt(txtField_rating.getText().trim()),
-                    choiceBox_genre.getSelectionModel().getSelectedItem(),
-                    txtField_filePath.getText());
+
+           movieModel.createMovie(txtField_name.getText().trim(),
+           movieModel.ratingStringToInt(txtField_rating.getText().trim()),
+           choiceBox_genre.getSelectionModel().getSelectedItem(),
+           txtField_filePath.getText());
+
         } else {
            movieModel.editMovie(
                     txtField_name.getText().trim(),
-                    movieModel.RatingStringToInt(txtField_rating.getText().trim()),
+                    movieModel.ratingStringToInt(txtField_rating.getText().trim()),
                     choiceBox_genre.getSelectionModel().getSelectedItem(),
                     txtField_filePath.getText());
         }
