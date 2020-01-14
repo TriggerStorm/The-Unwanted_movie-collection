@@ -128,10 +128,12 @@ public class AddSceneController implements Initializable {
     @FXML
     private void handle_saveMovie(ActionEvent event) throws InterruptedException, IOException {
         if (!edit) {
+
            movieModel.createMovie(txtField_name.getText().trim(),
            movieModel.ratingStringToInt(txtField_rating.getText().trim()),
            choiceBox_genre.getSelectionModel().getSelectedItem(),
            txtField_filePath.getText());
+
         } else {
            movieModel.editMovie(
                     txtField_name.getText().trim(),
@@ -177,7 +179,7 @@ public class AddSceneController implements Initializable {
         txtField_name.setText(movieToEdit.getName());
         txtField_rating.setText(movieToEdit.getStringRating()); //need to do get rating to string. NOT DONE!!!
         txtField_filePath.setText(movieToEdit.getFileLink());
-        //choiceBox_genre.setValue(movieToEdit.getCat()); //need to get fixt NOT DONE!!! dont have cat in Movie be.
+        choiceBox_genre.setValue(movieToEdit.getCatString()); //need to get fixt NOT DONE!!! dont have cat in Movie be.
     }
 
     public void editModeCat(Category selectedCat){

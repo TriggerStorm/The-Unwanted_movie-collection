@@ -41,7 +41,7 @@ public class CategoryDBDAO {
      
     public Category addCategoryToDB(String name) {
    try ( Connection con = dbc.getConnection()) {
-            String sql = "INSERT INTO Category (name) values (?)";
+            String sql = "INSERT INTO Category values (?)";
             PreparedStatement p = con.prepareStatement(sql);
             p.setString(1, name);
             p.executeUpdate();

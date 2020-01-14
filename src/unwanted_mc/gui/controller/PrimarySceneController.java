@@ -167,7 +167,7 @@ public class PrimarySceneController implements Initializable {
         private void handle_playVideo(ActionEvent event) { //throws MalformedURLException {
 //  COMPLIES.  UNTESTED!!!
 System.out.println("test point 0a");            
-            
+    
         Stage videoStage = new Stage();
     
 System.out.println("test point 1");            
@@ -248,5 +248,6 @@ System.out.println("test point 3");
     
     */
     
+
     }
 }
