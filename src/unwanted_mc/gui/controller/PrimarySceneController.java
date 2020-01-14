@@ -164,7 +164,6 @@ public class PrimarySceneController implements Initializable {
         private void handle_playVideo(ActionEvent event) { //throws MalformedURLException {
 //  COMPLIES.  UNTESTED!!!
 System.out.println("test point 0a");            
-            
         Stage videoStage = new Stage();
     
 System.out.println("test point 1");            
@@ -176,12 +175,14 @@ System.out.println("test point 1");
 
  //       File movieFile = fileChooser.showOpenDialog(null);
         if ( true ) {  //movieFile != null
-            String moviePATH = "src/Movie1.mp4";  //movieFile.getAbsolutePath();
+  MediaPlayer mediaPlayer = new MediaPlayer(new Media(new File( tbv_allMovie.getSelectionModel().getSelectedItem().getFileLink()).toURI().toString()));
+
+//            String moviePATH = "src/Movie1.mp4";  //movieFile.getAbsolutePath();
  //           txtField_filePath.setText(moviePATH);
 System.out.println("test point 3");            
 
-            Media media = new Media(new File(moviePATH).toURI().toString());        //  Instantiate the javafx.scene.media.Media class by passing the location of the audio file in its constructor.
-            MediaPlayer mediaPlayer = new MediaPlayer(media);       //  Pass the Media class object to the new instance of javafx.scene.media.MediaPlayer object.
+//            Media media = new Media(new File(moviePATH).toURI().toString());        //  Instantiate the javafx.scene.media.Media class by passing the location of the audio file in its constructor.
+//            MediaPlayer mediaPlayer = new MediaPlayer(media);       //  Pass the Media class object to the new instance of javafx.scene.media.MediaPlayer object.
             mediaPlayer.setAutoPlay(true);       //  Invoke the MediaPlayer object's play() method when onReady event is triggered.
 
             MediaView mediaView = new MediaView(mediaPlayer);
