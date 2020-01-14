@@ -164,41 +164,47 @@ public class PrimarySceneController implements Initializable {
     }
 
     @FXML
-        private void handle_playVideo(ActionEvent event) throws MalformedURLException {
+        private void handle_playVideo(ActionEvent event) { //throws MalformedURLException {
 //  COMPLIES.  UNTESTED!!!
-            /*     
+System.out.println("test point 0a");            
+            
         Stage videoStage = new Stage();
     
-            
+System.out.println("test point 1");            
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("mp4 Files", "*.mp4"),
                 new FileChooser.ExtensionFilter("mpeg4 Files", "*.mpeg4")
         );
 
-        File movieFile = fileChooser.showOpenDialog(null);
+ //       File movieFile = fileChooser.showOpenDialog(null);
         if ( true ) {  //movieFile != null
             String moviePATH = "src/Movie1.mp4";  //movieFile.getAbsolutePath();
  //           txtField_filePath.setText(moviePATH);
+System.out.println("test point 3");            
 
             Media media = new Media(new File(moviePATH).toURI().toString());        //  Instantiate the javafx.scene.media.Media class by passing the location of the audio file in its constructor.
             MediaPlayer mediaPlayer = new MediaPlayer(media);       //  Pass the Media class object to the new instance of javafx.scene.media.MediaPlayer object.
             mediaPlayer.setAutoPlay(true);       //  Invoke the MediaPlayer object's play() method when onReady event is triggered.
 
             MediaView mediaView = new MediaView(mediaPlayer);
-
+            System.out.println("test 1");
             BorderPane borderPane = new BorderPane();
             borderPane.setCenter(mediaView);
 //            borderPane.setBottom(addToolBar());
 
             borderPane.setStyle("-fx-background-color: Black");
+System.out.println("test point 3");            
 
-            Scene scene = new Scene(borderPane, 600, 600);
+            Scene scene = new Scene(borderPane, 1334, 750);
             scene.setFill(Color.BLACK);
 
             videoStage.setTitle("Media Player!");
             videoStage.setScene(scene);
             videoStage.show();
+                  
+ System.out.println("test point 4");            
+
         }
         
 //      GOOD CODE ENDS        
