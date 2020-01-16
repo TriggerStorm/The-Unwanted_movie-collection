@@ -128,6 +128,7 @@ public class PrimarySceneController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/unwanted_mc/gui/view/addScene.fxml"));
         root = (Parent) fxmlLoader.load();
         AddSceneController controller = (AddSceneController) fxmlLoader.getController();
+        fxmlLoader.<AddSceneController>getController().setMovieModel(movieModel);
         
         controller.editMode(selectedMovie); //set mode to edit movie.
         Stage addStage = new Stage();
@@ -145,6 +146,7 @@ public class PrimarySceneController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/unwanted_mc/gui/view/DeleteScene.fxml"));
         root = (Parent) fxmlLoader.load();
         DeleteSceneController controller = (DeleteSceneController) fxmlLoader.getController();
+        fxmlLoader.<DeleteSceneController>getController().setMovieModel(movieModel);
         controller.setContr(this);
         controller.setDeleteMovieLabel(selectedMovie);
 
@@ -154,7 +156,7 @@ public class PrimarySceneController implements Initializable {
        
         addStage.setScene(addScene);
         addStage.show();
-        refreshAllMovie();
+        
     }
     
     public void refreshAllMovie() {
@@ -206,48 +208,5 @@ System.out.println("test point 3");
  System.out.println("test point 4");            
 
         }
-        
-//      GOOD CODE ENDS        
-        
-        
- //     UNFINISHED.  DOES'T WORK!!! SCRAP CODE
-        
-   /*     
-            mediaPlayer.setOnReady(new Runnable() {
-                
-                
-                //
-            
-            lv_SongsOnPlaylist.getSelectionModel().clearAndSelect(currentSongPlaying);
-            lbl_Library.setText(lv_SongsOnPlaylist.getItems().get(currentSongPlaying).getTitle() + " is now playing");
-            mediaPlayer.play();
-            mediaPlayer.setVolume(slider.getValue());
-            isPaused = false;
-            isScheduelSong = false;
-
-            mediaPlayer.setOnEndOfMedia(() -> {
-
-                if (lv_SongsOnPlaylist.getSelectionModel().getSelectedIndex() != -1) {
-                    if (lv_SongsOnPlaylist.getItems().size() == currentSongPlaying + 1 || currentSongPlaying == -1) {
-                        currentSongPlaying = 0;
-                    } else {
-                        currentSongPlaying++;
-                    }
-                    try {
-                        play();
-                    } catch (IOException ex) {
-                        java.util.logging.Logger.getLogger(PrimaryController.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-                    }
-                } else {
-                    handle_Stop();
-                }
-            });
-        }
-    }
-1
-    
-    */
-    
-
     }
 }

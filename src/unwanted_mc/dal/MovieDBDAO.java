@@ -31,9 +31,11 @@ import unwanted_mc.bll.DateConverter;
 public class MovieDBDAO {
     
     DBConnection dbc = new DBConnection();
-    private Movie movie; // = new Movie(1,"MovieTest1", 8,"src/Movie1.MP4", "11 January 2020" ); //TEST ONLY
+   // private Movie movie; // = new Movie(1,"MovieTest1", 8,"src/Movie1.MP4", "11 January 2020" ); //TEST ONLY
     private DateConverter dateconverter = new DateConverter();  // Use manager later
     private CatMovieDBDAO catMovieDBDao = new CatMovieDBDAO();
+
+   
     
     
     public Movie getMovie(List<Movie> allMovies, int id) throws SQLException {
@@ -80,11 +82,11 @@ public class MovieDBDAO {
     }
      
      
-      public void removeMovieFromDB(int id) {
-        String stat = "DELETE FROM movie WHERE ID=?";
+      public void removeMovieFromDB(Movie movie) {
+        String stat = "DELETE FROM movies WHERE id =?";
         try (Connection con = dbc.getConnection()) {
             PreparedStatement stmt = con.prepareStatement(stat);
-            stmt.setInt(1, movie.getId());                      // IS THIS 0 ??
+            stmt.setInt(1,movie.getId());                      // IS THIS 0 ??
             stmt.execute();
         } catch (SQLException ex) {
             System.out.println("Exception " + ex);
@@ -120,22 +122,23 @@ public class MovieDBDAO {
       
     
     
-    public Movie editMovie(String name, int rating, String filelink, String lastview) {
+    public Movie editMovie(Movie movie, String name, int rating, String filelink, String lastview) {
         try (//Get a connection to the database.
             Connection con = dbc.getConnection()) {
             //Create a prepared statement.
-            String sql = "UPDATE movie SET name = ?, rating = ?, filelink = ?, lastview = ? WHERE id = ?";
+            String sql = "UPDATE movies SET name = ?, filelink = ?, rating = ?, lastview = ? WHERE id = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
             //Set parameter values.
             pstmt.setString(1, name);
-            pstmt.setInt(2, rating);
-            pstmt.setString(3, filelink);
+            pstmt.setInt(3, rating);
+            pstmt.setString(2, filelink);
             pstmt.setString(4, lastview);
+            pstmt.setInt(5, movie.getId());
             //Execute SQL query.
             pstmt.executeUpdate();
             movie.setName(name);
-            movie.setRating(rating);
             movie.setFileLink(filelink);
+            movie.setRating(rating);
             movie.setFPL(lastview); 
             return movie;
         } catch (SQLServerException ex) {
@@ -177,7 +180,7 @@ public class MovieDBDAO {
             //Execute SQL query.
             pstmt.executeUpdate();
            
-            movie.setFPL(dateNow);
+            //movie.setFPL(dateNow);
         } catch (SQLServerException ex) {
             Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

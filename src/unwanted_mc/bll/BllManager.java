@@ -48,8 +48,8 @@ public class BllManager implements IBLL {
         
     
     @Override
-    public void removeMovieFromDB(int id) {
-        dalManager.removeMovieFromDB(id);
+    public void removeMovieFromDB(Movie movie) {
+        dalManager.removeMovieFromDB(movie);
     }
     
     
@@ -66,8 +66,8 @@ public class BllManager implements IBLL {
 
     
     @Override
-    public Movie editMovie(String name, int rating, String filelink, String lastview) {
-        return dalManager.editMovie(name, rating, filelink, lastview);
+    public Movie editMovie(Movie movie,String name, int rating, String filelink, String lastview) {
+        return dalManager.editMovie(movie, name, rating, filelink, lastview);
     }
 
     

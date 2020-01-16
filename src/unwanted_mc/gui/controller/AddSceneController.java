@@ -65,7 +65,7 @@ public class AddSceneController implements Initializable {
     private MovieModel movieModel;
     private CategoryModel categoryModel;
     private Category CategoryToEdit;
-    private MovieDBDAO MovieDBDAO;
+    
     
     @FXML
     private TextField txtField_name;
@@ -77,7 +77,7 @@ public class AddSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        MovieDBDAO = new MovieDBDAO();
+        
     }    
 
     public void setMovieModel(MovieModel movieModel) {
@@ -133,17 +133,18 @@ public class AddSceneController implements Initializable {
         if (!edit) {
 
            movieModel.createMovie(txtField_name.getText().trim(),
-           movieModel.ratingStringToInt(txtField_rating.getText().trim()),
-           txtField_filePath.getText(),
-           choiceBox_genre.getSelectionModel().getSelectedItem()); // need to be last view.
+                movieModel.ratingStringToInt(txtField_rating.getText().trim()),
+                txtField_filePath.getText(),
+                choiceBox_genre.getSelectionModel().getSelectedItem());
         
             System.out.println("12");
         } else {
-           movieModel.editMovie(
+           movieModel.editMovie(movieToEdit,
                     txtField_name.getText().trim(),
                     movieModel.ratingStringToInt(txtField_rating.getText().trim()),
                     txtField_filePath.getText(),
                     choiceBox_genre.getSelectionModel().getSelectedItem());
+                    
                     
         }
         System.out.println("save done?");
@@ -182,9 +183,10 @@ public class AddSceneController implements Initializable {
 
         //sets the existing info of the selected movie.
         txtField_name.setText(movieToEdit.getName());
-        txtField_rating.setText(movieToEdit.getStringRating()); //need to do get rating to string. NOT DONE!!!
+        txtField_rating.setText(movieToEdit.toString()); //need to do get rating to string. NOT DONE!!!
         txtField_filePath.setText(movieToEdit.getFileLink());
         choiceBox_genre.setValue(movieToEdit.getCatString()); //need to get fixt NOT DONE!!! dont have cat in Movie be.
+        movieToEdit.getId();
     }
 
     public void editModeCat(Category selectedCat){

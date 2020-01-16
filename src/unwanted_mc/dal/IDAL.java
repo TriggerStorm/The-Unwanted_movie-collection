@@ -20,10 +20,10 @@ public interface IDAL {
     
      
     Movie addMovieToDB(String name, int rating, String filelink, String lastview);
-    void removeMovieFromDB(int id);
+    void removeMovieFromDB(Movie movie);
     Movie getMovie(List<Movie> allMovies, int id);
     List<Movie> fetchAllMovies();
-    Movie editMovie(String name, int rating, String filelink, String lastview);
+    Movie editMovie(Movie movie,String name, int rating, String filelink, String lastview);
     List<Movie> findMoviesToRemove();
     void updateLastView(int id, String dateNow);
     boolean testForLastView(int id);

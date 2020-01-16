@@ -46,14 +46,14 @@ public class MovieModel {
     }
         
         
-    public void editMovie(String name, int rating, String filelink, String lastview) {
-        Movie movie = bllManager.editMovie(name, rating, filelink, lastview);
+    public void editMovie(Movie movie, String name, int rating, String filelink, String lastview) {
+        bllManager.editMovie(movie, name, rating, filelink, lastview);
         movieList.add(movie); 
     }
         
-    public void deleteMovie(int id) {
-        bllManager.removeMovieFromDB(id);
-        movieList.remove(id); 
+    public void deleteMovie(Movie movie) {
+        bllManager.removeMovieFromDB(movie);
+        movieList.remove(movie); 
     }       
     
     public String ratingIntToString(int ratingInt){

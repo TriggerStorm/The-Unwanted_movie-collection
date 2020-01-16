@@ -45,6 +45,7 @@ public class Movie {
 
     }
 
+
     public void setCatString(String catString) {
         this.catString = catString;
     }
@@ -85,6 +86,11 @@ public class Movie {
    public int getRating() {
         return rating;
     }
+
+    @Override
+    public String toString() {
+        return "" + rating + "";
+    }
    
    
    
@@ -121,7 +127,7 @@ public class Movie {
      
     /*@Override
     public String toString() {  // May be needed
-        return name + "," + rating + "," + filelink + ',' + lastviewed;
+        return name + "," + rating + "," + filelink + ',' + FPL;
     }*/
   
     public void setStringRating(String stringRating){
