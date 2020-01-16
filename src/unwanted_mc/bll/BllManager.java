@@ -115,8 +115,8 @@ public class BllManager implements IBLL {
     
     
     @Override
-    public Category addCategoryToDB(String name) {
-        return dalManager.addCategoryToDB(name);
+    public void addCategoryToDB(String name) {
+        dalManager.addCategoryToDB(name);
     }
     
     
@@ -127,8 +127,8 @@ public class BllManager implements IBLL {
     
     
         @Override
-    public List<Category> fetchAllCatagories() {
-        return dalManager.fetchAllCatagories();
+        public List<Category> fetchAllCategories() {
+        return dalManager.fetchAllCategories();
     }
 
     
@@ -165,23 +165,23 @@ public class BllManager implements IBLL {
 // From RatingConverter   
       @Override
     public String ratingIntToString(int ratingInt) {
-        return ratingIntToString(ratingInt);
+        return ratingconverter.RatingIntToString(ratingInt);
     }
 
     
     @Override
     public int ratingStringToInt(String ratingString) {
-        return ratingStringToInt(ratingString);
+        return ratingconverter.RatingStringToInt(ratingString);
     }
 
     
     public double percentToDecimal(int percentRating) {
-        return percentToDecimal(percentRating);
+        return ratingconverter.percentToDecimal(percentRating);
     }
    
     
     public int decimalToPercent(double decimalRating) {
-        return decimalToPercent(decimalRating);
+        return ratingconverter.decimalToPercent(decimalRating);
     }
     
     

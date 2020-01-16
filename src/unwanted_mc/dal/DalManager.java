@@ -135,8 +135,8 @@ public class DalManager implements IDAL {
 
     
     @Override
-    public Category addCategoryToDB(String name) {
-        return categoryDBDao.addCategoryToDB(name);
+    public void addCategoryToDB(String name) {
+        categoryDBDao.addCategoryToDB(name);
     }
     
     
@@ -147,9 +147,9 @@ public class DalManager implements IDAL {
     
     
         @Override
-    public List<Category> fetchAllCatagories() {
+    public List<Category> fetchAllCategories() {
         try {
-            return categoryDBDao.fetchAllCatagories();
+            return categoryDBDao.fetchAllCategories();
         } catch (SQLException ex) {
             Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
         }

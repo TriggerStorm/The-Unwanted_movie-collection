@@ -20,25 +20,49 @@ public class Movie {
     private String name;
     private int rating;
     private String filelink;
-    private String lastview;
+    //private String lastviewed;
     private String stringRating;
     private String catString;
+    private String FPL;
     
     
-    public Movie(int id, String name, int rating, String filelink, String lastview, String catString) {
+    public Movie(int id, String name, int rating, String filelink, String FPL, String catString) {
         this.id = id;
         this.name = name;
         this.rating = rating;
         this.filelink = filelink;        
-        this.lastview = lastview;
+        this.FPL = FPL;                           //this.lastviewed = lastviewed;
         this.catString = catString;
 
     }
+    public Movie(String name, int rating, String filelink, String FPL) {
+        
+        this.name = name;
+        this.rating = rating;
+        this.filelink = filelink;        
+        this.FPL = FPL;                           //this.lastviewed = lastviewed;
+        
 
+    }
 
     public void setCatString(String catString) {
         this.catString = catString;
     }
+
+    public String getFPL() {
+        return FPL;
+    }
+
+    public void setFPL(String FPL) {
+        this.FPL = FPL;
+    }
+
+    /*public String getLastviewed() {
+        return lastviewed;
+    }
+      public void setLastviewed(String lastviewed) {
+        this.lastviewed = lastviewed;
+    }*/
 
     public String getCatString() {
         return catString;
@@ -67,13 +91,6 @@ public class Movie {
     public String getFileLink() {
         return filelink;
     }
-   
-    
-    
-    public String getLastView() {
-        return lastview;
-    }
-    
     
     
     public void setId(int id) { // may not need this. If not set id variable to final
@@ -94,28 +111,24 @@ public class Movie {
 
      
     
-    public void setFileLink(String filelink) {  // probably unnecessay method
+    public void setFileLink(String filelink) {
         this.filelink = filelink;
     }
     
-    
-    
-     public void setLastView(String lastview) {  // probably unnecessay method
-        this.lastview = lastview;
-    }
-   
+  
+  
      
      
-    @Override
+    /*@Override
     public String toString() {  // May be needed
-        return name + "," + rating + "," + filelink + ',' + lastview;
-    }
+        return name + "," + rating + "," + filelink + ',' + lastviewed;
+    }*/
   
     public void setStringRating(String stringRating){
         this.stringRating = stringRating;
     }
     
     public String getStringRating(){
-    return this.stringRating;
+        return this.stringRating;
     }
 }

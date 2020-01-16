@@ -31,8 +31,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import unwanted_mc.be.Movie;
-import unwanted_mc.gui.model.categoryModel;
-import unwanted_mc.gui.model.movieModel;
+import unwanted_mc.gui.model.CategoryModel;
+import unwanted_mc.gui.model.MovieModel;
 
 
 /**
@@ -66,8 +66,8 @@ public class PrimarySceneController implements Initializable {
     private Button bn_play;
     
     private Movie movie;
-    private movieModel movieModel;
-    
+    private MovieModel movieModel;
+    private CategoryModel categoryModel;
     
     
     
@@ -76,16 +76,17 @@ public class PrimarySceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         settingTableView();
+        categoryModel = new CategoryModel();
     }    
     private void settingTableView() {
-        movieModel = new movieModel();
+        movieModel = new MovieModel();
         
 
         //  allMovie table view
         col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         col_category.setCellValueFactory(new PropertyValueFactory<>("catString"));
         col_rating.setCellValueFactory(new PropertyValueFactory<>("rating"));
-        col_lastview.setCellValueFactory(new PropertyValueFactory<>("lastview"));
+        col_lastview.setCellValueFactory(new PropertyValueFactory<>("FPL"));
         
         tbv_allMovie.setItems(movieModel.getAllMovies());
         
@@ -98,7 +99,8 @@ public class PrimarySceneController implements Initializable {
         Parent root1;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/unwanted_mc/gui/view/addScene.fxml"));
         root1 = (Parent) fxmlLoader.load();
-        fxmlLoader.<AddSceneController>getController().setContr(this);
+        
+        fxmlLoader.<AddSceneController>getController().setMovieModel(movieModel);
 
         Stage addStage = new Stage();
         Scene addScene = new Scene(root1);
@@ -126,7 +128,7 @@ public class PrimarySceneController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/unwanted_mc/gui/view/addScene.fxml"));
         root = (Parent) fxmlLoader.load();
         AddSceneController controller = (AddSceneController) fxmlLoader.getController();
-        controller.setContr(this);
+        
         controller.editMode(selectedMovie); //set mode to edit movie.
         Stage addStage = new Stage();
         Scene addScene = new Scene(root);

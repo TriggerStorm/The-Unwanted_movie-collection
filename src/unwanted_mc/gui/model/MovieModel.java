@@ -12,26 +12,29 @@ import unwanted_mc.be.Movie;
 import unwanted_mc.bll.BllManager;
 
 
+
 /**
  * @author Niclas, Martin, Michael and Alan
  */
 
 
-public class movieModel {
+public class MovieModel {
     
     private BllManager bllManager;
     private ObservableList<Movie> movieList;
+   
     
-    
-    public movieModel() {
+    public MovieModel() {
         bllManager = new BllManager();
         getAllMovies();
+        
+        
     }
     
     
     public ObservableList<Movie> getAllMovies() {
         List<Movie> allMovies = bllManager.fetchAllMovies();
-       
+        System.out.println("mmfal");
         movieList = FXCollections.observableArrayList(allMovies);
         return movieList;
     }

@@ -23,7 +23,7 @@
          </font>
       </Label>
       <TextField fx:id="txtField_rating" layoutX="158.0" layoutY="122.0" prefHeight="25.0" prefWidth="260.0" />
-      <Label layoutX="84.0" layoutY="161.0" prefHeight="20.0" prefWidth="50.0" text="Genre:" textFill="WHITE">
+      <Label layoutX="70.0" layoutY="161.0" prefHeight="20.0" prefWidth="65.0" text="Category:" textFill="WHITE">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
@@ -71,7 +71,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btn_deleteGenre" layoutX="305.0" layoutY="164.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handle_deleteGenre" prefHeight="20.0" prefWidth="20.0" textFill="WHITE">
+      <Button fx:id="btn_deleteCategory" layoutX="305.0" layoutY="164.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handle_deleteCategory" prefHeight="20.0" prefWidth="20.0" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -90,11 +90,13 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="bn_edit" layoutX="330.0" layoutY="164.0" mnemonicParsing="false" onAction="#btn_editGenre" prefHeight="21.0" prefWidth="21.0" />
-      <ImageView fitHeight="21.0" fitWidth="23.0" layoutX="330.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/icons8-edit-50.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="bn_edit" layoutX="325.0" layoutY="159.0" mnemonicParsing="false" onAction="#btn_editCategory" prefHeight="21.0" prefWidth="21.0">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-edit-50.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
 </AnchorPane>

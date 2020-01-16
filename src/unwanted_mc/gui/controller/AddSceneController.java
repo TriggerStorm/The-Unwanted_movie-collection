@@ -23,8 +23,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
-import unwanted_mc.gui.model.categoryModel;
-import unwanted_mc.gui.model.movieModel;
+import unwanted_mc.dal.MovieDBDAO;
+import unwanted_mc.gui.model.CategoryModel;
+import unwanted_mc.gui.model.MovieModel;
 
 
 /**
@@ -49,8 +50,6 @@ public class AddSceneController implements Initializable {
     @FXML
     private Button btn_createVisible;
     @FXML
-    private Button btn_deleteGenre;
-    @FXML
     private TextField txt_createGenre;
     @FXML
     private Button btn_createGenre;
@@ -62,20 +61,29 @@ public class AddSceneController implements Initializable {
     private boolean edit;
     private boolean editCat;
     private Movie movieToEdit;
-    private PrimarySceneController pSCon;
-    private movieModel movieModel;
-    private categoryModel categoryModel;
+    
+    private MovieModel movieModel;
+    private CategoryModel categoryModel;
     private Category CategoryToEdit;
+    private MovieDBDAO MovieDBDAO;
     
     @FXML
     private TextField txtField_name;
+    @FXML
+    private Button btn_deleteCategory;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        MovieDBDAO = new MovieDBDAO();
     }    
+
+    public void setMovieModel(MovieModel movieModel) {
+        this.movieModel = movieModel;
+    }
+    
     
     
     /**
@@ -83,16 +91,11 @@ public class AddSceneController implements Initializable {
      *
      * @param pSCon PrimaryController.
      */
-    public void setContr(PrimarySceneController pSCon) {
-        this.pSCon = pSCon;
-    }
     
     /**
      * updates all movie the tbv in the PrimaryScene 
      */
-    private void updateAllMovie() {
-    pSCon.refreshAllMovie();
-    }
+    
 
     @FXML
     private void handle_openFileChooser(ActionEvent event) throws MalformedURLException {
@@ -131,18 +134,20 @@ public class AddSceneController implements Initializable {
 
            movieModel.createMovie(txtField_name.getText().trim(),
            movieModel.ratingStringToInt(txtField_rating.getText().trim()),
-           choiceBox_genre.getSelectionModel().getSelectedItem(),
-           txtField_filePath.getText());
-
+           txtField_filePath.getText(),
+           choiceBox_genre.getSelectionModel().getSelectedItem()); // need to be last view.
+        
+            System.out.println("12");
         } else {
            movieModel.editMovie(
                     txtField_name.getText().trim(),
                     movieModel.ratingStringToInt(txtField_rating.getText().trim()),
-                    choiceBox_genre.getSelectionModel().getSelectedItem(),
-                    txtField_filePath.getText());
+                    txtField_filePath.getText(),
+                    choiceBox_genre.getSelectionModel().getSelectedItem());
+                    
         }
-
-        updateAllMovie();
+        System.out.println("save done?");
+        
 
         Stage stage;
         stage = (Stage) btn_confirm.getScene().getWindow();
@@ -154,9 +159,8 @@ public class AddSceneController implements Initializable {
         txt_createGenre.setVisible(true);
         btn_createGenre.setVisible(true);
     }
-
     @FXML
-    private void handle_deleteGenre(ActionEvent event) {
+    private void handle_deleteCategory(ActionEvent event) {
         String name = choiceBox_genre.getSelectionModel().getSelectedItem();
         categoryModel.deleteCategory(name);
         choiceBox_genre.getItems().remove(name);
@@ -166,9 +170,10 @@ public class AddSceneController implements Initializable {
     private void handle_createGenre(ActionEvent event) {
         String name = txt_createGenre.getText().trim();
         categoryModel.createCategory(name);
-        choiceBox_genre.getItems().add(name);
+        //choiceBox_genre.getItems().add(name);
         txt_createGenre.setVisible(false); //makes the button invisible.
         btn_createGenre.setVisible(false); //makes the button invisible.
+        System.out.println("gui");
     }
     
     public void editMode(Movie selectedMovie) {
@@ -188,10 +193,8 @@ public class AddSceneController implements Initializable {
     
     choiceBox_genre.setValue(CategoryToEdit.getName());
     }
+
     @FXML
-    private void btn_editGenre(ActionEvent event) {
-        
-        
-        
+    private void btn_editCategory(ActionEvent event) {
     }
 }

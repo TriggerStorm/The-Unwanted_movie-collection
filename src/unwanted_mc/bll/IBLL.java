@@ -34,9 +34,9 @@ public interface IBLL {
     CatMovie removeCatMovieFromDB(int id);
     List<CatMovie> fetchAllCatMovies();
 
-    Category addCategoryToDB(String name);
+    void addCategoryToDB(String name);
     Category removeCategoryFromDB(String name);
-    List<Category> fetchAllCatagories();
+    List<Category> fetchAllCategories();
     Category editCategory(String name);
     Category getCategory(List<Category> allCategories, int id);
  

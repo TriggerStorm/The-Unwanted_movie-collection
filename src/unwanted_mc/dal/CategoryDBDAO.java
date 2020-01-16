@@ -29,8 +29,11 @@ import unwanted_mc.be.Movie;
 public class CategoryDBDAO {
     
     private Category category;
-     
-    DBConnection dbc = new DBConnection();
+    private DBConnection dbc;
+
+    public CategoryDBDAO(){
+       dbc = new DBConnection(); 
+    }
    
     
     
@@ -52,19 +55,21 @@ public class CategoryDBDAO {
     
     
      
-    public Category addCategoryToDB(String name) {
+    public void addCategoryToDB(String name) {
    try ( Connection con = dbc.getConnection()) {
-            String sql = "INSERT INTO Category values (?)";
+            String sql = "INSERT INTO category values (?)";
             PreparedStatement p = con.prepareStatement(sql);
+            //PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             p.setString(1, name);
             p.executeUpdate();
+            System.out.println("add dall");
 
         } catch (SQLServerException ex) {
         Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
     } catch (SQLException ex) {
         Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        
     }
     
      public Category removeCategoryFromDB(String name){
@@ -83,7 +88,7 @@ public class CategoryDBDAO {
     }
     
      
-      public List<Category> fetchAllCatagories() throws SQLException {
+      public List<Category> fetchAllCategories() throws SQLException {
         List<Category> allCategories = new ArrayList<>();
 
         try ( Connection con = dbc.getConnection()) {
@@ -94,6 +99,7 @@ public class CategoryDBDAO {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 allCategories.add(new Category(id, name));
+                System.out.println("fac");
             }
         } catch (SQLServerException ex) {
             Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);

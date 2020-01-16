@@ -9,11 +9,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="744.0" styleClass="greyBG" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unwanted_mc.gui.controller.PrimarySceneController">
+<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="744.0" styleClass="greyBG" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unwanted_mc.gui.controller.PrimarySceneController">
     <children>
         <Button fx:id="bn_editMovie" layoutX="372.0" layoutY="23.0" onAction="#handle_EditSong" style="-fx-background-color: WHITE;" text="Edit Selectet Movie" />
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <TableView fx:id="tbv_allMovie" layoutX="27.0" layoutY="64.0" onMouseClicked="#handle_getMovie" prefHeight="366.0" prefWidth="698.0" stylesheets="@../../../../../RandomCode/MyTunesC/src/mytunes/gui/css/style.css" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="64.0">
+      <TableView fx:id="tbv_allMovie" layoutX="27.0" layoutY="64.0" onMouseClicked="#handle_getMovie" prefHeight="366.0" prefWidth="698.0" stylesheets="@../../../../../NetBeansProjects\The Unwanted_movie collection\The-Unwanted_movie-collection\src\unwanted_mc\gui.css" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="64.0">
         <columns>
           <TableColumn fx:id="col_name" prefWidth="197.60003662109375" text="Name" />
           <TableColumn fx:id="col_category" prefWidth="107.199951171875" text="Category" />

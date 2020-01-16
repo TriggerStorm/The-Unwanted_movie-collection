@@ -48,26 +48,28 @@ public class MovieDBDAO {
     }
     
     
-     public Movie addMovieToDB(String name, double rating, String filelink, String lastview) {
-        String sql = "INSERT INTO movie VALUES (?,?,?,?)";
+     public Movie addMovieToDB(String name, int rating, String filelink, String lastview) { 
+        String sql = "INSERT INTO movies(name, filelink, rating, lastview) VALUES (?,?,?,?)";
+        Movie m = new Movie(name, rating, filelink, lastview);
         try (Connection con = dbc.getConnection()) {
             PreparedStatement stmt = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, movie.getName());
-            stmt.setDouble(2, movie.getRating());
-            stmt.setString(3, movie.getFileLink());
-            stmt.setString(4, movie.getLastView());
+            stmt.setString(1, name);
+            stmt.setString(2, filelink);
+            stmt.setInt(3, rating);
+            stmt.setString(4, lastview);
             int affectedRows = stmt.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException("Creating user failed, no rows affected.");
+                throw new SQLException("Creating movie failed, no rows affected.");
             }
 
             try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    movie.setId((int) generatedKeys.getLong(1));
+                    m.setId((int) generatedKeys.getLong(1));
                 } else {
-                    throw new SQLException("Creating user failed, no ID obtained.");
-                }
+                    throw new SQLException("Creating movie failed, no ID obtained.");
+                } 
+                return m;
             }
         } catch (SQLServerException ex) {
             Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -102,10 +104,10 @@ public class MovieDBDAO {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 int rating = rs.getInt("rating");
-                String filelink = rs.getString("filelink");
-                String lastview = rs.getString("lastview");
-                String catString = catMovieDBDao.getAllCategoriesOfAMovie(id);
-                allMovies.add(new Movie(id, name, rating, filelink, lastview, catString));
+                String filelink = rs.getString("filelink");    
+                String FPL = rs.getString("lastview");                             //rs.getString("lastview");
+                String catString = ("mokdata");                           //catMovieDBDao.getAllCategoriesOfAMovie(id);
+                allMovies.add(new Movie(id, name, rating, filelink, FPL, catString));
                 
             }
         } catch (SQLServerException ex) {
@@ -134,7 +136,7 @@ public class MovieDBDAO {
             movie.setName(name);
             movie.setRating(rating);
             movie.setFileLink(filelink);
-            movie.setLastView(lastview);
+            movie.setFPL(lastview); 
             return movie;
         } catch (SQLServerException ex) {
             Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -151,7 +153,7 @@ public class MovieDBDAO {
         List<Movie> moviesToDelete = new ArrayList<>();
         allMovies = fetchAllMovies();
         for(Movie movie : allMovies) {
-            String lastViewedDate = movie.getLastView();
+            String lastViewedDate = movie.getFPL();
             int movieId = movie.getId();
             boolean overTwoYears = testForLastView(movieId);
             if ((movie.getRating() < 6) && (overTwoYears)) {
@@ -175,7 +177,7 @@ public class MovieDBDAO {
             //Execute SQL query.
             pstmt.executeUpdate();
            
-            movie.setLastView(dateNow);
+            movie.setFPL(dateNow);
         } catch (SQLServerException ex) {
             Logger.getLogger(MovieDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -189,7 +191,7 @@ public class MovieDBDAO {
         List<Movie> allMovies = fetchAllMovies();
         Movie movieToTest = getMovie(allMovies, id);
         LocalDate dateNow = LocalDate.now();
-        String lastViewed = movieToTest.getLastView();
+        String lastViewed = movieToTest.getFPL();
         dateconverter.stringToLocalDate(lastViewed);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
         LocalDate lastViewedDate = LocalDate.parse(lastViewed, formatter);

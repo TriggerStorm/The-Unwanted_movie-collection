@@ -16,7 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import unwanted_mc.be.Movie;
-import unwanted_mc.gui.model.movieModel;
+import unwanted_mc.gui.model.MovieModel;
 
 
 /**
@@ -68,7 +68,7 @@ public class DeleteSceneController implements Initializable {
     @FXML
     private void handle_deleteMovie(MouseEvent event) {
          //Deletes the selected song from the database.
-       // movieModel.deleteMovie(selectedMovie); // need to set move to String in model NOT DONE!
+       // MovieModel.deleteMovie(selectedMovie); // need to set move to String in model NOT DONE!
         updateAllMovie();// updates the tbv with movies.
         Stage stage;
         stage = (Stage) bn_delete.getScene().getWindow();

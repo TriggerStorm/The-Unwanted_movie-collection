@@ -17,13 +17,13 @@ import unwanted_mc.bll.BllManager;
  */
 
 
-public class categoryModel {
+public class CategoryModel {
     
     private BllManager bllManager;
     private ObservableList<Category> categoryList;
 
     
-    public categoryModel() {
+    public CategoryModel() {
         bllManager = new BllManager();
         getAllCategories();
     }
@@ -35,16 +35,17 @@ public class categoryModel {
 
     
     public ObservableList<Category> getAllCategories() {
-        List<Category> allCategories = bllManager.fetchAllCatagories();
+        List<Category> allCategories = bllManager.fetchAllCategories();
        
         categoryList = FXCollections.observableArrayList(allCategories);
+        System.out.println("all cat model");
         return categoryList;
     }
     
     
     public void createCategory(String name) {
-        Category category = bllManager.addCategoryToDB(name);
-        categoryList.add(category);
+        bllManager.addCategoryToDB(name);
+        
     }
         
         
