@@ -67,6 +67,7 @@ public class AddSceneController implements Initializable {
     private Category CategoryToEdit;
     
     
+    
     @FXML
     private TextField txtField_name;
     @FXML
@@ -76,7 +77,7 @@ public class AddSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // to do
         
     }    
 
@@ -85,16 +86,8 @@ public class AddSceneController implements Initializable {
     }
     
     
-    
-    /**
-     * Sets the controller for the PrimaryScene.
-     *
-     * @param pSCon PrimaryController.
-     */
-    
-    /**
-     * updates all movie the tbv in the PrimaryScene 
-     */
+   
+   
     
 
     @FXML
@@ -132,14 +125,14 @@ public class AddSceneController implements Initializable {
     private void handle_saveMovie(ActionEvent event) throws InterruptedException, IOException {
         if (!edit) {
 
-           movieModel.createMovie(txtField_name.getText().trim(),
+            movieModel.createMovie(txtField_name.getText().trim(),
                 movieModel.ratingStringToInt(txtField_rating.getText().trim()),
                 txtField_filePath.getText(),
                 choiceBox_genre.getSelectionModel().getSelectedItem());
         
             System.out.println("12");
         } else {
-           movieModel.editMovie(movieToEdit,
+            movieModel.editMovie(movieToEdit,
                     txtField_name.getText().trim(),
                     movieModel.ratingStringToInt(txtField_rating.getText().trim()),
                     txtField_filePath.getText(),
@@ -149,7 +142,7 @@ public class AddSceneController implements Initializable {
         }
         System.out.println("save done?");
         
-
+        
         Stage stage;
         stage = (Stage) btn_confirm.getScene().getWindow();
         stage.close();

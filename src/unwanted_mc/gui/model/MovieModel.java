@@ -47,8 +47,9 @@ public class MovieModel {
         
         
     public void editMovie(Movie movie, String name, int rating, String filelink, String lastview) {
-        bllManager.editMovie(movie, name, rating, filelink, lastview);
-        movieList.add(movie); 
+        bllManager.editMovie(movie, name, rating, filelink, lastview); 
+        
+        
     }
         
     public void deleteMovie(Movie movie) {

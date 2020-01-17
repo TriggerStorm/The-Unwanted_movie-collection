@@ -133,7 +133,7 @@ public class PrimarySceneController implements Initializable {
         controller.editMode(selectedMovie); //set mode to edit movie.
         Stage addStage = new Stage();
         Scene addScene = new Scene(root);
-
+        
        
         addStage.setScene(addScene);
         addStage.show();
