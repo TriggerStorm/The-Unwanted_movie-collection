@@ -27,14 +27,19 @@ public class DalManager implements IDAL {
     private CategoryDBDAO categoryDBDao;
     private CatMovieDBDAO catmovieDBDao;
 
-    
+    /**
+     * This manager is conneting the bllManager and the DAO classes in the Dall layer.
+     */
     public DalManager() {
          movieDBDao = new MovieDBDAO();
          categoryDBDao = new CategoryDBDAO();
          catmovieDBDao = new CatMovieDBDAO();
     }
     
-    
+    //__________________________________________________________________________                       
+    //      
+    //      Movie
+    //__________________________________________________________________________
     
     @Override
     public Movie addMovieToDB(String name, int rating, String filelink, String lastview) {
@@ -103,7 +108,10 @@ public class DalManager implements IDAL {
 
     
     
-    
+    //__________________________________________________________________________                       
+    //      
+    //      Category
+    //__________________________________________________________________________
     
     
     @Override
@@ -127,11 +135,6 @@ public class DalManager implements IDAL {
         }
         return null;
     }
-
-    
-    
-    
-    
 
     
     @Override

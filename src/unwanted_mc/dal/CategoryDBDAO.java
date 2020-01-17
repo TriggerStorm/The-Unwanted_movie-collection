@@ -30,12 +30,20 @@ public class CategoryDBDAO {
     
     private Category category;
     private DBConnection dbc;
-
+/**
+ * get the db connection
+ */
     public CategoryDBDAO(){
        dbc = new DBConnection(); 
     }
    
-    
+    /**
+     * get a list of categorys
+     * @param allCategories
+     * @param id
+     * @return
+     * @throws SQLException 
+     */
     
     public Category getCategory(List<Category> allCategories, int id) throws SQLException {
       int allCategoriesSize = allCategories.size();
@@ -53,7 +61,10 @@ public class CategoryDBDAO {
     }
     
     
-    
+    /**
+     * add a value to the table category in the DB.
+     * @param name 
+     */
      
     public void addCategoryToDB(String name) {
    try ( Connection con = dbc.getConnection()) {
@@ -71,6 +82,11 @@ public class CategoryDBDAO {
         }
         
     }
+    /**
+     * removes a category where id match in DB.
+     * @param name
+     * @return 
+     */
     
      public Category removeCategoryFromDB(String name){
         try ( Connection con = dbc.getConnection()) {
@@ -87,7 +103,11 @@ public class CategoryDBDAO {
         return null;
     }
     
-     
+     /**
+      * gets all values form the table category in DB. and all to a list of allCategories
+      * @return
+      * @throws SQLException 
+      */
       public List<Category> fetchAllCategories() throws SQLException {
         List<Category> allCategories = new ArrayList<>();
 
@@ -99,7 +119,7 @@ public class CategoryDBDAO {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 allCategories.add(new Category(id, name));
-                System.out.println("fac");
+                
             }
         } catch (SQLServerException ex) {
             Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -109,7 +129,11 @@ public class CategoryDBDAO {
         return allCategories;
     }
       
-      
+    /**
+     * updates a value in the table Category in db. 
+     * @param name
+     * @return 
+     */
     public Category editCategory(String name){
     try ( Connection con = dbc.getConnection()) {
             String sql = "UPDATE Category set name=?";

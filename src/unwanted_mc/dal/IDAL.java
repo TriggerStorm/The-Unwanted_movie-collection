@@ -15,7 +15,10 @@ import unwanted_mc.be.Movie;
  * @author Niclas, Martin, Michael and Alan
  */
 
-
+/**
+ * this interface is inplementet in te dallManager.
+ * 
+ */
 public interface IDAL {
     
      

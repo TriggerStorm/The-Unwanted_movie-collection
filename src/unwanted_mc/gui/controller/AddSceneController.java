@@ -88,7 +88,11 @@ public class AddSceneController implements Initializable {
     
    
    
-    
+    /**
+     * adds the path of the selected movie in txtField filePath.
+     * @param event
+     * @throws MalformedURLException 
+     */
 
     @FXML
     private void handle_openFileChooser(ActionEvent event) throws MalformedURLException {
@@ -119,7 +123,7 @@ public class AddSceneController implements Initializable {
     }
 
     /**
-     * Checks the selected mode (new or edit) and saves the song.
+     * Checks the selected mode (new or edit) and saves the Movie.
      */
     @FXML
     private void handle_saveMovie(ActionEvent event) throws InterruptedException, IOException {
@@ -130,7 +134,7 @@ public class AddSceneController implements Initializable {
                 txtField_filePath.getText(),
                 choiceBox_genre.getSelectionModel().getSelectedItem());
         
-            System.out.println("12");
+            
         } else {
             movieModel.editMovie(movieToEdit,
                     txtField_name.getText().trim(),
@@ -140,26 +144,37 @@ public class AddSceneController implements Initializable {
                     
                     
         }
-        System.out.println("save done?");
+        
         
         
         Stage stage;
         stage = (Stage) btn_confirm.getScene().getWindow();
         stage.close();
     }
-    
+    /**
+     * makes txt and btn createGenre visible.
+     * @param event 
+     */
     @FXML
     private void handle_createVisible(ActionEvent event) {
         txt_createGenre.setVisible(true);
         btn_createGenre.setVisible(true);
     }
+    /**
+     * get the item in choiceBox and delete it.
+     * @param event 
+     */
     @FXML
     private void handle_deleteCategory(ActionEvent event) {
         String name = choiceBox_genre.getSelectionModel().getSelectedItem();
         categoryModel.deleteCategory(name);
         choiceBox_genre.getItems().remove(name);
     }
-
+    /**
+     * get the txt from txt createGenre and create category and make createGenre
+     * btn and txt invisible.
+     * @param event 
+     */
     @FXML
     private void handle_createGenre(ActionEvent event) {
         String name = txt_createGenre.getText().trim();
@@ -167,9 +182,12 @@ public class AddSceneController implements Initializable {
         //choiceBox_genre.getItems().add(name);
         txt_createGenre.setVisible(false); //makes the button invisible.
         btn_createGenre.setVisible(false); //makes the button invisible.
-        System.out.println("gui");
+      
     }
-    
+    /**
+     * edit the movie that is selected.
+     * @param selectedMovie 
+     */
     public void editMode(Movie selectedMovie) {
         edit = true;
         movieToEdit = selectedMovie;
@@ -181,14 +199,20 @@ public class AddSceneController implements Initializable {
         choiceBox_genre.setValue(movieToEdit.getCatString()); //need to get fixt NOT DONE!!! dont have cat in Movie be.
         movieToEdit.getId();
     }
-
+    /**
+     * edit the selected category.
+     * @param selectedCat 
+     */
     public void editModeCat(Category selectedCat){
     editCat = true;
     CategoryToEdit = selectedCat;
     
     choiceBox_genre.setValue(CategoryToEdit.getName());
     }
-
+    /**
+     * edit the selected category NOT inplemented.
+     * @param event 
+     */
     @FXML
     private void btn_editCategory(ActionEvent event) {
     }

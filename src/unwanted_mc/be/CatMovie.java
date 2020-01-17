@@ -5,9 +5,8 @@
  */
 package unwanted_mc.be;
 
-/**
- *
- * @author admin
+/*
+ * @author Niclas, Martin, Michael and Alan
  */
 public class CatMovie {
 

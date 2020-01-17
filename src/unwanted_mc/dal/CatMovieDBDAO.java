@@ -26,18 +26,25 @@ import unwanted_mc.dal.CategoryDBDAO;
  * @author Niclas, Martin, Michael and Alan
  */
 
-
+/*
+    gets a conection to te datebase from the DBConnection class
+    and instance te catMovie, MovieDBDAO and CateGoryDBDAO.
+*/
 public class CatMovieDBDAO {
  
     DBConnection dbc = new DBConnection();
     private CatMovie catmovie;
     private MovieDBDAO movieDBDao;
-        private CategoryDBDAO categoryDBDao;
+    private CategoryDBDAO categoryDBDao;
 
     public CatMovie getCatMovie(int id) {
         return catmovie;
     }
-    
+     /**
+      * adds valuse in the the table catmovies in the DB
+     @param categoryId
+     @param movieId
+     */
     
     public CatMovie addCatMovieToDB(int categoryId, int movieId) {
         String sql = "INSERT INTO catmovie VALUES (?,?)";
@@ -67,6 +74,7 @@ public class CatMovieDBDAO {
     }
      
      
+    
     public CatMovie removeCatMovieFromDB(int id) {
         String sql = "DELETE FROM catmovie WHERE ID=?";
         try (Connection con = dbc.getConnection()) {
@@ -78,7 +86,11 @@ public class CatMovieDBDAO {
         }
         return null;
     }
-
+    /**
+     * gets all the values of the table catmovie in the db and add to a list allCatMovies
+     * @return
+     * @throws SQLException 
+     */
       
     public List<CatMovie> fetchAllCatMovies() throws SQLException {
         List<CatMovie> allCatMovies = new ArrayList<>();
@@ -100,6 +112,12 @@ public class CatMovieDBDAO {
         return allCatMovies;
     }
       
+    /**
+     * gets all movies in a category
+     * @param categoryId
+     * @return
+     * @throws SQLException 
+     */
     
     public List<Movie> getAllMoviesInACategory(int categoryId) throws SQLException {
         List<CatMovie> allCatMovies = fetchAllCatMovies();
@@ -115,6 +133,12 @@ public class CatMovieDBDAO {
         return allMoviesInACategory;
     }
         
+    /**
+     * gets all categories of a movie
+     * @param movieId
+     * @return
+     * @throws SQLException 
+     */
     
     public String getAllCategoriesOfAMovie(int movieId) throws SQLException {
         String catString = "";

@@ -27,7 +27,10 @@ import unwanted_mc.bll.DateConverter;
  * @author Niclas, Martin, Michael and Alan
  */
 
-
+/**
+ * get the connection to the DB
+ * 
+ */
 public class MovieDBDAO {
     
     DBConnection dbc = new DBConnection();
@@ -36,7 +39,13 @@ public class MovieDBDAO {
     private CatMovieDBDAO catMovieDBDao = new CatMovieDBDAO();
 
    
-    
+    /**
+     * get all the movies
+     * @param allMovies
+     * @param id
+     * @return
+     * @throws SQLException 
+     */
     
     public Movie getMovie(List<Movie> allMovies, int id) throws SQLException {
          for (int i = 0; i < allMovies.size(); i++) {
@@ -49,7 +58,14 @@ public class MovieDBDAO {
         return null;
     }
     
-    
+    /**
+     * add values in the the table movies in the DB. and add them to a list.
+     * @param name
+     * @param rating
+     * @param filelink
+     * @param lastview
+     * @return 
+     */
      public Movie addMovieToDB(String name, int rating, String filelink, String lastview) { 
         String sql = "INSERT INTO movies(name, filelink, rating, lastview) VALUES (?,?,?,?)";
         Movie m = new Movie(name, rating, filelink, lastview);
@@ -81,7 +97,10 @@ public class MovieDBDAO {
         return null;
     }
      
-     
+     /**
+      * remove value form the table movies where id match in the DB.
+      * @param movie 
+      */
       public void removeMovieFromDB(Movie movie) {
         String stat = "DELETE FROM movies WHERE id =?";
         try (Connection con = dbc.getConnection()) {
@@ -93,7 +112,11 @@ public class MovieDBDAO {
         }
     }
 
-      
+      /**
+       * gets the vallue of the table moives in the db and add to a list allMovies.
+       * @return
+       * @throws SQLException 
+       */
       
     public List<Movie> fetchAllMovies() throws SQLException {
         List<Movie> allMovies = new ArrayList<>();
@@ -120,7 +143,15 @@ public class MovieDBDAO {
         return allMovies;
     }
       
-    
+    /**
+     * updates the values in the table movies in the DB.
+     * @param movie
+     * @param name
+     * @param rating
+     * @param filelink
+     * @param lastview
+     * @return 
+     */
     
     public Movie editMovie(Movie movie, String name, int rating, String filelink, String lastview) {
         try (//Get a connection to the database.
@@ -150,7 +181,12 @@ public class MovieDBDAO {
     }
 
     
-    
+    /**
+     * gets all movies and checks if the rating is below and extenden the date value.
+     * and returns a list of movies to delete
+     * @return
+     * @throws SQLException 
+     */
     public List<Movie> findMoviesToRemove() throws SQLException {  // Creates a list of movies that have a rating below 6, and haven't been played in two years.
         List<Movie> allMovies = new ArrayList<>();
         List<Movie> moviesToDelete = new ArrayList<>();
@@ -166,7 +202,11 @@ public class MovieDBDAO {
         return moviesToDelete;
     }
     
-    
+    /**
+     * updates the value lastview in the DB where id match.
+     * @param id
+     * @param dateNow 
+     */
     public void updateLastView(int id, String dateNow) {
         try (//Get a connection to the database.
             Connection con = dbc.getConnection()) {
@@ -188,7 +228,12 @@ public class MovieDBDAO {
         }
     }
     
-    
+    /**
+     * test if the value of last viewd is extenden date and return a list overTwoYears.
+     * @param id
+     * @return
+     * @throws SQLException 
+     */
     public boolean testForLastView(int id) throws SQLException {
         boolean overTwoYears = false;
         List<Movie> allMovies = fetchAllMovies();

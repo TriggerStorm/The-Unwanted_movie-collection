@@ -15,11 +15,15 @@ import unwanted_mc.be.Movie;
 
 /*
  * @author Niclas, Martin, Michael and Alan
+ * this interface is inplementet in the bll manager
  */
 
 
 public interface IBLL {
-    
+    //__________________________________________________________________________                       
+    //      
+    //      Movie
+    //__________________________________________________________________________
     
     Movie addMovieToDB(String name, int rating, String filelink, String lastview);
     void removeMovieFromDB(Movie movie);
@@ -29,7 +33,11 @@ public interface IBLL {
     List<Movie> findMoviesToRemove();
     void updateLastView(int id, String dateNow);
     boolean testForLastView(int id);
- 
+    
+    //__________________________________________________________________________                       
+    //      
+    //      Category  
+    //__________________________________________________________________________
     CatMovie addCatMovieToDB(int movieID, int categoryID);
     CatMovie removeCatMovieFromDB(int id);
     List<CatMovie> fetchAllCatMovies();

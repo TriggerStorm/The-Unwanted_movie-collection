@@ -14,8 +14,9 @@ import unwanted_mc.dal.DalManager;
 import unwanted_mc.dal.IDAL;
 
 
-/*
- * @author Niclas, Martin, Michael and Alan
+/** This class manages the connection between GUI and DAL.
+*
+ *  @author Niclas, Martin, Michael and Alan
  */
 
 
@@ -25,7 +26,9 @@ public class BllManager implements IBLL {
     private DateConverter timeconverter;
     private RatingConverter ratingconverter;
     private SearchFilter searcher;
-
+/*
+    this make a connection to the Dall, DateConverter, RatingConverter and SearchFilter
+    */
     
     public BllManager() {
   
@@ -38,7 +41,10 @@ public class BllManager implements IBLL {
     
  
     
-    
+    //__________________________________________________________________________                       
+    //      
+    //      Movie
+    //__________________________________________________________________________
     
   
     @Override
@@ -77,6 +83,8 @@ public class BllManager implements IBLL {
     }
 
     
+    
+    
     public void updateLastView(int id, String dateNow) {
         dalManager.updateLastView(id, dateNow);
     }
@@ -88,7 +96,10 @@ public class BllManager implements IBLL {
 
     
     
-   
+   //__________________________________________________________________________                       
+    //      
+    //      Category 
+    //__________________________________________________________________________
     
     
     @Override
@@ -144,9 +155,12 @@ public class BllManager implements IBLL {
     
     
     
+    //__________________________________________________________________________                       
+    //      
+    //      DateConvter 
+    //__________________________________________________________________________
     
-    
-// From DateConverter        
+        
     @Override
     public String dateNowToString() {
         return dateNowToString();
@@ -160,9 +174,12 @@ public class BllManager implements IBLL {
     
     
      
+    //__________________________________________________________________________                       
+    //      
+    //      RatingConverter
+    //__________________________________________________________________________
     
-    
-// From RatingConverter   
+  
       @Override
     public String ratingIntToString(int ratingInt) {
         return ratingconverter.RatingIntToString(ratingInt);
@@ -186,9 +203,12 @@ public class BllManager implements IBLL {
     
     
     
+    //__________________________________________________________________________                       
+    //      
+    //      SearchFilter
+    //__________________________________________________________________________
     
-    
-// From SearchFilter
+
     @Override
     public List<Movie> searchByName(List<Movie> allMovies, String query) {
         return searchByName(allMovies, query);

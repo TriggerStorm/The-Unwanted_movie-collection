@@ -54,21 +54,33 @@ public class DeleteSceneController implements Initializable {
     public void setContr(PrimarySceneController pSCon) {
         this.pSCon = pSCon;
     }
-    
+    /**
+     * updates the tableview allMovies
+     */
     private void updateAllMovie() {
     pSCon.refreshAllMovie();
     }
+    /**
+     * sets the movie for delesion.
+     * @param movie 
+     */
     public void setDeleteMovieLabel(Movie movie) {
         selectedMovie = movie;
         lbl_title.setText(selectedMovie.getName());
     }
-   
+   /**
+    * close the scene
+    * @param event 
+    */
     @FXML
     private void handle_closeScene(MouseEvent event) {
         Stage stage = (Stage) bn_cancel.getScene().getWindow();
         stage.close();
     }
-
+    /**
+     * delete the movie selected and uodate the movie TBV. and close the scene.
+     * @param event 
+     */
     @FXML
     private void handle_deleteMovie(MouseEvent event) {
          //Deletes the selected Movie from the database.
