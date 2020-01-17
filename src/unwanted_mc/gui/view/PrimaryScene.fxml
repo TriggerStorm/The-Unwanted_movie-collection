@@ -32,5 +32,6 @@
                </image>
             </ImageView>
          </graphic></Button>
+      <Button fx:id="bn_update" layoutX="144.0" layoutY="23.0" mnemonicParsing="false" onAction="#refreshAllMovie" style="-fx-background-color: white;" text="Update" />
     </children>
 </AnchorPane>

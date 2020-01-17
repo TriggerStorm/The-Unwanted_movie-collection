@@ -68,6 +68,8 @@ public class PrimarySceneController implements Initializable {
     private Movie movie;
     private MovieModel movieModel;
     private CategoryModel categoryModel;
+    @FXML
+    private Button bn_update;
     
     
     
@@ -159,6 +161,11 @@ public class PrimarySceneController implements Initializable {
         
     }
     
+    private void handle_refresh(){
+        refreshAllMovie();
+    }
+    
+    @FXML
     public void refreshAllMovie() {
         tbv_allMovie.getItems().clear();
         tbv_allMovie.setItems(movieModel.getAllMovies());
