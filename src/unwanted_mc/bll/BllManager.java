@@ -5,6 +5,7 @@
  */
 package unwanted_mc.bll;
 
+import java.time.LocalDate;
 import java.util.List;
 import unwanted_mc.be.CatMovie;
 import unwanted_mc.be.Category;
@@ -13,28 +14,38 @@ import unwanted_mc.dal.DalManager;
 import unwanted_mc.dal.IDAL;
 
 
-/*
- * @author Niclas, Martin, Michael and Alan
+/** This class manages the connection between GUI and DAL.
+*
+ *  @author Niclas, Martin, Michael and Alan
  */
 
 
 public class BllManager implements IBLL {
     
     private IDAL dalManager;
-    private SearchFilter searcher;
     private DateConverter timeconverter;
-    
-    
+    private RatingConverter ratingconverter;
+    private SearchFilter searcher;
+/*
+    this make a connection to the Dall, DateConverter, RatingConverter and SearchFilter
+    */
     
     public BllManager() {
   
-
         dalManager = new DalManager();
-        searcher = new SearchFilter();
         timeconverter = new DateConverter();
+        ratingconverter = new RatingConverter();
+        searcher = new SearchFilter();
+
     }
     
  
+    
+    //__________________________________________________________________________                       
+    //      
+    //      Movie
+    //__________________________________________________________________________
+    
   
     @Override
     public Movie addMovieToDB(String name, int rating, String filelink, String lastview) {
@@ -43,8 +54,8 @@ public class BllManager implements IBLL {
         
     
     @Override
-    public void removeMovieFromDB(int id) {
-        dalManager.removeMovieFromDB(id);
+    public void removeMovieFromDB(Movie movie) {
+        dalManager.removeMovieFromDB(movie);
     }
     
     
@@ -61,8 +72,8 @@ public class BllManager implements IBLL {
 
     
     @Override
-    public Movie editMovie(String name, int rating, String filelink, String lastview) {
-        return dalManager.editMovie(name, rating, filelink, lastview);
+    public Movie editMovie(Movie movie,String name, int rating, String filelink, String lastview) {
+        return dalManager.editMovie(movie, name, rating, filelink, lastview);
     }
 
     
@@ -71,6 +82,7 @@ public class BllManager implements IBLL {
         return dalManager.findMoviesToRemove();
     }
 
+    
     
     
     public void updateLastView(int id, String dateNow) {
@@ -84,7 +96,10 @@ public class BllManager implements IBLL {
 
     
     
-   
+   //__________________________________________________________________________                       
+    //      
+    //      Category 
+    //__________________________________________________________________________
     
     
     @Override
@@ -111,8 +126,8 @@ public class BllManager implements IBLL {
     
     
     @Override
-    public Category addCategoryToDB(String name) {
-        return dalManager.addCategoryToDB(name);
+    public void addCategoryToDB(String name) {
+        dalManager.addCategoryToDB(name);
     }
     
     
@@ -123,8 +138,8 @@ public class BllManager implements IBLL {
     
     
         @Override
-    public List<Category> fetchAllCatagories() {
-        return dalManager.fetchAllCatagories();
+        public List<Category> fetchAllCategories() {
+        return dalManager.fetchAllCategories();
     }
 
     
@@ -134,10 +149,83 @@ public class BllManager implements IBLL {
     }
 
     @Override
-    public Category getCategory(int id) {
-        return dalManager.getCategory(id);
+    public Category getCategory(List<Category> allCategories, int id) {
+        return dalManager.getCategory(allCategories,id);
     }
     
+    
+    
+    //__________________________________________________________________________                       
+    //      
+    //      DateConvter 
+    //__________________________________________________________________________
+    
+        
+    @Override
+    public String dateNowToString() {
+        return dateNowToString();
+    }
+    
+    
+    @Override
+    public LocalDate stringToLocalDate(String dateString) {
+        return stringToLocalDate(dateString);
+    }
+    
+    
+     
+    //__________________________________________________________________________                       
+    //      
+    //      RatingConverter
+    //__________________________________________________________________________
+    
+  
+      @Override
+    public String ratingIntToString(int ratingInt) {
+        return ratingconverter.RatingIntToString(ratingInt);
+    }
+
+    
+    @Override
+    public int ratingStringToInt(String ratingString) {
+        return ratingconverter.RatingStringToInt(ratingString);
+    }
+
+    
+    public double percentToDecimal(int percentRating) {
+        return ratingconverter.percentToDecimal(percentRating);
+    }
+   
+    
+    public int decimalToPercent(double decimalRating) {
+        return ratingconverter.decimalToPercent(decimalRating);
+    }
+    
+    
+    
+    //__________________________________________________________________________                       
+    //      
+    //      SearchFilter
+    //__________________________________________________________________________
+    
+
+    @Override
+    public List<Movie> searchByName(List<Movie> allMovies, String query) {
+        return searchByName(allMovies, query);
+    }
+
+    
+    @Override
+    public List<Movie> searchByRatingAbove(List<Movie> allMovies, String query) {
+        return searchByRatingAbove(allMovies, query);
+    }
+
+        
+    @Override
+    public List<Movie> searchByRatingBelow(List<Movie> allMovies, String query) {
+        return searchByRatingBelow(allMovies, query);
+    }
+
     
 }
     

@@ -17,48 +17,63 @@ import unwanted_mc.bll.BllManager;
  */
 
 
-public class categoryModel {
+public class CategoryModel {
     
     private BllManager bllManager;
     private ObservableList<Category> categoryList;
 
-    
-    public categoryModel() {
+    /**
+     * get a connection to the BllManager and call getAllCategories.
+     */
+    public CategoryModel() {
         bllManager = new BllManager();
         getAllCategories();
     }
         
-    
-    public void addCategoryToDB(String name) {
-        
-    }
+   
 
-    
+    /**
+     * gets a list of all categories and make a new observable list and add
+     * all the values. and retun the new list
+     * @return 
+     */
     public ObservableList<Category> getAllCategories() {
-        List<Category> allCategories = bllManager.fetchAllCatagories();
+        List<Category> allCategories = bllManager.fetchAllCategories();
        
         categoryList = FXCollections.observableArrayList(allCategories);
         return categoryList;
     }
     
-    
+    /**
+     * add a category to db
+     * @param name 
+     */
     public void createCategory(String name) {
-        Category category = bllManager.addCategoryToDB(name);
-        categoryList.add(category);
+        bllManager.addCategoryToDB(name);
+        
     }
         
-        
+     /**
+      * updates the value of a category.
+      * @param name 
+      */   
     public void editCategory(String name) {
         Category category = bllManager.editCategory(name);
         categoryList.add(category); 
     }
-        
+        /**
+         * delete selected categoty form db and remove from the category list.
+         * @param name 
+         */
     public void deleteCategory(String name) {
         Category category = bllManager.removeCategoryFromDB(name);
         categoryList.remove(category); 
     }       
         
-    
+    /**
+     * filter the category and retun remove category form list.
+     * @param name 
+     */
     public void filterCategory(String name) {  // NOT FINISHED
         Category category = bllManager.removeCategoryFromDB(name);
         categoryList.remove(category); 

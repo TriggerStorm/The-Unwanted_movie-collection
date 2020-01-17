@@ -16,13 +16,18 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import unwanted_mc.be.Movie;
-import unwanted_mc.gui.model.movieModel;
+import unwanted_mc.dal.MovieDBDAO;
+import unwanted_mc.gui.model.MovieModel;
+
 
 /**
  * FXML Controller class
  *
- * @author Bruger
+ * @author Niclas, Martin, Michael and Alan
  */
+
+
+
 public class DeleteSceneController implements Initializable {
 
     @FXML
@@ -35,36 +40,51 @@ public class DeleteSceneController implements Initializable {
     
     private PrimarySceneController pSCon;
     private Movie selectedMovie;
-    
+    private MovieModel movieModel;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        movieModel = new MovieModel();
     }    
+    public void setMovieModel(MovieModel movieModel) {
+        this.movieModel = movieModel;
+    }
     public void setContr(PrimarySceneController pSCon) {
         this.pSCon = pSCon;
     }
-    
+    /**
+     * updates the tableview allMovies
+     */
     private void updateAllMovie() {
     pSCon.refreshAllMovie();
     }
+    /**
+     * sets the movie for delesion.
+     * @param movie 
+     */
     public void setDeleteMovieLabel(Movie movie) {
         selectedMovie = movie;
         lbl_title.setText(selectedMovie.getName());
     }
-   
+   /**
+    * close the scene
+    * @param event 
+    */
     @FXML
     private void handle_closeScene(MouseEvent event) {
         Stage stage = (Stage) bn_cancel.getScene().getWindow();
         stage.close();
     }
-
+    /**
+     * delete the movie selected and uodate the movie TBV. and close the scene.
+     * @param event 
+     */
     @FXML
     private void handle_deleteMovie(MouseEvent event) {
-         //Deletes the selected song from the database.
-       // movieModel.deleteMovie(selectedMovie); // need to set move to String in model NOT DONE!
+         //Deletes the selected Movie from the database.
+        movieModel.deleteMovie(selectedMovie);
         updateAllMovie();// updates the tbv with movies.
         Stage stage;
         stage = (Stage) bn_delete.getScene().getWindow();

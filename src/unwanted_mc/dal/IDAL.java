@@ -15,15 +15,18 @@ import unwanted_mc.be.Movie;
  * @author Niclas, Martin, Michael and Alan
  */
 
-
+/**
+ * this interface is inplementet in te dallManager.
+ * 
+ */
 public interface IDAL {
     
      
     Movie addMovieToDB(String name, int rating, String filelink, String lastview);
-    void removeMovieFromDB(int id);
+    void removeMovieFromDB(Movie movie);
     Movie getMovie(List<Movie> allMovies, int id);
     List<Movie> fetchAllMovies();
-    Movie editMovie(String name, int rating, String filelink, String lastview);
+    Movie editMovie(Movie movie,String name, int rating, String filelink, String lastview);
     List<Movie> findMoviesToRemove();
     void updateLastView(int id, String dateNow);
     boolean testForLastView(int id);
@@ -32,11 +35,11 @@ public interface IDAL {
     CatMovie removeCatMovieFromDB(int id);
     List<CatMovie> fetchAllCatMovies();
 
-    Category addCategoryToDB(String name);
+    void addCategoryToDB(String name);
     Category removeCategoryFromDB(String name);
-    List<Category> fetchAllCatagories();
+    List<Category> fetchAllCategories();
     Category editCategory(String name);
-    Category getCategory(int id);
+    Category getCategory(List<Category> allCategories, int id);
    
     
 }

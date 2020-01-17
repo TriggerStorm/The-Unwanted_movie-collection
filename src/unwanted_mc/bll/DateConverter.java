@@ -16,7 +16,9 @@ import static java.time.temporal.TemporalQueries.localDate;
         
 public class DateConverter {
 
-    
+    /*
+    takes the date to day and Converte it to string format.
+    */
     public String dateNowToString() {
         LocalDate now = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
@@ -24,7 +26,9 @@ public class DateConverter {
         return dateNowString;
     } 
    
-    
+    /*
+    takes the date and convert it in to local date time
+    */
     public LocalDate stringToLocalDate(String dateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
         LocalDate dateNow = LocalDate.parse(dateString, formatter);

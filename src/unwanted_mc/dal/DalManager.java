@@ -27,14 +27,19 @@ public class DalManager implements IDAL {
     private CategoryDBDAO categoryDBDao;
     private CatMovieDBDAO catmovieDBDao;
 
-    
+    /**
+     * This manager is conneting the bllManager and the DAO classes in the Dall layer.
+     */
     public DalManager() {
          movieDBDao = new MovieDBDAO();
          categoryDBDao = new CategoryDBDAO();
          catmovieDBDao = new CatMovieDBDAO();
     }
     
-    
+    //__________________________________________________________________________                       
+    //      
+    //      Movie
+    //__________________________________________________________________________
     
     @Override
     public Movie addMovieToDB(String name, int rating, String filelink, String lastview) {
@@ -43,8 +48,8 @@ public class DalManager implements IDAL {
         
     
     @Override
-    public void removeMovieFromDB(int id) {
-        movieDBDao.removeMovieFromDB(id);
+    public void removeMovieFromDB(Movie movie) {
+        movieDBDao.removeMovieFromDB(movie);
     }
     
     
@@ -71,8 +76,8 @@ public class DalManager implements IDAL {
 
     
     @Override
-    public Movie editMovie(String name, int rating, String filelink, String lastview) {
-        return  movieDBDao.editMovie(name, rating, filelink, lastview);
+    public Movie editMovie(Movie movie,String name, int rating, String filelink, String lastview) {
+        return  movieDBDao.editMovie(movie, name, rating, filelink, lastview);
     }
 
     
@@ -103,7 +108,10 @@ public class DalManager implements IDAL {
 
     
     
-    
+    //__________________________________________________________________________                       
+    //      
+    //      Category
+    //__________________________________________________________________________
     
     
     @Override
@@ -129,14 +137,9 @@ public class DalManager implements IDAL {
     }
 
     
-    
-    
-    
-
-    
     @Override
-    public Category addCategoryToDB(String name) {
-        return categoryDBDao.addCategoryToDB(name);
+    public void addCategoryToDB(String name) {
+        categoryDBDao.addCategoryToDB(name);
     }
     
     
@@ -147,9 +150,9 @@ public class DalManager implements IDAL {
     
     
         @Override
-    public List<Category> fetchAllCatagories() {
+    public List<Category> fetchAllCategories() {
         try {
-            return categoryDBDao.fetchAllCatagories();
+            return categoryDBDao.fetchAllCategories();
         } catch (SQLException ex) {
             Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -164,9 +167,14 @@ public class DalManager implements IDAL {
 
     
     @Override
-    public Category getCategory(int id) {
-        return categoryDBDao.getCategory(id);
-    }
+    public Category getCategory(List<Category> allCategories, int id) {
+        try {
+            return categoryDBDao.getCategory(allCategories,id);
+        } catch (SQLException ex) {
+            Logger.getLogger(DalManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    } 
     
     
 }

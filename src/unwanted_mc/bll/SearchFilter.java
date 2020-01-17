@@ -17,12 +17,9 @@ import unwanted_mc.be.Movie;
 public class SearchFilter {
 
     /**
-     * Filters a list of songs and returns a filtered list matching the search
-     * query.
-     *
-     * @param searchBase The list of movies to filter.
-     * @param query The search query.
-     * @return A list of movies that matches the search query.
+     * Filters a list of Movies and returns a filtered list matching the search
+     @param allMovies
+     @param query
      */
     
     public List<Movie> searchByName(List<Movie> allMovies, String query) {
@@ -40,7 +37,11 @@ public class SearchFilter {
         return filtered;
     }
 
-    
+    /**
+     * Filters a list of Movies by rating above and returns a filtered list matching the search
+     @param allMovies
+     @param query
+     */
     
      public List<Movie> searchByRatingAbove(List<Movie> allMovies, String query) {
         //case insensitive and partial search
@@ -59,7 +60,11 @@ public class SearchFilter {
         return filtered;
     }
 
-     
+      /**
+     * Filters a list of Movies by rating below and returns a filtered list matching the search
+     @param allMovies
+     @param query
+     */
      
       public List<Movie> searchByRatingBelow(List<Movie> allMovies, String query) {
         //case insensitive and partial search

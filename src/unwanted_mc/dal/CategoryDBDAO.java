@@ -29,30 +29,64 @@ import unwanted_mc.be.Movie;
 public class CategoryDBDAO {
     
     private Category category;
-     
-    DBConnection dbc = new DBConnection();
+    private DBConnection dbc;
+/**
+ * get the db connection
+ */
+    public CategoryDBDAO(){
+       dbc = new DBConnection(); 
+    }
    
+    /**
+     * get a list of categorys
+     * @param allCategories
+     * @param id
+     * @return
+     * @throws SQLException 
+     */
     
-    public Category getCategory(int id) {
-        return category;
+    public Category getCategory(List<Category> allCategories, int id) throws SQLException {
+      int allCategoriesSize = allCategories.size();
+      Category testCat = new Category(9999, "no cat found");
+      if (allCategoriesSize > 0){
+            for (int i = 0; i < allCategories.size(); i++) {
+            Category category = allCategories.get(i);
+            int categoryId = category.getId();
+            if (categoryId == id)  {
+            return category;
+            }
+        }
+      }
+      return testCat;    
     }
     
     
+    /**
+     * add a value to the table category in the DB.
+     * @param name 
+     */
      
-    public Category addCategoryToDB(String name) {
+    public void addCategoryToDB(String name) {
    try ( Connection con = dbc.getConnection()) {
-            String sql = "INSERT INTO Category (name) values (?)";
+            String sql = "INSERT INTO category values (?)";
             PreparedStatement p = con.prepareStatement(sql);
+            //PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             p.setString(1, name);
             p.executeUpdate();
+            System.out.println("add dall");
 
         } catch (SQLServerException ex) {
         Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
     } catch (SQLException ex) {
         Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        
     }
+    /**
+     * removes a category where id match in DB.
+     * @param name
+     * @return 
+     */
     
      public Category removeCategoryFromDB(String name){
         try ( Connection con = dbc.getConnection()) {
@@ -69,8 +103,12 @@ public class CategoryDBDAO {
         return null;
     }
     
-     
-      public List<Category> fetchAllCatagories() throws SQLException {
+     /**
+      * gets all values form the table category in DB. and all to a list of allCategories
+      * @return
+      * @throws SQLException 
+      */
+      public List<Category> fetchAllCategories() throws SQLException {
         List<Category> allCategories = new ArrayList<>();
 
         try ( Connection con = dbc.getConnection()) {
@@ -81,6 +119,7 @@ public class CategoryDBDAO {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 allCategories.add(new Category(id, name));
+                
             }
         } catch (SQLServerException ex) {
             Logger.getLogger(CategoryDBDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -90,7 +129,11 @@ public class CategoryDBDAO {
         return allCategories;
     }
       
-      
+    /**
+     * updates a value in the table Category in db. 
+     * @param name
+     * @return 
+     */
     public Category editCategory(String name){
     try ( Connection con = dbc.getConnection()) {
             String sql = "UPDATE Category set name=?";

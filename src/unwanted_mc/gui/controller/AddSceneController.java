@@ -5,7 +5,9 @@
  */
 package unwanted_mc.gui.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,17 +17,24 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import unwanted_mc.be.Category;
 import unwanted_mc.be.Movie;
-import unwanted_mc.gui.model.categoryModel;
-import unwanted_mc.gui.model.movieModel;
+import unwanted_mc.dal.MovieDBDAO;
+import unwanted_mc.gui.model.CategoryModel;
+import unwanted_mc.gui.model.MovieModel;
+
 
 /**
  * FXML Controller class
  *
- * @author Bruger
+ * @author Niclas, Martin, Michael and Alan
  */
+
+
 public class AddSceneController implements Initializable {
 
     @FXML
@@ -41,8 +50,6 @@ public class AddSceneController implements Initializable {
     @FXML
     private Button btn_createVisible;
     @FXML
-    private Button btn_deleteGenre;
-    @FXML
     private TextField txt_createGenre;
     @FXML
     private Button btn_createGenre;
@@ -54,43 +61,58 @@ public class AddSceneController implements Initializable {
     private boolean edit;
     private boolean editCat;
     private Movie movieToEdit;
-    private PrimarySceneController pSCon;
-    private movieModel movieModel;
-    private categoryModel categoryModel;
+    
+    private MovieModel movieModel;
+    private CategoryModel categoryModel;
     private Category CategoryToEdit;
+    
+    
     
     @FXML
     private TextField txtField_name;
+    @FXML
+    private Button btn_deleteCategory;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // to do
+        
     }    
-    
-    
-    /**
-     * Sets the controller for the PrimaryScene.
-     *
-     * @param pSCon PrimaryController.
-     */
-    public void setContr(PrimarySceneController pSCon) {
-        this.pSCon = pSCon;
+
+    public void setMovieModel(MovieModel movieModel) {
+        this.movieModel = movieModel;
     }
     
+    
+   
+   
     /**
-     * updates all movie the tbv in the PrimaryScene 
+     * adds the path of the selected movie in txtField filePath.
+     * @param event
+     * @throws MalformedURLException 
      */
-    private void updateAllMovie() {
-    pSCon.refreshAllMovie();
-    }
 
     @FXML
-    private void handle_openFileChooser(ActionEvent event) {
-        
-    }
+    private void handle_openFileChooser(ActionEvent event) throws MalformedURLException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("mp4 Files", "*.mp4"),
+                new FileChooser.ExtensionFilter("mpeg4 Files", "*.mpeg4")
+        );
 
+        File movieFile = fileChooser.showOpenDialog(null);
+        if (movieFile != null) {
+            String moviePATH = movieFile.getAbsolutePath();
+            txtField_filePath.setText(moviePATH);
+            Media media = new Media(movieFile.toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+   //         mediaPlayer.setOnReady(new Runnable() {
+
+        }
+    }
+    
     /**
      * Closes the stage.
      */
@@ -101,73 +123,97 @@ public class AddSceneController implements Initializable {
     }
 
     /**
-     * Checks the selected mode (new or edit) and saves the song.
+     * Checks the selected mode (new or edit) and saves the Movie.
      */
     @FXML
     private void handle_saveMovie(ActionEvent event) throws InterruptedException, IOException {
         if (!edit) {
-           // movieModel.createMovie(txtField_name.getText().trim(),
-                  //  movieModel.ratingToString(txtField_rating.getText().trim()),// need to make a converter for the rating to string.
-                 //   choiceBox_genre.getSelectionModel().getSelectedItem(),
-                  //  txtField_filePath.getText());
+
+            movieModel.createMovie(txtField_name.getText().trim(),
+                movieModel.ratingStringToInt(txtField_rating.getText().trim()),
+                txtField_filePath.getText(),
+                choiceBox_genre.getSelectionModel().getSelectedItem());
+        
+            
         } else {
-           // movieModel.editMovie(movieToEdit,
-            //        txtField_name.getText().trim(),
-            //        movieModel.ratingToString(txtField_rating.getText().trim()),// need to make a converter for the rating to string.
-              //      choiceBox_genre.getSelectionModel().getSelectedItem(),
-                //    txtField_filePath.getText());
+            movieModel.editMovie(movieToEdit,
+                    txtField_name.getText().trim(),
+                    movieModel.ratingStringToInt(txtField_rating.getText().trim()),
+                    txtField_filePath.getText(),
+                    choiceBox_genre.getSelectionModel().getSelectedItem());
+                    
+                    
         }
-
-        updateAllMovie();
-
+        
+        
+        
         Stage stage;
         stage = (Stage) btn_confirm.getScene().getWindow();
         stage.close();
     }
-    
+    /**
+     * makes txt and btn createGenre visible.
+     * @param event 
+     */
     @FXML
     private void handle_createVisible(ActionEvent event) {
         txt_createGenre.setVisible(true);
         btn_createGenre.setVisible(true);
     }
-
+    /**
+     * get the item in choiceBox and delete it.
+     * @param event 
+     */
     @FXML
-    private void handle_deleteGenre(ActionEvent event) {
+    private void handle_deleteCategory(ActionEvent event) {
         String name = choiceBox_genre.getSelectionModel().getSelectedItem();
         categoryModel.deleteCategory(name);
         choiceBox_genre.getItems().remove(name);
     }
-
+    /**
+     * get the txt from txt createGenre and create category and make createGenre
+     * btn and txt invisible.
+     * @param event 
+     */
     @FXML
     private void handle_createGenre(ActionEvent event) {
         String name = txt_createGenre.getText().trim();
         categoryModel.createCategory(name);
-        choiceBox_genre.getItems().add(name);
+        //choiceBox_genre.getItems().add(name);
         txt_createGenre.setVisible(false); //makes the button invisible.
         btn_createGenre.setVisible(false); //makes the button invisible.
+      
     }
-    
+    /**
+     * edit the movie that is selected.
+     * @param selectedMovie 
+     */
     public void editMode(Movie selectedMovie) {
         edit = true;
         movieToEdit = selectedMovie;
 
         //sets the existing info of the selected movie.
         txtField_name.setText(movieToEdit.getName());
-        txtField_rating.setText(movieToEdit.getStringRating()); //need to do get rating to string. NOT DONE!!!
+        txtField_rating.setText(movieToEdit.toString()); //need to do get rating to string. NOT DONE!!!
         txtField_filePath.setText(movieToEdit.getFileLink());
-        //choiceBox_genre.setValue(movieToEdit.getCat()); //need to get fixt NOT DONE!!! dont have cat in Movie be.
+        choiceBox_genre.setValue(movieToEdit.getCatString()); //need to get fixt NOT DONE!!! dont have cat in Movie be.
+        movieToEdit.getId();
     }
-
+    /**
+     * edit the selected category.
+     * @param selectedCat 
+     */
     public void editModeCat(Category selectedCat){
     editCat = true;
     CategoryToEdit = selectedCat;
     
     choiceBox_genre.setValue(CategoryToEdit.getName());
     }
+    /**
+     * edit the selected category NOT inplemented.
+     * @param event 
+     */
     @FXML
-    private void btn_editGenre(ActionEvent event) {
-        
-        
-        
+    private void btn_editCategory(ActionEvent event) {
     }
 }
